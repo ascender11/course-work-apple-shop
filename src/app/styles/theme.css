@@ -1,0 +1,35 @@
+@theme {
+  --font-roboto: "Inter", system-ui, sans-serif;
+
+  --color-primary: #0071e4;
+  --color-secondary: #2a93fd;
+
+  --color-text-primary: #100e0e;
+  --color-text-secondary: #282626;
+  --color-text-tertiary: #585656;
+  --color-text-quaternary: #706e6e;
+  --color-text-quinary: #878787;
+
+  --color-background: #ffffff;
+
+  --text-6xl: 56px;
+  --text-6xl--line-height: 1.1;
+  --text-5xl: 48px;
+  --text-5xl--line-height: 1.2;
+  --text-4xl: 38px;
+  --text-4xl--line-height: 1.2;
+  --text-3xl: 32px;
+  --text-3xl--line-height: 1.1;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 1.4;
+  --text-xl: 20px;
+  --text-xl--line-height: 1.4;
+  --text-lg: 18px;
+  --text-lg--line-height: 1.5;
+  --text-base: 16px;
+  --text-base--line-height: 1.5;
+  --text-sm: 14px;
+  --text-sm--line-height: 1.5;
+  --text-xs: 12px;
+  --text-xs--line-height: 1.5;
+}

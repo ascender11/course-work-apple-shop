@@ -1,0 +1,17 @@
+# Database
+server/db.json
+
+# Logs
+logs
+*.log
+pnpm-debug.log*
+
+node_modules
+dist
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+
+# Environment files
+.env

@@ -1,5 +1,8 @@
+import { Header } from '@/widgets/header'
+
 export const HomePage = (): string => {
   return `
+  ${Header()}
     <main class="container mx-auto px-4 py-8">
       <div class="max-w-2xl mx-auto">
         <div class="mb-8 text-center">

@@ -1,0 +1,9 @@
+@layer components {
+  .link {
+    @apply text-text-primary hover:text-primary transition-colors;
+  }
+
+  .link.active {
+    @apply text-primary underline underline-offset-2;
+  }
+}

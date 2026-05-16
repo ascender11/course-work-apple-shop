@@ -1,0 +1,27 @@
+@layer components {
+  .burger-menu-icon {
+    cursor: pointer;
+  }
+
+  .burger-menu-icon .line-1,
+  .burger-menu-icon .line-3 {
+    transition: transform 0.3s ease;
+    transform-origin: center;
+  }
+
+  .burger-menu-icon .line-2 {
+    transition: all 0.3s ease;
+  }
+
+  .burger-menu-icon.open .line-1 {
+    transform: rotate(45deg) translate(3px, 3px) scaleX(1.2);
+  }
+
+  .burger-menu-icon.open .line-2 {
+    opacity: 0;
+  }
+
+  .burger-menu-icon.open .line-3 {
+    transform: rotate(-45deg) translate(3px, -3px) scaleX(1.2);
+  }
+}

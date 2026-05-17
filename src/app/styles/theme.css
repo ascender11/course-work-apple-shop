@@ -1,5 +1,5 @@
 @theme {
-  --font-roboto: "Inter", system-ui, sans-serif;
+  --font-inter: "Inter", system-ui, sans-serif;
 
   --color-primary: #0071e4;
   --color-secondary: #2a93fd;
@@ -9,6 +9,7 @@
   --color-text-tertiary: #585656;
   --color-text-quaternary: #706e6e;
   --color-text-quinary: #878787;
+  --color-text-button: #ffffff;
 
   --color-background: #ffffff;
 

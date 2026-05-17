@@ -1,3 +1,5 @@
+export { ArrowLeft } from './ArrowLeft'
+export { ArrowRight } from './ArrowRight'
 export { BurgerMenu } from './BurgerMenu'
 export { Logo } from './Logo'
 export { Phone } from './Phone'

@@ -1,0 +1,5 @@
+@layer components {
+  .button {
+    @apply bg-primary hover:bg-primary/80 text-text-button rounded-lg px-5 py-2.5 transition-colors duration-200;
+  }
+}

@@ -5,7 +5,7 @@ export interface ButtonProps {
   className?: string
   icon?: string | null
   variant?: 'primary' | 'outline'
-  href?: string // Добавляем опциональный проп для ссылки
+  href?: string
 }
 
 export const Button = ({ text, className = '', icon = null, variant = 'primary', href = '' }: ButtonProps) => {

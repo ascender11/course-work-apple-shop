@@ -5,12 +5,27 @@ export interface ButtonProps {
   className?: string
   icon?: string | null
   variant?: 'primary' | 'outline'
+  href?: string // Добавляем опциональный проп для ссылки
 }
 
-export const Button = ({ text, className = '', icon = null, variant = 'primary' }: ButtonProps) => {
+export const Button = ({ text, className = '', icon = null, variant = 'primary', href = '' }: ButtonProps) => {
+  const classes = cn('button flex items-center justify-center gap-2', variant === 'outline' && 'outline', className)
+
+  if (href) {
+    return html`
+      <a 
+        href="${href}"
+        class="${classes}"
+      >
+        ${icon ? icon : ''}
+        <span>${text}</span>
+      </a>
+    `
+  }
+
   return html`
     <button 
-      class="${cn('button flex items-center justify-center gap-2', variant === 'outline' && 'outline', className)}"
+      class="${classes}"
     >
       ${icon ? icon : ''}
       <span>${text}</span>

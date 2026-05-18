@@ -2,6 +2,7 @@ import { Header } from '@/widgets/header'
 
 import { html } from '@/shared/lib'
 
+import { Advantages } from '../sections/advantages'
 import { Banner } from '../sections/banner'
 import { HomeSlider } from '../sections/home-slider'
 import { NewProducts } from '../sections/new-products'
@@ -17,6 +18,7 @@ export const HomePage = (): string => {
       ${PopularProducts()}
       ${Banner()}
       ${NewProducts()}
+      ${Advantages()}
     </main>
   `
 }

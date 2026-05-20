@@ -1,3 +1,4 @@
+import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
 import { html } from '@/shared/lib'
@@ -21,6 +22,7 @@ export const HomePage = (): string => {
       ${NewProducts()}
       ${Advantages()}
       ${CtaBanner()}
+      ${Footer()}
     </main>
   `
 }

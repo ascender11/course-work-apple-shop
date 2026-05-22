@@ -53,9 +53,9 @@ export const Footer = ({ className = '' }: FooterProps = {}) => {
           <p>С 10:00 до 21:00, без выходных</p>
         </div>
         <div class="flex gap-2.5">
-          <img src="/src/widgets/footer/assets/telegram-logo.svg" alt="Telegram" class="w-8"/>
-          <img src="/src/widgets/footer/assets/vk-logo.svg" alt="VK" class="w-8" />
-          <img src="/src/widgets/footer/assets/whatsapp-logo.svg" alt="WhatsApp" class="w-8" />
+          <img src="/assets/telegram-logo.svg" alt="Telegram" class="w-8"/>
+          <img src="/assets/vk-logo.svg" alt="VK" class="w-8" />
+          <img src="/assets/watsapp-logo.svg" alt="WhatsApp" class="w-8" />
         </div>
       </div>
     </footer>

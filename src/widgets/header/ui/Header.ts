@@ -27,7 +27,7 @@ export const Header = ({ className = '' }: HeaderProps = {}) => {
 
   const navLinks = [
     { href: '/', text: 'Главная' },
-    { href: '/about', text: 'Каталог' },
+    { href: '/catalog', text: 'Каталог' },
     { href: '/services', text: 'Акции' },
     { href: '/delivery', text: 'Доставка и оплата' },
     { href: '/contact', text: 'Контакты' },

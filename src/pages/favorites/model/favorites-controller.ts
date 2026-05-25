@@ -1,5 +1,6 @@
 import { type Product, productApi } from '@/entities/product'
 import { userStore } from '@/entities/user'
+import { initAddToCartButtons } from '@/features/add-to-cart'
 import { favoritesApi, initFavoriteButtons } from '@/features/add-to-favorites'
 import { ProductList } from '@/widgets/product-list'
 
@@ -100,6 +101,7 @@ export const initFavoritesPage = async (
     renderProducts(listEl, paginationEl, state, state.products.length)
 
     initFavoriteButtons()
+    initAddToCartButtons()
   }
 
   render()

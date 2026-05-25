@@ -1,7 +1,9 @@
 import Navigo from 'navigo'
 
+import { cartStore } from '@/entities/cart'
 import { userStore } from '@/entities/user'
 import { LoginPage, RegisterPage } from '@/pages/auth'
+import { CartPage } from '@/pages/cart'
 import { CatalogPage } from '@/pages/catalog'
 import { FavoritesPage } from '@/pages/favorites'
 import { HomePage } from '@/pages/home'
@@ -27,6 +29,9 @@ let router: Navigo
 export const createRouter = () => {
   router = new Navigo('/')
 
+  const user = userStore.getUser()
+  if (user) cartStore.init(user.id)
+
   router
     .on('/', () => mount(HomePage))
     .on('/catalog', () => {
@@ -40,6 +45,9 @@ export const createRouter = () => {
     })
     .on('/favorites', () => {
       requireAuth(() => mount(FavoritesPage))
+    })
+    .on('/cart', () => {
+      requireAuth(() => mount(CartPage))
     })
     .on('/login', () => mount(LoginPage))
     .on('/register', () => mount(RegisterPage))

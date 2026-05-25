@@ -12,17 +12,19 @@ import { PopularProducts } from '../sections/popular-products'
 
 export const HomePage = (): string => {
   return html`
-  ${Header()}
-    <main>
-      <section>
-        ${HomeSlider()}
-      </section>
-      ${PopularProducts()}
-      ${Banner()}
-      ${NewProducts()}
-      ${Advantages()}
-      ${CtaBanner()}
-      ${Footer()}
-    </main>
+    <div id="home-root">
+      ${Header()}
+      <main>
+        <section>
+          ${HomeSlider()}
+        </section>
+        ${PopularProducts()}
+        ${Banner()}
+        ${NewProducts()}
+        ${Advantages()}
+        ${CtaBanner()}
+        ${Footer()}
+      </main>
+    </div>
   `
 }

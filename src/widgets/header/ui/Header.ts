@@ -29,9 +29,9 @@ export const Header = ({ className = '' }: HeaderProps = {}) => {
     { href: '/', text: 'Главная' },
     { href: '/catalog', text: 'Каталог' },
     { href: '/favorites', text: 'Избранное' },
+    { href: '/cart', text: 'Корзина' },
     { href: '/delivery', text: 'Доставка и оплата' },
     { href: '/contact', text: 'Контакты' },
-    { href: '/loans', text: 'Кредиты' },
   ]
 
   return html`

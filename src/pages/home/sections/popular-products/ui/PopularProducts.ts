@@ -1,4 +1,6 @@
 import { productApi } from '@/entities/product'
+import { initAddToCartButtons } from '@/features/add-to-cart'
+import { initFavoriteButtons } from '@/features/add-to-favorites'
 import { ProductList } from '@/widgets/product-list'
 
 import { cn, html } from '@/shared/lib'
@@ -18,11 +20,14 @@ export const PopularProducts = ({ className = '' }: PopularProductsProps = {}) =
         try {
           const products = await productApi.getAll()
           listContainer.innerHTML = ProductList({ products })
+
+          await initFavoriteButtons()
+          await initAddToCartButtons()
         } catch (error: unknown) {
           const errorMessage = error instanceof Error ? error.message : 'Неизвестная ошибка'
 
           listContainer.innerHTML = html`
-            <div class="py-10 text-center text-red-500">
+            <div class="py-10 text-center text-error">
               Не удалось загрузить товары: ${errorMessage}
             </div>
           `
@@ -39,11 +44,11 @@ export const PopularProducts = ({ className = '' }: PopularProductsProps = {}) =
 
   return html`
     <section class="${cn('py-4 px-3 sm:py-6 sm:px-4', className)}">
-      <h1 class="text-2xl sm:text-4xl xl:text-5xl font-bold mb-2 text-gray-950">Купить iPhone в Москве</h1>
+      <h1 class="text-2xl sm:text-4xl xl:text-5xl font-bold mb-2 text-text-primary">Купить iPhone в Москве</h1>
       <p class="text-lg text-primary sm:text-2xl mb-6">Самые популярные</p>
       
       <div id="popular-products-list" class="w-full">
-        <div class="py-12 text-center text-gray-400 font-medium">
+        <div class="py-12 text-center text-text-quinary font-medium">
           Загрузка популярных товаров...
         </div>
       </div>

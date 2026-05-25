@@ -1,10 +1,10 @@
 import type { Product } from '@/entities/product'
 import { ProductAvailability } from '@/entities/product'
+import { AddToCartButton } from '@/features/add-to-cart'
 
 import { cn, html } from '@/shared/lib'
 import { Button, Link } from '@/shared/ui/components'
 import { Heart, Rings, Star } from '@/shared/ui/icons'
-import { AddToCart } from '@/shared/ui/icons/AddToCart'
 
 export interface ProductCardProps {
   product: Product
@@ -76,10 +76,7 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
 
     return html`
       <div class="flex flex-col gap-2.5 w-full mt-1">
-        ${Button({
-          icon: AddToCart(),
-          text: 'В корзину',
-        })}
+        ${AddToCartButton({ productId: product.id })}
         
         <div class="flex justify-between w-full px-0.5">
           ${Link({ text: 'Хочу дешевле', href: '#', className: 'text-primary' })}

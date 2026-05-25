@@ -1,6 +1,8 @@
+import { userStore } from '@/entities/user'
+
 import { cn, html } from '@/shared/lib'
 import { Link } from '@/shared/ui/components'
-import { BurgerMenu, Logo, Phone } from '@/shared/ui/icons'
+import { BurgerMenu, Logo, Phone, User } from '@/shared/ui/icons'
 
 import { initHeader } from '../model/header.init'
 
@@ -56,11 +58,18 @@ export const Header = ({ className = '' }: HeaderProps = {}) => {
           </ul>
         </nav>
 
-        <div class="flex flex-row items-center gap-7.5">
+        <div class="flex flex-row items-center gap-4">
           <div class="flex gap-1.25">
             ${Phone()}
             +7 812 561 96 62
           </div>
+          ${userStore.isLoggedIn()
+            ? html`<button
+                id="header-profile-btn"
+                aria-label="Профиль"
+                class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-150"
+              >${User()}</button>`
+            : ''}
           <button id="dropdown-menu-button" class="h-6 w-6 focus:outline-none lg:hidden">
             ${BurgerMenu()}
           </button>

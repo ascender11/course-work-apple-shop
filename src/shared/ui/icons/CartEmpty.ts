@@ -1,2 +1,21 @@
-export const CartEmpty = () =>
-  `<svg viewBox="0 0 24 24" class="w-20 h-20 text-gray-200" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`
+import { cn, html } from '@/shared/lib'
+
+export interface CartEmptyProps {
+  className?: string
+}
+
+export const CartEmpty = ({ className = '' }: CartEmptyProps = {}) => html`
+  <svg
+    viewBox="0 0 24 24"
+    class="${cn('w-6 h-6 text-text-quinary', className)}"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <path d="M16 10a4 4 0 0 1-8 0"/>
+  </svg>
+`

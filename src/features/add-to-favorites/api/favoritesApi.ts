@@ -1,5 +1,7 @@
 const BASE = import.meta.env.VITE_API_URL as string
 
+// TODO: Change all the fetch statements to axios
+
 export interface Favorite {
   id: string
   userId: string

@@ -9,6 +9,7 @@ import { FavoritesPage } from '@/pages/favorites'
 import { HomePage } from '@/pages/home'
 import { NotFoundPage } from '@/pages/not-found'
 import { ProductPage } from '@/pages/product'
+import { ProfilePage } from '@/pages/profile'
 
 const mount = (page: () => string) => {
   const app = document.querySelector<HTMLElement>('#app')
@@ -48,6 +49,9 @@ export const createRouter = () => {
     })
     .on('/cart', () => {
       requireAuth(() => mount(CartPage))
+    })
+    .on('/profile', () => {
+      requireAuth(() => mount(ProfilePage))
     })
     .on('/login', () => mount(LoginPage))
     .on('/register', () => mount(RegisterPage))

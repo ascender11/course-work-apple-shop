@@ -4,6 +4,7 @@ import { generatePassword } from './generators'
 
 export const isTop100Password = async (password: string): Promise<boolean> => {
   try {
+    // TODO: change fetch to axiosInstance, find real API to do the task
     const response = await fetch(
       'https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-100.txt'
     )

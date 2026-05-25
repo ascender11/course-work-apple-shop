@@ -1,4 +1,7 @@
+import { navigate } from '@/shared/lib'
+
 export const initHeader = () => {
+  document.getElementById('header-profile-btn')?.addEventListener('click', () => navigate('/profile'))
   let isOpen = false
 
   const menu = document.getElementById('mobile-menu')

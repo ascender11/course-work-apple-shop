@@ -1,4 +1,5 @@
 import { userStore } from '@/entities/user'
+import { ThemeToggle } from '@/features/theme-switch'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
@@ -96,24 +97,7 @@ export const ProfilePage = (): string => {
 
         ${SectionCard(
           'Внешний вид',
-          SettingsRow(
-            'Тема',
-            '',
-            SegmentedControl([
-              {
-                value: 'light',
-                label: 'Светлая',
-                active: document.documentElement.classList.contains('dark') === false,
-                attr: 'data-theme',
-              },
-              {
-                value: 'dark',
-                label: 'Тёмная',
-                active: document.documentElement.classList.contains('dark') === true,
-                attr: 'data-theme',
-              },
-            ])
-          ) +
+          SettingsRow('Тема', '', ThemeToggle()) +
             SettingsRow(
               'Язык',
               'Скоро будет доступно',

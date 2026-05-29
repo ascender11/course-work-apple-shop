@@ -1,5 +1,7 @@
 import type { LngLat } from '@yandex/ymaps3-types'
 
+import { getTheme, onThemeChange } from '@/shared/lib'
+
 import { MapError } from '../ui/MapError'
 import { MapMarker } from '../ui/MapMarker'
 
@@ -45,6 +47,8 @@ const waitForYmaps3 = (timeoutMs = 8000): Promise<boolean> =>
     }, 100)
   })
 
+let cleanupThemeListener: (() => void) | null = null
+
 export const initDeliveryMap = async (): Promise<void> => {
   const container = document.getElementById('delivery-map')
   if (!container) return
@@ -63,13 +67,24 @@ export const initDeliveryMap = async (): Promise<void> => {
 
     const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker } = ymaps3
 
+    const currentTheme = getTheme()
+
     const map = new YMap(container, {
       location: { center: SHOP_COORDS, zoom: 15 },
+      theme: currentTheme,
     })
 
     map.addChild(new YMapDefaultSchemeLayer({}))
     map.addChild(new YMapDefaultFeaturesLayer({}))
     map.addChild(new YMapMarker({ coordinates: SHOP_COORDS }, createMapMarker()))
+
+    if (cleanupThemeListener) {
+      cleanupThemeListener()
+    }
+
+    cleanupThemeListener = onThemeChange((theme) => {
+      map.update({ theme })
+    })
   } catch {
     container.innerHTML = MapError('Не удалось загрузить карту')
   }

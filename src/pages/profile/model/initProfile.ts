@@ -1,5 +1,6 @@
 import { cartStore } from '@/entities/cart'
 import { userStore } from '@/entities/user'
+import { initThemeToggle } from '@/features/theme-switch'
 
 import { navigate } from '@/shared/lib'
 
@@ -14,9 +15,12 @@ export const initProfile = () => {
     navigate('/login')
   })
 
-  document.querySelectorAll<HTMLButtonElement>('[data-theme]').forEach((btn) => {
+  initThemeToggle()
+
+  const langButtons = document.querySelectorAll<HTMLButtonElement>('[data-lang]')
+  langButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll<HTMLButtonElement>('[data-theme]').forEach((b) => {
+      langButtons.forEach((b) => {
         b.classList.remove('bg-background', 'shadow-sm', 'text-text-primary')
         b.classList.add('text-text-quinary')
       })
@@ -24,16 +28,4 @@ export const initProfile = () => {
       btn.classList.add('bg-background', 'shadow-sm', 'text-text-primary')
     })
   })
-
-  document.querySelectorAll<HTMLButtonElement>('[data-lang]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll<HTMLButtonElement>('[data-lang]').forEach((b) => {
-        b.classList.remove('bg-background', 'shadow-sm', 'text-text-primary')
-        b.classList.add('text-text-quinary')
-      })
-      btn.classList.remove('text-text-quinary')
-      btn.classList.add('bg-background', 'shadow-sm', 'text-text-primary')
-    })
-  })
-
 }

@@ -8,6 +8,19 @@ export const productApi = {
     return response.data
   },
 
+  getFiltered: async (queryString: string): Promise<{ products: Product[]; totalCount: number }> => {
+    const params = new URLSearchParams(queryString)
+
+    const page = params.get('page')
+    params.delete('page')
+    params.set('_page', page ?? '1')
+    params.set('_limit', '9')
+
+    const response = await axiosInstance.get<Product[]>('/products', { params })
+    const totalCount = parseInt(response.headers['x-total-count'] ?? '0', 10)
+    return { products: response.data, totalCount }
+  },
+
   getById: async (id: string): Promise<Product> => {
     const response = await axiosInstance.get<Product>(`/products/${id}`)
     return response.data

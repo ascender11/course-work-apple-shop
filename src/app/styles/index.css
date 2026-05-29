@@ -7,3 +7,6 @@
 @import "./components/burger-menu-icon.css";
 @import "./components/link.css";
 @import "./components/button.css";
+@import "./components/checkbox.css";
+@import "./components/radio.css";
+@import "./components/range-slider.css";

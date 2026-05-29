@@ -8,7 +8,7 @@ export interface FooterProps {
 export const Footer = ({ className = '' }: FooterProps = {}) => {
   const navLinks = [
     { href: '/', text: 'Главная' },
-    { href: '/about', text: 'Каталог' },
+    { href: '/catalog', text: 'Каталог' },
     { href: '/services', text: 'Акции' },
     { href: '/delivery', text: 'Доставка и оплата' },
     { href: '/contact', text: 'Контакты' },

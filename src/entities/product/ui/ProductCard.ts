@@ -90,7 +90,7 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
   }
 
   return html`
-    <div class="${cn('flex flex-col gap-3.75 items-center w-full max-w-70 px-1.75 py-3.5 bg-background rounded-2xl', className)}">
+    <div class="${cn('flex flex-col shadow-[0_4px_8px_0_rgba(0,0,0,0.05)] gap-3.75 items-center w-full max-w-70 px-1.75 py-3.5 bg-background rounded-2xl', className)}">
       <div class="flex items-center justify-between w-full">
         <div class="flex items-center gap-1">
           <div class="flex gap-px text-amber-400">

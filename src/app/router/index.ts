@@ -1,5 +1,6 @@
 import Navigo from 'navigo'
 
+import { CatalogPage } from '@/pages/catalog'
 import { HomePage } from '@/pages/home'
 import { NotFoundPage } from '@/pages/not-found'
 
@@ -12,7 +13,13 @@ const mount = (page: () => string) => {
 export const createRouter = () => {
   const router = new Navigo('/')
 
-  router.on('/', () => mount(HomePage)).notFound(() => mount(NotFoundPage))
+  router
+    .on('/', () => mount(HomePage))
+    .on('/catalog', (match) => {
+      const qs = match?.queryString ?? ''
+      mount(() => CatalogPage(qs))
+    })
+    .notFound(() => mount(NotFoundPage))
 
   router.resolve()
 

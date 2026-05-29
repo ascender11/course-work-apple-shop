@@ -1,0 +1,28 @@
+@layer components {
+  .radio {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--color-text-quinary);
+    background: var(--color-background);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .radio:checked {
+    border-color: var(--color-primary);
+  }
+
+  .radio:checked::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+  }
+}

@@ -1,5 +1,6 @@
 export { AddedToCart } from './AddedToCart'
 export { AddToCart } from './AddToCart'
+export { ArrowDown } from './ArrowDown'
 export { ArrowLeft } from './ArrowLeft'
 export { ArrowRight } from './ArrowRight'
 export { BurgerMenu } from './BurgerMenu'

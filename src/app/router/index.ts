@@ -1,5 +1,7 @@
 import Navigo from 'navigo'
 
+import { userStore } from '@/entities/user'
+import { LoginPage, RegisterPage } from '@/pages/auth'
 import { CatalogPage } from '@/pages/catalog'
 import { HomePage } from '@/pages/home'
 import { NotFoundPage } from '@/pages/not-found'
@@ -11,18 +13,32 @@ const mount = (page: () => string) => {
   app.innerHTML = page()
 }
 
+const requireAuth = (next: () => void) => {
+  if (userStore.isLoggedIn()) {
+    next()
+  } else {
+    router.navigate('/login')
+  }
+}
+
+let router: Navigo
+
 export const createRouter = () => {
-  const router = new Navigo('/')
+  router = new Navigo('/')
 
   router
     .on('/', () => mount(HomePage))
     .on('/catalog', () => {
-      mount(() => CatalogPage())
+      requireAuth(() => mount(() => CatalogPage()))
     })
     .on('/product/:id', (match) => {
-      const id = match?.data?.id ?? ''
-      mount(() => ProductPage(id))
+      requireAuth(() => {
+        const id = match?.data?.id ?? ''
+        mount(() => ProductPage(id))
+      })
     })
+    .on('/login', () => mount(LoginPage))
+    .on('/register', () => mount(RegisterPage))
     .notFound(() => mount(NotFoundPage))
 
   router.resolve()

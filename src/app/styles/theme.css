@@ -3,6 +3,8 @@
 
   --color-primary: #0071e4;
   --color-secondary: #2a93fd;
+  --color-success: #05df72;
+  --color-error: #ef4444;
 
   --color-text-primary: #100e0e;
   --color-text-secondary: #282626;
@@ -14,6 +16,9 @@
   --color-background: #ffffff;
   --color-background-secondary: #f9f9f9;
   --color-background-tertiaty: #e5e7eb;
+
+  --color-border: #e5e7eb;
+  --color-border-light: #f3f4f6;
 
   --text-6xl: 56px;
   --text-6xl--line-height: 1.1;

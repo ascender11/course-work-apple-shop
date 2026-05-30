@@ -4,6 +4,8 @@ export type {
   Product,
   ProductPrice,
   ProductRating,
+  ProductSpecification,
+  ProductSpecificationGroup,
   UnavailableProduct,
 } from './model/types'
 export { ProductAvailability } from './model/types'

@@ -109,13 +109,13 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
         </div>
       </div>
 
-      <h3 class="font-medium text-2xl text-text-primary text-center w-full">
+      <a href="/product/${product.id}" data-navigo class="font-medium text-2xl text-text-primary text-center w-full hover:text-primary transition-colors">
         ${product.title}
-      </h3>
+      </a>
 
-      <div class="flex justify-center items-center h-50 mb-4">
-        <img src="${product.imageUrl}" alt="${product.title}" class="max-h-full object-contain" loading="lazy" />
-      </div>
+      <a href="/product/${product.id}" data-navigo class="flex justify-center items-center h-50 mb-4">
+        <img src="${product.images[0]}" alt="${product.title}" class="max-h-full object-contain" loading="lazy" />
+      </a>
 
       ${renderAvailabilityStatus()}
       ${renderPriceOrNotification()}

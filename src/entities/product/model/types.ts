@@ -13,22 +13,36 @@ export enum ProductAvailability {
   OUT_OF_STOCK = 'out_of_stock',
 }
 
+export interface ProductSpecification {
+  name: string
+  value: string
+}
+
+export interface ProductSpecificationGroup {
+  groupName: string
+  specs: ProductSpecification[]
+}
+
 export interface UnavailableProduct {
   id: string
   title: string
-  imageUrl: string
+  images: string[]
+  soldCount?: number
   rating: ProductRating
   availability: ProductAvailability.OUT_OF_STOCK
+  specifications?: ProductSpecificationGroup[]
 }
 
 export interface AvailableProduct {
   id: string
   title: string
-  imageUrl: string
+  images: string[]
+  soldCount?: number
   rating: ProductRating
   price: ProductPrice
   availability: ProductAvailability.IN_STOCK
   warrantyPeriod?: string
+  specifications?: ProductSpecificationGroup[]
 }
 
 export type Product = UnavailableProduct | AvailableProduct

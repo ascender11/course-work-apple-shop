@@ -3,6 +3,7 @@ import Navigo from 'navigo'
 import { userStore } from '@/entities/user'
 import { LoginPage, RegisterPage } from '@/pages/auth'
 import { CatalogPage } from '@/pages/catalog'
+import { FavoritesPage } from '@/pages/favorites'
 import { HomePage } from '@/pages/home'
 import { NotFoundPage } from '@/pages/not-found'
 import { ProductPage } from '@/pages/product'
@@ -36,6 +37,9 @@ export const createRouter = () => {
         const id = match?.data?.id ?? ''
         mount(() => ProductPage(id))
       })
+    })
+    .on('/favorites', () => {
+      requireAuth(() => mount(FavoritesPage))
     })
     .on('/login', () => mount(LoginPage))
     .on('/register', () => mount(RegisterPage))

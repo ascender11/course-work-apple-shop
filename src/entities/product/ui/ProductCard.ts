@@ -32,7 +32,7 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
 
     return html`
       <div class="flex items-center gap-1.25 text-text-quinary w-full">
-        <span class="${cn('w-4 h-4 rounded-full inline-block', isInStock ? 'bg-green-500' : 'bg-blue-500')}"></span>
+        <span class="${cn('w-4 h-4 rounded-full inline-block', isInStock ? 'bg-success' : 'bg-primary')}"></span>
         <span class="flex justify-between w-full">
           <span>${statusText}</span>
           ${warranty}
@@ -90,7 +90,7 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
   }
 
   return html`
-    <div class="${cn('flex flex-col shadow-[0_4px_8px_0_rgba(0,0,0,0.05)] gap-3.75 items-center w-full max-w-70 px-1.75 py-3.5 bg-background rounded-2xl', className)}">
+    <div data-product-card class="${cn('flex flex-col shadow-card gap-3.75 items-center w-full max-w-70 px-1.75 py-3.5 bg-background rounded-2xl', className)}">
       <div class="flex items-center justify-between w-full">
         <div class="flex items-center gap-1">
           <div class="flex gap-px text-amber-400">
@@ -99,11 +99,17 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
           <span class="text-primary">(${product.rating.reviewsCount})</span>
         </div>
 
-        <div class="flex items-center gap-1.25 text-gray-400">
-          <button>
+        <div class="flex items-center gap-1.25">
+          <button
+            class="js-fav-btn flex items-center justify-center w-8 h-8 rounded-full transition-transform duration-150 hover:scale-110 active:scale-95"
+            data-product-id="${product.id}"
+            data-favorite-id=""
+            aria-label="Добавить в избранное"
+            type="button"
+          >
             ${Heart()}
           </button>
-          <button>
+          <button class="flex items-center justify-center w-8 h-8 text-text-quinary hover:text-primary transition-colors">
             ${Rings()}
           </button>
         </div>

@@ -8,6 +8,13 @@ export const productApi = {
     return response.data
   },
 
+  getByIds: async (ids: string[]): Promise<Product[]> => {
+    if (!ids.length) return []
+    const qs = ids.map((id) => `id=${encodeURIComponent(id)}`).join('&')
+    const response = await axiosInstance.get<Product[]>(`/products?${qs}`)
+    return response.data
+  },
+
   getFiltered: async (queryString: string): Promise<{ products: Product[]; totalCount: number }> => {
     const params = new URLSearchParams(queryString)
 

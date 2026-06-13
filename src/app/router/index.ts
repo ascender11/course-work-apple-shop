@@ -5,6 +5,7 @@ import { userStore } from '@/entities/user'
 import { LoginPage, RegisterPage } from '@/pages/auth'
 import { CartPage } from '@/pages/cart'
 import { CatalogPage } from '@/pages/catalog'
+import { DeliveryPage } from '@/pages/delivery'
 import { FavoritesPage } from '@/pages/favorites'
 import { HomePage } from '@/pages/home'
 import { NotFoundPage } from '@/pages/not-found'
@@ -53,6 +54,7 @@ export const createRouter = () => {
     .on('/profile', () => {
       requireAuth(() => mount(ProfilePage))
     })
+    .on('/delivery', () => mount(DeliveryPage))
     .on('/login', () => mount(LoginPage))
     .on('/register', () => mount(RegisterPage))
     .notFound(() => mount(NotFoundPage))

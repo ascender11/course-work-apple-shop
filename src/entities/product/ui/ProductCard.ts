@@ -90,7 +90,7 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
     <div data-product-card class="${cn('flex flex-col shadow-card gap-3.75 items-center w-full max-w-70 px-1.75 py-3.5 bg-background rounded-2xl dark:bg-background-secondary', className)}">
       <div class="flex items-center justify-between w-full">
         <div class="flex items-center gap-1">
-          <div class="flex gap-px text-amber-400">
+          <div class="flex gap-px">
              ${renderRatingStars()}
           </div>
           <span class="text-primary">(${product.rating.reviewsCount})</span>

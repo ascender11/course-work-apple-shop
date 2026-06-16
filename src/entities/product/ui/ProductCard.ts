@@ -3,8 +3,8 @@ import { ProductAvailability } from '@/entities/product'
 import { AddToCartButton } from '@/features/add-to-cart'
 
 import { cn, html } from '@/shared/lib'
-import { Button, Link } from '@/shared/ui/components'
-import { Heart, Rings, Star } from '@/shared/ui/icons'
+import { Button } from '@/shared/ui/components'
+import { Heart, Star } from '@/shared/ui/icons'
 
 export interface ProductCardProps {
   product: Product
@@ -75,13 +75,8 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
     }
 
     return html`
-      <div class="flex flex-col gap-2.5 w-full mt-1">
+      <div class="w-full mt-1">
         ${AddToCartButton({ productId: product.id })}
-        
-        <div class="flex justify-between w-full px-0.5">
-          ${Link({ text: 'Хочу дешевле', href: '#', className: 'text-primary' })}
-          ${Link({ text: 'Купить в 1 клик', href: '#', className: 'text-text-quinary' })}
-        </div>
       </div>
     `
   }
@@ -105,9 +100,6 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
             type="button"
           >
             ${Heart()}
-          </button>
-          <button class="flex items-center justify-center w-8 h-8 text-text-quinary hover:text-primary transition-colors">
-            ${Rings()}
           </button>
         </div>
       </div>

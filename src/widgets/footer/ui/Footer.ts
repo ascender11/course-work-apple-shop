@@ -12,7 +12,6 @@ export const Footer = ({ className = '' }: FooterProps = {}) => {
     { href: '/favorites', text: 'Избранное' },
     { href: '/cart', text: 'Корзина' },
     { href: '/delivery', text: 'Доставка и оплата' },
-    { href: '/contact', text: 'Контакты' },
   ]
 
   return html`

@@ -8,7 +8,7 @@ export const PriceSlider = (state: FiltersState, prefix: string) => html`
     <p class="mb-4 text-sm font-semibold text-text-primary">Цена</p>
 
     <div class="relative mb-5 h-6">
-      <div class="pointer-events-none absolute left-0 right-0 top-1/2 h-2 -translate-y-1/2 rounded-full bg-background-tertiaty">
+      <div class="pointer-events-none absolute left-0 right-0 top-1/2 h-2 -translate-y-1/2 rounded-full bg-border">
         <div id="${prefix}-slider-track" class="absolute h-full rounded-full bg-primary"></div>
       </div>
       <input

@@ -1,7 +1,7 @@
 import type { Product } from '@/entities/product'
 import { productService } from '@/entities/product'
 import type { Review } from '@/entities/review'
-import { reviewApi } from '@/entities/review'
+import { reviewService } from '@/entities/review'
 import type { PublicUser } from '@/entities/user'
 import { userService } from '@/entities/user'
 
@@ -113,10 +113,10 @@ const attachReviewListeners = (reviews: Review[]) => {
       if (!id) return
       if (!confirm('Вы уверены, что хотите удалить отзыв?')) return
       try {
-        await reviewApi.delete(id)
+        await reviewService.delete(id)
         const review = reviews.find((r) => r.id === id)
         if (review) {
-          await reviewApi.syncProductRating(review.productId)
+          await reviewService.syncProductRating(review.productId)
         }
         allReviews = allReviews.filter((r) => r.id !== id)
         filterReviews()
@@ -137,7 +137,7 @@ export const initReviewsPage = () => {
 const loadData = async () => {
   try {
     const [reviews, products, users] = await Promise.all([
-      reviewApi.getAll(),
+      reviewService.getAll(),
       productService.getAll(),
       userService.getAll(),
     ])

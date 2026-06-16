@@ -1,5 +1,5 @@
 import type { Review } from '@/entities/review'
-import { reviewApi } from '@/entities/review'
+import { reviewService } from '@/entities/review'
 import { userStore } from '@/entities/user'
 
 import { ReviewList } from '../ui/ReviewList'
@@ -28,7 +28,7 @@ export const canUserReview = async (productId: string): Promise<boolean> => {
   if (!userId) return false
 
   try {
-    return await reviewApi.checkPurchase(userId as string, productId)
+    return await reviewService.checkPurchase(userId as string, productId)
   } catch {
     return false
   }
@@ -39,7 +39,7 @@ export const loadReviews = async (productId: string, onLoaded?: (reviews: Review
   if (!container) return
 
   try {
-    const reviews = await reviewApi.getReviewsByProduct(productId)
+    const reviews = await reviewService.getByProduct(productId)
     container.innerHTML = ReviewList(reviews)
     if (onLoaded) onLoaded(reviews)
   } catch {
@@ -148,7 +148,7 @@ export const initReviewForm = (onSubmitSuccess?: () => void): void => {
       if (submitSpan) submitSpan.textContent = 'Отправка...'
 
       try {
-        await reviewApi.submitReview({
+        await reviewService.submit({
           productId,
           userId,
           userName,
@@ -156,7 +156,7 @@ export const initReviewForm = (onSubmitSuccess?: () => void): void => {
           rating: selectedRating,
         })
 
-        await reviewApi.syncProductRating(productId)
+        await reviewService.syncProductRating(productId)
 
         if (successEl) {
           successEl.classList.remove('hidden')

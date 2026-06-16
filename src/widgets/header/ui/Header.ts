@@ -63,7 +63,7 @@ export const Header = ({ className = '' }: HeaderProps = {}) => {
             +7 812 561 96 62
           </div>
           ${
-            userStore.isLoggedIn()
+            userStore.isAuthenticated
               ? html`<button
                 id="header-profile-btn"
                 aria-label="Профиль"

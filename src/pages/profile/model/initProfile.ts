@@ -6,12 +6,9 @@ import { navigate } from '@/shared/lib'
 
 export const initProfile = () => {
   document.getElementById('profile-logout-btn')?.addEventListener('click', () => {
-    const user = userStore.getUser()
-    if (user) {
-      cartStore.init(user.id)
-      cartStore.clear()
-    }
-    userStore.clear()
+    const userId = userStore.user?.id
+    if (userId) cartStore.clear(userId)
+    userStore.logout()
     navigate('/login')
   })
 

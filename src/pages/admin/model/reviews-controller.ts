@@ -3,7 +3,7 @@ import { productApi } from '@/entities/product'
 import type { Review } from '@/entities/review'
 import { reviewApi } from '@/entities/review'
 import type { PublicUser } from '@/entities/user'
-import { userApi } from '@/entities/user'
+import { userService } from '@/entities/user'
 
 let allReviews: Review[] = []
 let allProducts: Product[] = []
@@ -136,7 +136,11 @@ export const initReviewsPage = () => {
 
 const loadData = async () => {
   try {
-    const [reviews, products, users] = await Promise.all([reviewApi.getAll(), productApi.getAll(), userApi.getAll()])
+    const [reviews, products, users] = await Promise.all([
+      reviewApi.getAll(),
+      productApi.getAll(),
+      userService.getAll(),
+    ])
     allReviews = reviews
     allProducts = products
     allUsers = users

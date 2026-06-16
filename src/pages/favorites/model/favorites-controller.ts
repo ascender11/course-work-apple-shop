@@ -73,7 +73,7 @@ export const initFavoritesPage = async (
 
   if (!listEl || !paginationEl || !sortEl) return
 
-  const user = userStore.getUser()
+  const user = userStore.user
   if (!user) return
 
   favoritesStore.init(user.id)

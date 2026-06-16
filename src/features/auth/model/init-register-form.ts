@@ -1,4 +1,4 @@
-import { userApi, userStore } from '@/entities/user'
+import { userStore } from '@/entities/user'
 
 import { navigate } from '@/shared/lib'
 
@@ -211,7 +211,7 @@ export const initRegisterForm = () => {
     submitBtn.textContent = 'Регистрация...'
 
     try {
-      const user = await userApi.register({
+      await userStore.register({
         phone: phone.replace(/\s/g, ''),
         email: email.trim().toLowerCase(),
         fullName: {
@@ -222,20 +222,6 @@ export const initRegisterForm = () => {
         nickname: nickname.trim(),
         birthDate: birthdate,
         password: password,
-      })
-
-      userStore.set({
-        user: {
-          id: user.id,
-          phone: user.phone,
-          email: user.email,
-          fullName: user.fullName,
-          nickname: user.nickname,
-          birthDate: user.birthDate,
-          role: user.role,
-          createdAt: user.createdAt,
-        },
-        token: user.id,
       })
 
       navigate('/')

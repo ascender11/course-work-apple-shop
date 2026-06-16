@@ -1,4 +1,4 @@
-import { userApi, userStore } from '@/entities/user'
+import { userStore } from '@/entities/user'
 
 import { navigate } from '@/shared/lib'
 
@@ -58,20 +58,7 @@ export const initLoginForm = () => {
     submitBtn.textContent = 'Входим…'
 
     try {
-      const user = await userApi.login(email, password)
-      userStore.set({
-        user: {
-          id: user.id,
-          phone: user.phone,
-          email: user.email,
-          fullName: user.fullName,
-          nickname: user.nickname,
-          birthDate: user.birthDate,
-          role: user.role,
-          createdAt: user.createdAt,
-        },
-        token: user.id,
-      })
+      await userStore.login({ email, password })
       navigate('/')
     } catch (err) {
       serverError.textContent = err instanceof Error ? err.message : 'Ошибка входа'

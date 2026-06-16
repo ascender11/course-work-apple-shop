@@ -1,6 +1,6 @@
 export enum UserRole {
-  ADMIN = 'admin',
-  CUSTOMER = 'customer',
+  CUSTOMER = 'CUSTOMER',
+  ADMIN = 'ADMIN',
 }
 
 export interface User {
@@ -21,7 +21,26 @@ export interface User {
 
 export type PublicUser = Omit<User, 'password'>
 
-export interface AuthState {
-  user: PublicUser
-  token: string
+export type UserState = {
+  user: PublicUser | null
+  loading: boolean
+  error: string | null
+}
+
+export interface RegisterData {
+  phone: string
+  email: string
+  fullName: {
+    lastName: string
+    firstName: string
+    patronymic?: string
+  }
+  nickname: string
+  birthDate: string
+  password: string
+}
+
+export type LoginData = {
+  email: string
+  password: string
 }

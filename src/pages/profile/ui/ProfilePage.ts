@@ -1,4 +1,4 @@
-import { UserRole, userStore } from '@/entities/user'
+import { userStore } from '@/entities/user'
 import { ThemeToggle } from '@/features/theme-switch'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
@@ -66,7 +66,7 @@ export const ProfilePage = (): string => {
   })
   if (typeof window !== 'undefined') observer.observe(document.body, { childList: true, subtree: true })
 
-  const user = userStore.getUser()
+  const user = userStore.user
   if (!user) return html`${Header()}${Footer()}`
 
   const firstName = user.fullName.firstName || ''
@@ -94,7 +94,7 @@ export const ProfilePage = (): string => {
           'Навигация',
           NavRow('/favorites', Heart(), 'Избранное') +
             NavRow('/cart', CartEmpty(), 'Корзина') +
-            (userStore.hasRole(UserRole.ADMIN)
+            (userStore.isAdmin
               ? NavRow('/admin/dashboard', Gear({ className: 'w-6 h-6' }), 'Панель администратора', false)
               : '')
         )}

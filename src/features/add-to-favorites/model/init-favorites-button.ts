@@ -12,7 +12,7 @@ const updateBtn = (btn: HTMLElement, isFavorite: boolean, favoriteId: string) =>
 }
 
 export const initFavoriteButtons = async (): Promise<void> => {
-  const user = userStore.getUser()
+  const user = userStore.user
   if (!user) return
 
   const buttons = document.querySelectorAll<HTMLElement>('.js-fav-btn')

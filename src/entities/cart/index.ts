@@ -1,3 +1,5 @@
+export { cartService } from './api/service'
+export { calcCount, calcTotal, findItem } from './model/cart.service'
 export { cartStore } from './model/cartStore'
-export type { CartItem, CartState } from './model/types'
+export type { CartItem, CartState, ItemKey } from './model/types'
 export { CartItemCard } from './ui/CartItem'

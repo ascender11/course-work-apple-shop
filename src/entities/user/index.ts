@@ -1,5 +1,4 @@
-export type { RegisterData } from './api/userApi'
-export { userApi } from './api/userApi'
-export type { AuthState, PublicUser, User } from './model/types'
+export { userService } from './api/service'
+export { userStore } from './model/store'
+export type { PublicUser, RegisterData, User, UserState } from './model/types'
 export { UserRole } from './model/types'
-export { userStore } from './model/userStore'

@@ -1,18 +1,17 @@
-import { cartStore } from '@/entities/cart'
+import { cartStore, findItem } from '@/entities/cart'
 import { productApi } from '@/entities/product'
 import { userStore } from '@/entities/user'
 
 import { applyDefaultState, applyInCartState } from './button-state'
 
 export const initAddToCartButtons = async (): Promise<void> => {
-  const user = userStore.getUser()
+  const user = userStore.user
   if (!user) return
 
   const buttons = document.querySelectorAll<HTMLButtonElement>('.js-add-to-cart')
   if (!buttons.length) return
 
-  const cartItems = cartStore.getItems()
-  const cartIds = new Set(cartItems.map((i) => i.product.id))
+  const cartIds = new Set(cartStore.items.map((i) => i.product.id))
 
   buttons.forEach((btn) => {
     if (btn.dataset.addToCartInitialized === '1') return
@@ -30,12 +29,15 @@ export const initAddToCartButtons = async (): Promise<void> => {
       const isInCart = btn.dataset.inCart === '1'
 
       if (isInCart) {
-        cartStore.remove(productId)
+        const item = findItem(cartStore.items, productId)
+        if (item) {
+          cartStore.remove(user.id, item.id)
+        }
         applyDefaultState(btn)
       } else {
         try {
           const product = await productApi.getById(productId)
-          cartStore.add(product)
+          cartStore.add(user.id, { product, quantity: 1 })
           applyInCartState(btn)
         } catch {
           // silent fail — button stays unchanged

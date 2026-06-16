@@ -21,24 +21,20 @@ export const CartItemCard = ({ product, quantity, selectedColor, selectedStorage
       data-color="${selectedColor ?? ''}"
       data-storage="${selectedStorage ?? ''}"
     >
-      <!-- Image -->
       <a href="/product/${product.id}" data-navigo class="shrink-0 flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-background-secondary overflow-hidden">
         <img src="${product.images[0]}" alt="${product.title}" class="w-full h-full object-contain p-1" loading="lazy" />
       </a>
 
-      <!-- Info -->
       <div class="flex flex-1 flex-col gap-1 min-w-0">
         <a href="/product/${product.id}" data-navigo class="text-sm font-medium text-text-primary leading-snug hover:text-primary transition-colors line-clamp-2">
           ${product.title}
         </a>
         ${meta ? html`<span class="text-xs text-text-quinary">${meta}</span>` : ''}
 
-        <!-- Mobile price (shown only on small screens) -->
         <span class="sm:hidden text-base font-semibold text-text-primary mt-1">
           ${lineTotal.toLocaleString('ru-RU')} ₽
         </span>
 
-        <!-- Quantity controls -->
         <div class="flex items-center gap-2 mt-2">
           <button
             class="js-cart-dec flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 text-text-secondary hover:border-primary hover:text-primary active:scale-95 transition-all duration-150 cursor-pointer"
@@ -46,7 +42,7 @@ export const CartItemCard = ({ product, quantity, selectedColor, selectedStorage
           >
             <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <span class="js-cart-qty min-w-[1.5rem] text-center text-sm font-medium text-text-primary">${quantity}</span>
+          <span class="js-cart-qty min-w-6 text-center text-sm font-medium text-text-primary">${quantity}</span>
           <button
             class="js-cart-inc flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 text-text-secondary hover:border-primary hover:text-primary active:scale-95 transition-all duration-150 cursor-pointer"
             aria-label="Увеличить количество"
@@ -56,7 +52,6 @@ export const CartItemCard = ({ product, quantity, selectedColor, selectedStorage
         </div>
       </div>
 
-      <!-- Right: desktop price + remove -->
       <div class="shrink-0 flex flex-col items-end gap-3">
         <span class="hidden sm:block js-cart-line-total text-base font-semibold text-text-primary whitespace-nowrap">
           ${lineTotal.toLocaleString('ru-RU')} ₽

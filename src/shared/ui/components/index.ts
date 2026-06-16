@@ -1,4 +1,5 @@
 export { Button } from './Button'
 export { Dropdown } from './Dropdown'
 export { Link } from './Link'
+export { Spinner } from './Loader'
 export { Pagination } from './Pagination'

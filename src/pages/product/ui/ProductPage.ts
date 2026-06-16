@@ -1,6 +1,6 @@
 import type { AvailableProduct, Product } from '@/entities/product'
 import { ProductAvailability, productApi } from '@/entities/product'
-import { UserRole, userStore } from '@/entities/user'
+import { userStore } from '@/entities/user'
 import { initAddToCartButtons } from '@/features/add-to-cart'
 import { initFavoriteButtons } from '@/features/add-to-favorites'
 import { canUserReview, initReviewForm, loadReviews, ReviewForm } from '@/features/submit-review'
@@ -109,7 +109,7 @@ export const ProductPage = (id: string): string => {
 
         const reviewSection = document.getElementById('review-section')
         if (reviewSection) {
-          const isAdmin = userStore.hasRole(UserRole.ADMIN)
+          const isAdmin = userStore.isAdmin
 
           if (isAdmin) {
             reviewSection.innerHTML = html`

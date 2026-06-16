@@ -1,6 +1,6 @@
 import type { Review } from '@/entities/review'
 import { reviewApi } from '@/entities/review'
-import { UserRole, userStore } from '@/entities/user'
+import { userStore } from '@/entities/user'
 
 import { ReviewList } from '../ui/ReviewList'
 
@@ -8,13 +8,13 @@ const MIN_REVIEW_LENGTH = 20
 const CURRENT_USER_ID_KEY = 'currentUserId'
 
 const getCurrentUserId = (): string | null => {
-  const user = userStore.getUser()
+  const user = userStore.user
   if (user) return user.id
   return localStorage.getItem(CURRENT_USER_ID_KEY)
 }
 
 const isAdmin = (): boolean => {
-  return userStore.hasRole(UserRole.ADMIN)
+  return userStore.isAdmin
 }
 
 const SKIP_PURCHASE_CHECK = true
@@ -140,7 +140,7 @@ export const initReviewForm = (onSubmitSuccess?: () => void): void => {
       const userId = getCurrentUserId()
       if (!userId) return
 
-      const user = userStore.getUser()
+      const user = userStore.user
       const userName = user ? `${user.fullName.firstName} ${user.fullName.lastName}` : 'Аноним'
 
       submitBtn.disabled = true

@@ -1,7 +1,7 @@
 import Navigo from 'navigo'
 
 import { cartStore } from '@/entities/cart'
-import { UserRole, userStore } from '@/entities/user'
+import { userStore } from '@/entities/user'
 import { favoritesStore } from '@/features/add-to-favorites'
 import { AdminDashboard, AdminProductsPage, AdminReviewsPage } from '@/pages/admin'
 import { LoginPage, RegisterPage } from '@/pages/auth'
@@ -21,7 +21,7 @@ const mount = (page: () => string) => {
 }
 
 const requireAuth = (next: () => void) => {
-  if (userStore.isLoggedIn()) {
+  if (userStore.isAuthenticated) {
     next()
   } else {
     router.navigate('/login')
@@ -29,9 +29,9 @@ const requireAuth = (next: () => void) => {
 }
 
 const requireAdmin = (next: () => void) => {
-  if (userStore.isLoggedIn() && userStore.hasRole(UserRole.ADMIN)) {
+  if (userStore.isAuthenticated && userStore.isAdmin) {
     next()
-  } else if (userStore.isLoggedIn()) {
+  } else if (userStore.isAuthenticated) {
     router.navigate('/profile')
   } else {
     router.navigate('/login')
@@ -43,7 +43,9 @@ let router: Navigo
 export const createRouter = () => {
   router = new Navigo('/')
 
-  const user = userStore.getUser()
+  userStore.init()
+
+  const user = userStore.user
   if (user) {
     cartStore.init(user.id)
     favoritesStore.init(user.id)

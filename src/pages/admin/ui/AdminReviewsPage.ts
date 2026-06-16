@@ -1,4 +1,4 @@
-import { UserRole, userStore } from '@/entities/user'
+import { userStore } from '@/entities/user'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
@@ -7,7 +7,7 @@ import { html } from '@/shared/lib'
 import { initReviewsPage } from '../model/reviews-controller'
 
 export const AdminReviewsPage = (): string => {
-  if (!userStore.hasRole(UserRole.ADMIN)) {
+  if (!userStore.isAdmin) {
     return html`
       ${Header()}
       <main class="min-h-[calc(100vh-60px)] bg-background-secondary flex items-center justify-center px-4 py-8">

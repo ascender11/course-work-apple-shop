@@ -29,6 +29,7 @@ export interface UnavailableProduct {
   images: string[]
   soldCount?: number
   rating: ProductRating
+  price: ProductPrice
   availability: ProductAvailability.OUT_OF_STOCK
   specifications?: ProductSpecificationGroup[]
 }

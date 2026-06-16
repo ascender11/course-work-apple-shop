@@ -1,6 +1,7 @@
 import type { Product } from '@/entities/product'
 
 export interface CartItem {
+  id: string
   product: Product
   quantity: number
   selectedColor?: string
@@ -9,5 +10,8 @@ export interface CartItem {
 
 export interface CartState {
   items: CartItem[]
-  userId: string
+  loading: boolean
+  error: string | null
 }
+
+export type ItemKey = { productId: string; color?: string; storage?: string }

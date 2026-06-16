@@ -1,5 +1,5 @@
 import { cartStore, findItem } from '@/entities/cart'
-import { productApi } from '@/entities/product'
+import { productService } from '@/entities/product'
 import { userStore } from '@/entities/user'
 
 import { applyDefaultState, applyInCartState } from './button-state'
@@ -36,7 +36,7 @@ export const initAddToCartButtons = async (): Promise<void> => {
         applyDefaultState(btn)
       } else {
         try {
-          const product = await productApi.getById(productId)
+          const product = await productService.getById(productId)
           cartStore.add(user.id, { product, quantity: 1 })
           applyInCartState(btn)
         } catch {

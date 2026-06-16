@@ -2,20 +2,20 @@ import { axiosInstance } from '@/shared/api'
 
 import type { Product } from '../model/types'
 
-export const productApi = {
-  getAll: async (): Promise<Product[]> => {
+export const productService = {
+  async getAll(): Promise<Product[]> {
     const response = await axiosInstance.get<Product[]>('/products')
     return response.data
   },
 
-  getByIds: async (ids: string[]): Promise<Product[]> => {
+  async getByIds(ids: string[]): Promise<Product[]> {
     if (!ids.length) return []
     const qs = ids.map((id) => `id=${encodeURIComponent(id)}`).join('&')
     const response = await axiosInstance.get<Product[]>(`/products?${qs}`)
     return response.data
   },
 
-  getFiltered: async (queryString: string): Promise<{ products: Product[]; totalCount: number }> => {
+  async getFiltered(queryString: string): Promise<{ products: Product[]; totalCount: number }> {
     const params = new URLSearchParams(queryString)
 
     const page = params.get('page')
@@ -28,22 +28,22 @@ export const productApi = {
     return { products: response.data, totalCount }
   },
 
-  getById: async (id: string): Promise<Product> => {
+  async getById(id: string): Promise<Product> {
     const response = await axiosInstance.get<Product>(`/products/${id}`)
     return response.data
   },
 
-  create: async (product: Omit<Product, 'id'>): Promise<Product> => {
+  async create(product: Omit<Product, 'id'>): Promise<Product> {
     const response = await axiosInstance.post<Product>('/products', product)
     return response.data
   },
 
-  update: async (id: string, product: Partial<Product>): Promise<Product> => {
+  async update(id: string, product: Partial<Product>): Promise<Product> {
     const response = await axiosInstance.put<Product>(`/products/${id}`, { ...product, id })
     return response.data
   },
 
-  delete: async (id: string): Promise<void> => {
+  async delete(id: string): Promise<void> {
     await axiosInstance.delete(`/products/${id}`)
   },
 }

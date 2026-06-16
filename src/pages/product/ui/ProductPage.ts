@@ -1,5 +1,5 @@
 import type { AvailableProduct, Product } from '@/entities/product'
-import { ProductAvailability, productApi } from '@/entities/product'
+import { ProductAvailability, productService } from '@/entities/product'
 import { userStore } from '@/entities/user'
 import { initAddToCartButtons } from '@/features/add-to-cart'
 import { initFavoriteButtons } from '@/features/add-to-favorites'
@@ -125,7 +125,7 @@ export const ProductPage = (id: string): string => {
               reviewSection.innerHTML = ReviewForm({ productId: id, canReview })
               initReviewForm(() => {
                 loadReviews(id)
-                productApi.getById(id).then((updated) => {
+                productService.getById(id).then((updated) => {
                   const newRatingHtml = renderProductRating(updated.rating)
                   document.querySelectorAll('.product-rating-live').forEach((el) => {
                     el.innerHTML = newRatingHtml
@@ -139,7 +139,7 @@ export const ProductPage = (id: string): string => {
         loadReviews(id)
       }
 
-      productApi
+      productService
         .getById(id)
         .then(renderPage)
         .catch(() => {

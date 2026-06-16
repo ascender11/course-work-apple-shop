@@ -1,5 +1,5 @@
 import type { Product } from '@/entities/product'
-import { productApi } from '@/entities/product'
+import { productService } from '@/entities/product'
 import type { Review } from '@/entities/review'
 import { reviewApi } from '@/entities/review'
 import type { PublicUser } from '@/entities/user'
@@ -138,7 +138,7 @@ const loadData = async () => {
   try {
     const [reviews, products, users] = await Promise.all([
       reviewApi.getAll(),
-      productApi.getAll(),
+      productService.getAll(),
       userService.getAll(),
     ])
     allReviews = reviews

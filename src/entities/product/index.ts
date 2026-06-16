@@ -1,4 +1,4 @@
-export { productApi } from './api/productApi'
+export { productService } from './api/service'
 export type {
   AvailableProduct,
   Product,

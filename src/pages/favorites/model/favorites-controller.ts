@@ -1,4 +1,4 @@
-import { type Product, productApi } from '@/entities/product'
+import { type Product, productService } from '@/entities/product'
 import { userStore } from '@/entities/user'
 import { initAddToCartButtons } from '@/features/add-to-cart'
 import { favoritesApi, favoritesStore, initFavoriteButtons } from '@/features/add-to-favorites'
@@ -90,7 +90,7 @@ export const initFavoritesPage = async (
       return
     }
 
-    const products = await productApi.getByIds(favs.map((f) => f.productId))
+    const products = await productService.getByIds(favs.map((f) => f.productId))
     updateState((state) => ({ ...state, products, isLoading: false }))
     if (countEl) countEl.textContent = String(products.length)
   } catch (err) {

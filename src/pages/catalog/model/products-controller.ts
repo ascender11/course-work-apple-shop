@@ -1,4 +1,4 @@
-import { productApi } from '@/entities/product'
+import { productService } from '@/entities/product'
 import { initAddToCartButtons } from '@/features/add-to-cart'
 import { initFavoriteButtons } from '@/features/add-to-favorites'
 import type { FiltersState } from '@/features/filter-products'
@@ -15,7 +15,7 @@ export const loadProductsAndRender = async (state: FiltersState) => {
   if (!listEl) return
 
   try {
-    const { products, totalCount } = await productApi.getFiltered(queryString)
+    const { products, totalCount } = await productService.getFiltered(queryString)
 
     listEl.innerHTML = ProductList({ products })
 

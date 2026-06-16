@@ -1,5 +1,5 @@
 import type { Product } from '@/entities/product'
-import { ProductAvailability, productApi } from '@/entities/product'
+import { ProductAvailability, productService } from '@/entities/product'
 
 import { html } from '@/shared/lib'
 
@@ -228,7 +228,7 @@ const attachProductListeners = () => {
       if (!id) return
       if (!confirm('Вы уверены, что хотите удалить товар?')) return
       try {
-        await productApi.delete(id)
+        await productService.delete(id)
         allProducts = allProducts.filter((p) => p.id !== id)
         renderProductsList()
       } catch {
@@ -312,7 +312,7 @@ export const initProductsPage = () => {
             ? { price: { current: priceCurrent, ...(priceOld ? { old: priceOld } : {}) } }
             : {}),
         } as Product
-        await productApi.update(idInput.value, updated)
+        await productService.update(idInput.value, updated)
         allProducts = allProducts.map((p) => (p.id === idInput.value ? updated : p))
       } else {
         const productData = {
@@ -328,7 +328,7 @@ export const initProductsPage = () => {
             ? { price: { current: priceCurrent, ...(priceOld ? { old: priceOld } : {}) } }
             : {}),
         }
-        const created = await productApi.create(productData as Omit<Product, 'id'>)
+        const created = await productService.create(productData as Omit<Product, 'id'>)
         allProducts.push(created)
       }
 
@@ -348,7 +348,7 @@ export const initProductsPage = () => {
 
 const loadProducts = async () => {
   try {
-    allProducts = await productApi.getAll()
+    allProducts = await productService.getAll()
     renderProductsList()
   } catch {
     const container = document.getElementById('admin-products-list')

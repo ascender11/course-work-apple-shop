@@ -1,4 +1,4 @@
-import { productApi } from '@/entities/product'
+import { productService } from '@/entities/product'
 import { initAddToCartButtons } from '@/features/add-to-cart'
 import { initFavoriteButtons } from '@/features/add-to-favorites'
 import { ProductList } from '@/widgets/product-list'
@@ -18,7 +18,7 @@ export const PopularProducts = ({ className = '' }: PopularProductsProps = {}) =
         obs.disconnect()
 
         try {
-          const products = await productApi.getAll()
+          const products = await productService.getAll()
           listContainer.innerHTML = ProductList({ products })
 
           await initFavoriteButtons()

@@ -2,13 +2,13 @@ import { html } from '@/shared/lib'
 
 const ITEMS = [
   {
-    img: '/assets/delivery.svg',
+    img: '/catalog/delivery.svg',
     title: 'Доставка за 2 часа',
     desc: 'Быстро и бесплатно доставляем все заказы по Москве',
   },
-  { img: '/assets/money.svg', title: 'Оплата', desc: 'Все виды наличного и безналичного расчета' },
-  { img: '/assets/bank.svg', title: 'Кредит', desc: 'Выгодные кредитные предложения от самых популярных банков' },
-  { img: '/assets/shield.svg', title: 'Гарантия', desc: 'Предоставляем целый год сервисного обслуживания' },
+  { img: '/catalog/money.svg', title: 'Оплата', desc: 'Все виды наличного и безналичного расчета' },
+  { img: '/catalog/bank.svg', title: 'Кредит', desc: 'Выгодные кредитные предложения от самых популярных банков' },
+  { img: '/catalog/shield.svg', title: 'Гарантия', desc: 'Предоставляем целый год сервисного обслуживания' },
 ] as const
 
 export const Advantages = () => html`

@@ -9,7 +9,7 @@ export const Banner = ({ className = '' }: BannerProps = {}) => {
   return html`
     <section class="${cn('relative overflow-hidden min-h-37.75 bg-black flex items-center pl-25 sm:pl-50 sm:min-h-51 lg:pl-112.5 lg:min-h-90', className)}">
       <img 
-        src="/assets/phone-banner-image.png"
+        src="/home/phone-banner-image.png"
         class="absolute top-0 left-4 w-16.25 sm:w-27.5 sm:left-10 lg:w-61.5"  
       />
       <div class="flex flex-col gap-5">

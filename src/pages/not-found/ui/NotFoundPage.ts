@@ -11,7 +11,7 @@ export const NotFoundPage = (): string => {
         <h1 class="text-3xl font-bold">Ошибка 404</h1>
         <p class="text-lg text-text-secondary">Кажется, такой страницы больше не существует.</p>
         ${Button({ text: 'Вернуться на главную', href: '/' })}
-        <img src="/assets/phone-404.png" alt="404" />
+        <img src="/not-found/phone-404.png" alt="404" />
       </div>
     </main>
   `

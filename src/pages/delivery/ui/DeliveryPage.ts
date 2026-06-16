@@ -7,7 +7,7 @@ import { Clock, Walk } from '@/shared/ui/icons'
 import { initDeliveryMap } from '../model/initDeliveryMap'
 import { PayCard } from './PayCard'
 
-const getAssetPath = (name: string) => `/assets/delivery/${name}`
+const getAssetPath = (name: string) => `/delivery/${name}`
 
 export const DeliveryPage = (): string => {
   if (typeof window !== 'undefined') {

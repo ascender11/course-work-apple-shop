@@ -32,7 +32,7 @@ export const HomeSlider = () => {
           ${Button({ text: 'Подробнее', className: 'sm:px-7.5 sm:py-3.75' })}
           <img 
             class="absolute top-42.5 w-42.5 sm:top-69.5 sm:w-67.5 xl:left-67.5 xl:top-26.75 xl:w-99.5" 
-            src="/assets/iPhone-14.png"
+            src="/home/iPhone-14.png"
             alt="iPhone 14" 
           />
         </div>
@@ -45,7 +45,7 @@ export const HomeSlider = () => {
           ${Button({ text: 'Подробнее', className: 'sm:px-7.5 sm:py-3.75' })}
           <img 
             class="absolute top-42.5 w-42.5 sm:top-69.5 sm:w-67.5 xl:left-67.5 xl:top-26.75 xl:w-99.5" 
-            src="/assets/iPhone-14.png"
+            src="/home/iPhone-14.png"
             alt="iPhone 14" 
           />
         </div>

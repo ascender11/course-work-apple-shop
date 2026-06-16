@@ -2,6 +2,7 @@ import type { AvailableProduct, Product } from '@/entities/product'
 import { ProductAvailability, productApi } from '@/entities/product'
 import { UserRole, userStore } from '@/entities/user'
 import { initAddToCartButtons } from '@/features/add-to-cart'
+import { initFavoriteButtons } from '@/features/add-to-favorites'
 import { canUserReview, initReviewForm, loadReviews, ReviewForm } from '@/features/submit-review'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
@@ -104,6 +105,7 @@ export const ProductPage = (id: string): string => {
 
         initGallery()
         initAddToCartButtons()
+        initFavoriteButtons()
 
         const reviewSection = document.getElementById('review-section')
         if (reviewSection) {

@@ -1,7 +1,7 @@
 import { type Product, productApi } from '@/entities/product'
 import { userStore } from '@/entities/user'
 import { initAddToCartButtons } from '@/features/add-to-cart'
-import { favoritesApi, initFavoriteButtons } from '@/features/add-to-favorites'
+import { favoritesApi, favoritesStore, initFavoriteButtons } from '@/features/add-to-favorites'
 import { ProductList } from '@/widgets/product-list'
 
 import { html } from '@/shared/lib'
@@ -76,10 +76,13 @@ export const initFavoritesPage = async (
   const user = userStore.getUser()
   if (!user) return
 
+  favoritesStore.init(user.id)
+
   updateState((state) => ({ ...state, isLoading: true }))
 
   try {
     const favs = await favoritesApi.getByUserId(user.id)
+    favoritesStore.syncFromApi(favs)
 
     if (!favs.length) {
       renderEmptyState(listEl, countEl)

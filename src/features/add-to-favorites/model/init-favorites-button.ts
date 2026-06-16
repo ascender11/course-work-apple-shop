@@ -3,7 +3,7 @@ import { userStore } from '@/entities/user'
 import { Heart } from '@/shared/ui/icons'
 
 import { favoritesApi } from '../api/favoritesApi'
-import type { Favorite } from './types'
+import { favoritesStore } from './favoritesStore'
 
 const updateBtn = (btn: HTMLElement, isFavorite: boolean, favoriteId: string) => {
   btn.dataset.favoriteId = favoriteId
@@ -18,40 +18,46 @@ export const initFavoriteButtons = async (): Promise<void> => {
   const buttons = document.querySelectorAll<HTMLElement>('.js-fav-btn')
   if (!buttons.length) return
 
-  let favorites: Favorite[] = []
   try {
-    favorites = await favoritesApi.getByUserId(user.id)
+    const apiFavorites = await favoritesApi.getByUserId(user.id)
+    favoritesStore.syncFromApi(apiFavorites)
   } catch {
-    return
+    // use whatever is in the store already
   }
 
   buttons.forEach((btn) => {
-    const productId = btn.dataset.productId ?? ''
-    const fav = favorites.find((f) => f.productId === productId)
-    updateBtn(btn, !!fav, fav?.id ?? '')
-  })
+    if (btn.dataset.favInitialized === '1') return
+    btn.dataset.favInitialized = '1'
 
-  buttons.forEach((btn) => {
+    const productId = btn.dataset.productId ?? ''
+    const isFav = favoritesStore.has(productId)
+    const favId = favoritesStore.getId(productId)
+    updateBtn(btn, isFav, favId)
+
     btn.addEventListener('click', async (e) => {
       e.preventDefault()
       e.stopPropagation()
 
-      const productId = btn.dataset.productId ?? ''
-      const favoriteId = btn.dataset.favoriteId ?? ''
-      const isFavorite = !!favoriteId
+      const pid = btn.dataset.productId ?? ''
+      const currentlyFav = favoritesStore.has(pid)
 
-      if (isFavorite) {
+      console.log(favoritesStore.getAll())
+
+      if (currentlyFav) {
+        const fid = favoritesStore.getId(pid)
         updateBtn(btn, false, '')
+        favoritesStore.remove(pid)
         try {
-          await favoritesApi.remove(favoriteId)
-          favorites = favorites.filter((f) => f.id !== favoriteId)
+          await favoritesApi.remove(fid)
         } catch {
-          updateBtn(btn, true, favoriteId)
+          // re-add on failure
+          favoritesStore.add({ id: fid, userId: user.id, productId: pid })
+          updateBtn(btn, true, fid)
         }
       } else {
         try {
-          const newFav = await favoritesApi.add(user.id, productId)
-          favorites = [...favorites, newFav]
+          const newFav = await favoritesApi.add(user.id, pid)
+          favoritesStore.add(newFav)
           updateBtn(btn, true, newFav.id)
         } catch {
           // silent fail — button stays untoggled

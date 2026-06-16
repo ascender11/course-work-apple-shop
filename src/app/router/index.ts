@@ -2,6 +2,7 @@ import Navigo from 'navigo'
 
 import { cartStore } from '@/entities/cart'
 import { UserRole, userStore } from '@/entities/user'
+import { favoritesStore } from '@/features/add-to-favorites'
 import { AdminDashboard, AdminProductsPage, AdminReviewsPage } from '@/pages/admin'
 import { LoginPage, RegisterPage } from '@/pages/auth'
 import { CartPage } from '@/pages/cart'
@@ -43,7 +44,10 @@ export const createRouter = () => {
   router = new Navigo('/')
 
   const user = userStore.getUser()
-  if (user) cartStore.init(user.id)
+  if (user) {
+    cartStore.init(user.id)
+    favoritesStore.init(user.id)
+  }
 
   router
     .on('/', () => mount(HomePage))

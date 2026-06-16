@@ -1,12 +1,13 @@
 import type { AvailableProduct } from '@/entities/product'
+import { AddToCartButton } from '@/features/add-to-cart'
 
 import { html } from '@/shared/lib'
-import { Button } from '@/shared/ui/components'
-import { AddToCart } from '@/shared/ui/icons'
 
-export type PriceCardProps = Pick<AvailableProduct, 'price' | 'availability' | 'warrantyPeriod'>
+export type PriceCardProps = Pick<AvailableProduct, 'price' | 'availability' | 'warrantyPeriod'> & {
+  productId: string
+}
 
-export const PriceCard = ({ price, warrantyPeriod }: PriceCardProps): string => {
+export const PriceCard = ({ price, warrantyPeriod, productId }: PriceCardProps): string => {
   const oldPrice = price.old
     ? html`<span class="text-lg text-text-quinary line-through">${price.old.toLocaleString('ru-RU')} ₽</span>`
     : ''
@@ -26,7 +27,7 @@ export const PriceCard = ({ price, warrantyPeriod }: PriceCardProps): string => 
         ${warrantyPeriod ? html`<p class="text-xs text-text-quinary mt-0.5">${warrantyPeriod}</p>` : ''}
       </div>
 
-      ${Button({ icon: AddToCart(), text: 'В корзину' })}
+      ${AddToCartButton({ productId })}
     </div>
   `
 }

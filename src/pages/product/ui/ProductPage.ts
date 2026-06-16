@@ -1,6 +1,7 @@
 import type { AvailableProduct, Product } from '@/entities/product'
 import { ProductAvailability, productApi } from '@/entities/product'
 import { UserRole, userStore } from '@/entities/user'
+import { initAddToCartButtons } from '@/features/add-to-cart'
 import { canUserReview, initReviewForm, loadReviews, ReviewForm } from '@/features/submit-review'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
@@ -56,6 +57,7 @@ export const ProductPage = (id: string): string => {
               price: (product as AvailableProduct).price,
               availability: product.availability,
               warrantyPeriod: (product as AvailableProduct).warrantyPeriod,
+              productId: product.id,
             })
           : OutOfStockCard()
 
@@ -101,6 +103,7 @@ export const ProductPage = (id: string): string => {
         `
 
         initGallery()
+        initAddToCartButtons()
 
         const reviewSection = document.getElementById('review-section')
         if (reviewSection) {

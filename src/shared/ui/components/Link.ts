@@ -8,7 +8,7 @@ export interface LinkProps {
 
 export const Link = ({ text, href, className = '' }: LinkProps) => {
   return html`
-    <a href=${href} class=${cn('link', className)}>
+    <a href="${href}" class="${cn('link', className)}">
       ${text}
     </a>
   `

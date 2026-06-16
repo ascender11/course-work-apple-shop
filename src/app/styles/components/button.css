@@ -1,5 +1,9 @@
 @layer components {
   .button {
-    @apply bg-primary hover:bg-primary/80 text-text-button rounded-lg px-5 py-2.5 transition-colors duration-200;
+    @apply bg-primary hover:bg-secondary text-text-button rounded-lg px-5 py-2.5 transition-colors duration-200;
+  }
+
+  .button.outline {
+    @apply bg-transparent text-primary border border-primary hover:border-secondary hover:text-secondary;
   }
 }

@@ -3,6 +3,7 @@ import { Header } from '@/widgets/header'
 import { html } from '@/shared/lib'
 
 import { HomeSlider } from '../sections/home-slider'
+import { PopularProducts } from '../sections/popular-products'
 
 export const HomePage = (): string => {
   return html`
@@ -11,6 +12,7 @@ export const HomePage = (): string => {
       <section>
         ${HomeSlider()}
       </section>
+      ${PopularProducts()}
     </main>
   `
 }

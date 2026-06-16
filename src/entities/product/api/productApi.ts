@@ -32,4 +32,18 @@ export const productApi = {
     const response = await axiosInstance.get<Product>(`/products/${id}`)
     return response.data
   },
+
+  create: async (product: Omit<Product, 'id'>): Promise<Product> => {
+    const response = await axiosInstance.post<Product>('/products', product)
+    return response.data
+  },
+
+  update: async (id: string, product: Partial<Product>): Promise<Product> => {
+    const response = await axiosInstance.put<Product>(`/products/${id}`, { ...product, id })
+    return response.data
+  },
+
+  delete: async (id: string): Promise<void> => {
+    await axiosInstance.delete(`/products/${id}`)
+  },
 }

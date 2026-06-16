@@ -1,4 +1,4 @@
-import type { User } from '../model/types'
+import type { PublicUser, User } from '../model/types'
 import { UserRole } from '../model/types'
 
 const BASE = import.meta.env.VITE_API_URL as string
@@ -19,6 +19,13 @@ export interface RegisterData {
 }
 
 export const userApi = {
+  getAll: async (): Promise<PublicUser[]> => {
+    const res = await fetch(`${BASE}/users`)
+    if (!res.ok) throw new Error('Ошибка сервера')
+    const users = (await res.json()) as User[]
+    return users.map(({ password: _, ...rest }) => rest as PublicUser)
+  },
+
   login: async (email: string, password: string): Promise<User> => {
     const res = await fetch(`${BASE}/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`)
     if (!res.ok) throw new Error('Ошибка сервера')

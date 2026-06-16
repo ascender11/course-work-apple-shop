@@ -1,10 +1,10 @@
-import { userStore } from '@/entities/user'
+import { UserRole, userStore } from '@/entities/user'
 import { ThemeToggle } from '@/features/theme-switch'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
 import { html } from '@/shared/lib'
-import { CartEmpty, ChevronRight, Heart, LogoutIcon } from '@/shared/ui/icons'
+import { CartEmpty, ChevronRight, Gear, Heart, LogoutIcon } from '@/shared/ui/icons'
 
 import { initProfile } from '../model/initProfile'
 
@@ -92,7 +92,11 @@ export const ProfilePage = (): string => {
 
         ${SectionCard(
           'Навигация',
-          NavRow('/favorites', Heart(), 'Избранное') + NavRow('/cart', CartEmpty(), 'Корзина', false)
+          NavRow('/favorites', Heart(), 'Избранное') +
+            NavRow('/cart', CartEmpty(), 'Корзина') +
+            (userStore.hasRole(UserRole.ADMIN)
+              ? NavRow('/admin/dashboard', Gear({ className: 'w-6 h-6' }), 'Панель администратора', false)
+              : '')
         )}
 
         ${SectionCard(

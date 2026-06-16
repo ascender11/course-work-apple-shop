@@ -1,13 +1,25 @@
-import { axiosInstance } from '@/shared/api'
-
 import type { ProductRating } from '@/entities/product'
+
+import { axiosInstance } from '@/shared/api'
 
 import type { Order, Review } from '../model/types'
 
 export const reviewApi = {
+  getAll: async (): Promise<Review[]> => {
+    const response = await axiosInstance.get<Review[]>('/reviews')
+    return response.data
+  },
+
   getReviewsByProduct: async (productId: string): Promise<Review[]> => {
     const response = await axiosInstance.get<Review[]>('/reviews', {
       params: { productId },
+    })
+    return response.data
+  },
+
+  getReviewsByUserId: async (userId: string): Promise<Review[]> => {
+    const response = await axiosInstance.get<Review[]>('/reviews', {
+      params: { userId },
     })
     return response.data
   },
@@ -25,6 +37,10 @@ export const reviewApi = {
       createdAt: new Date().toISOString(),
     })
     return response.data
+  },
+
+  delete: async (id: string): Promise<void> => {
+    await axiosInstance.delete(`/reviews/${id}`)
   },
 
   syncProductRating: async (productId: string): Promise<ProductRating> => {

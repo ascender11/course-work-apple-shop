@@ -9,7 +9,14 @@ export interface ButtonProps {
   navigo?: boolean
 }
 
-export const Button = ({ text, className = '', icon = null, variant = 'primary', href = '', navigo = true }: ButtonProps) => {
+export const Button = ({
+  text,
+  className = '',
+  icon = null,
+  variant = 'primary',
+  href = '',
+  navigo = true,
+}: ButtonProps) => {
   const classes = cn('button flex items-center justify-center gap-2', variant === 'outline' && 'outline', className)
 
   if (href) {

@@ -1,7 +1,8 @@
 import Navigo from 'navigo'
 
 import { cartStore } from '@/entities/cart'
-import { userStore } from '@/entities/user'
+import { UserRole, userStore } from '@/entities/user'
+import { AdminDashboard, AdminProductsPage, AdminReviewsPage } from '@/pages/admin'
 import { LoginPage, RegisterPage } from '@/pages/auth'
 import { CartPage } from '@/pages/cart'
 import { CatalogPage } from '@/pages/catalog'
@@ -21,6 +22,16 @@ const mount = (page: () => string) => {
 const requireAuth = (next: () => void) => {
   if (userStore.isLoggedIn()) {
     next()
+  } else {
+    router.navigate('/login')
+  }
+}
+
+const requireAdmin = (next: () => void) => {
+  if (userStore.isLoggedIn() && userStore.hasRole(UserRole.ADMIN)) {
+    next()
+  } else if (userStore.isLoggedIn()) {
+    router.navigate('/profile')
   } else {
     router.navigate('/login')
   }
@@ -53,6 +64,18 @@ export const createRouter = () => {
     })
     .on('/profile', () => {
       requireAuth(() => mount(ProfilePage))
+    })
+    .on('/admin', () => {
+      requireAdmin(() => mount(AdminDashboard))
+    })
+    .on('/admin/dashboard', () => {
+      requireAdmin(() => mount(AdminDashboard))
+    })
+    .on('/admin/products', () => {
+      requireAdmin(() => mount(AdminProductsPage))
+    })
+    .on('/admin/reviews', () => {
+      requireAdmin(() => mount(AdminReviewsPage))
     })
     .on('/delivery', () => mount(DeliveryPage))
     .on('/login', () => mount(LoginPage))

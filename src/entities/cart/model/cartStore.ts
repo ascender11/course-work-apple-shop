@@ -36,10 +36,7 @@ const calculateTotal = (): number =>
 
 const add = (product: Product, qty = 1, selectedColor?: string, selectedStorage?: string) => {
   const existing = state.items.find(
-    (i) =>
-      i.product.id === product.id &&
-      i.selectedColor === selectedColor &&
-      i.selectedStorage === selectedStorage
+    (i) => i.product.id === product.id && i.selectedColor === selectedColor && i.selectedStorage === selectedStorage
   )
   if (existing) {
     existing.quantity += qty
@@ -51,22 +48,14 @@ const add = (product: Product, qty = 1, selectedColor?: string, selectedStorage?
 
 const remove = (productId: string, selectedColor?: string, selectedStorage?: string) => {
   state.items = state.items.filter(
-    (i) =>
-      !(
-        i.product.id === productId &&
-        i.selectedColor === selectedColor &&
-        i.selectedStorage === selectedStorage
-      )
+    (i) => !(i.product.id === productId && i.selectedColor === selectedColor && i.selectedStorage === selectedStorage)
   )
   save(state.userId, state.items)
 }
 
 const changeQuantity = (productId: string, delta: number, selectedColor?: string, selectedStorage?: string) => {
   const item = state.items.find(
-    (i) =>
-      i.product.id === productId &&
-      i.selectedColor === selectedColor &&
-      i.selectedStorage === selectedStorage
+    (i) => i.product.id === productId && i.selectedColor === selectedColor && i.selectedStorage === selectedStorage
   )
   if (!item) return
   const next = item.quantity + delta

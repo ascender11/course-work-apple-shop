@@ -63,13 +63,15 @@ export const Header = ({ className = '' }: HeaderProps = {}) => {
             ${Phone()}
             +7 812 561 96 62
           </div>
-          ${userStore.isLoggedIn()
-            ? html`<button
+          ${
+            userStore.isLoggedIn()
+              ? html`<button
                 id="header-profile-btn"
                 aria-label="Профиль"
                 class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-150"
               >${User()}</button>`
-            : ''}
+              : ''
+          }
           <button id="dropdown-menu-button" class="h-6 w-6 focus:outline-none lg:hidden">
             ${BurgerMenu()}
           </button>

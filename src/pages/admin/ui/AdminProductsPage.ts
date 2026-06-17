@@ -181,6 +181,17 @@ export const AdminProductsPage = (): string => {
                   <span data-error="admin-field-images" class="text-xs text-error min-h-3.5 block"></span>
                 </div>
 
+                <div class="flex flex-col gap-0.5">
+                  <label class="text-sm font-medium text-text-secondary">Спецификации (JSON)</label>
+                  <textarea
+                    id="admin-field-specifications"
+                    rows="6"
+                    placeholder='[{"groupName":"Экран","specs":[{"name":"Диагональ","value":"6.1\\""}]}]'
+                    class="${INPUT_BASE} resize-none font-mono text-xs"
+                  ></textarea>
+                  <span data-error="admin-field-specifications" class="text-xs text-error min-h-3.5 block"></span>
+                </div>
+
                 <p id="admin-product-error" class="text-sm text-error text-center min-h-4"></p>
 
                 <div class="flex gap-3">

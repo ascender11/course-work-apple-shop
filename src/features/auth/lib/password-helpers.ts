@@ -1,10 +1,9 @@
 import { EyeOff, EyeOpen } from '@/shared/ui/icons'
 
-import { generatePassword } from './generators'
+import { generatePassword } from '../model/generators'
 
 export const isTop100Password = async (password: string): Promise<boolean> => {
   try {
-    // TODO: change fetch to axiosInstance, find real API to do the task
     const response = await fetch(
       'https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-100.txt'
     )
@@ -20,11 +19,13 @@ export const initTogglePassword = (inputId: string, toggleId: string) => {
   const input = document.getElementById(inputId) as HTMLInputElement
   const toggle = document.getElementById(toggleId)
 
-  toggle?.addEventListener('click', () => {
+  toggle?.addEventListener('click', (e) => {
+    e.stopPropagation()
     const isPassword = input.type === 'password'
     input.type = isPassword ? 'text' : 'password'
 
     toggle.innerHTML = isPassword ? EyeOff() : EyeOpen()
+    toggle.setAttribute('aria-label', isPassword ? 'Скрыть пароль' : 'Показать пароль')
   })
 }
 

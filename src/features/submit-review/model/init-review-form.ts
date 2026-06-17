@@ -1,8 +1,5 @@
-import type { Review } from '@/entities/review'
 import { reviewService } from '@/entities/review'
 import { userStore } from '@/entities/user'
-
-import { ReviewList } from '../ui/ReviewList'
 
 const MIN_REVIEW_LENGTH = 20
 const CURRENT_USER_ID_KEY = 'currentUserId'
@@ -31,19 +28,6 @@ export const canUserReview = async (productId: string): Promise<boolean> => {
     return await reviewService.checkPurchase(userId as string, productId)
   } catch {
     return false
-  }
-}
-
-export const loadReviews = async (productId: string, onLoaded?: (reviews: Review[]) => void): Promise<void> => {
-  const container = document.querySelector<HTMLElement>('[data-review-list-container]')
-  if (!container) return
-
-  try {
-    const reviews = await reviewService.getByProduct(productId)
-    container.innerHTML = ReviewList(reviews)
-    if (onLoaded) onLoaded(reviews)
-  } catch {
-    container.innerHTML = ''
   }
 }
 

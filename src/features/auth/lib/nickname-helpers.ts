@@ -1,4 +1,4 @@
-import { generateNickname, generatePassword } from './generators'
+import { generateNickname, generatePassword } from '../model/generators'
 import { showError, updateSubmitButton } from './ui-helpers'
 
 export const initNicknameGeneration = () => {

@@ -1,6 +1,6 @@
 import type { Product } from '@/entities/product'
 import { userStore } from '@/entities/user'
-import { initAddToCartButtons } from '@/features/add-to-cart'
+import { initAddToCartButtons } from '@/features/cart-toggle'
 import { favoritesStore, initFavoriteButtons } from '@/features/favorite-toggle'
 import { ProductList } from '@/widgets/product-list'
 

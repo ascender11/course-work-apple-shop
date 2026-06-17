@@ -1,5 +1,5 @@
 import type { AvailableProduct } from '@/entities/product'
-import { AddToCartButton } from '@/features/add-to-cart'
+import { CartToggleButton } from '@/features/cart-toggle'
 
 import { html } from '@/shared/lib'
 
@@ -27,7 +27,7 @@ export const PriceCard = ({ price, warrantyPeriod, productId }: PriceCardProps):
         ${warrantyPeriod ? html`<p class="text-xs text-text-quinary mt-0.5">${warrantyPeriod}</p>` : ''}
       </div>
 
-      ${AddToCartButton({ productId })}
+      ${CartToggleButton({ productId })}
     </div>
   `
 }

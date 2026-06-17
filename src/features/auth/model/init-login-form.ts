@@ -2,8 +2,8 @@ import { userStore } from '@/entities/user'
 
 import { navigate } from '@/shared/lib'
 
-import { initTogglePassword } from './password-helpers'
-import { clearErrorOnInput, setSubmitButtonUpdater, showError, updateSubmitButton } from './ui-helpers'
+import { initTogglePassword } from '../lib/password-helpers'
+import { clearErrorOnInput, setSubmitButtonUpdater, showError, updateSubmitButton } from '../lib/ui-helpers'
 import { validateEmail, validatePassword } from './validators'
 
 export const initLoginForm = () => {

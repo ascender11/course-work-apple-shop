@@ -2,9 +2,15 @@ import { userStore } from '@/entities/user'
 
 import { navigate } from '@/shared/lib'
 
-import { initAutoPasswordGeneration, initNicknameGeneration } from './nickname-helpers'
-import { initPasswordModeToggle, initTogglePassword, isTop100Password } from './password-helpers'
-import { clearErrorOnInput, setSubmitButtonUpdater, showError, updateStrength, updateSubmitButton } from './ui-helpers'
+import { initAutoPasswordGeneration, initNicknameGeneration } from '../lib/nickname-helpers'
+import { initPasswordModeToggle, initTogglePassword, isTop100Password } from '../lib/password-helpers'
+import {
+  clearErrorOnInput,
+  setSubmitButtonUpdater,
+  showError,
+  updateStrength,
+  updateSubmitButton,
+} from '../lib/ui-helpers'
 import {
   validateAgreement,
   validateBirthDate,

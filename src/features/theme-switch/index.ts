@@ -1,1 +1,2 @@
-export { initThemeToggle, ThemeToggle } from './ui/ThemeToggle'
+export { initThemeToggle } from './model/init-theme-toggle'
+export { ThemeToggle } from './ui/ThemeToggle'

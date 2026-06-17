@@ -1,6 +1,6 @@
 import type { Product } from '@/entities/product'
 import { ProductAvailability } from '@/entities/product'
-import { AddToCartButton } from '@/features/add-to-cart'
+import { CartToggleButton } from '@/features/cart-toggle'
 import { FavoriteButton } from '@/features/favorite-toggle'
 
 import { cn, html } from '@/shared/lib'
@@ -57,7 +57,7 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
       <div class="w-full mt-1">
         ${
           isInStock
-            ? AddToCartButton({ productId: product.id })
+            ? CartToggleButton({ productId: product.id })
             : Button({ text: 'Сообщить о поступлении', variant: 'outline' })
         }
       </div>

@@ -2,9 +2,9 @@ import { cartStore, findItem } from '@/entities/cart'
 import { productService } from '@/entities/product'
 import { userStore } from '@/entities/user'
 
-import { applyDefaultState, applyInCartState } from './button-state'
+import { updateBtn } from '../lib/update-button'
 
-export const initAddToCartButtons = async (): Promise<void> => {
+export const initAddToCartButtons = (): void => {
   const user = userStore.user
   if (!user) return
 
@@ -19,11 +19,12 @@ export const initAddToCartButtons = async (): Promise<void> => {
 
     const productId = btn.dataset.productId ?? ''
     if (cartIds.has(productId)) {
-      applyInCartState(btn)
+      updateBtn(btn, true)
     }
 
     btn.addEventListener('click', async (e) => {
       e.preventDefault()
+      e.stopPropagation()
 
       const productId = btn.dataset.productId ?? ''
       const isInCart = btn.dataset.inCart === '1'
@@ -33,12 +34,12 @@ export const initAddToCartButtons = async (): Promise<void> => {
         if (item) {
           cartStore.remove(user.id, item.id)
         }
-        applyDefaultState(btn)
+        updateBtn(btn, false)
       } else {
         try {
           const product = await productService.getById(productId)
           cartStore.add(user.id, { product, quantity: 1 })
-          applyInCartState(btn)
+          updateBtn(btn, true)
         } catch {
           // silent fail — button stays unchanged
         }

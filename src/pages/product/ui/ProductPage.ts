@@ -1,7 +1,7 @@
 import type { AvailableProduct, Product } from '@/entities/product'
 import { ProductAvailability, productService } from '@/entities/product'
 import { userStore } from '@/entities/user'
-import { initAddToCartButtons } from '@/features/add-to-cart'
+import { initAddToCartButtons } from '@/features/cart-toggle'
 import { initFavoriteButtons } from '@/features/favorite-toggle'
 import { canUserReview, initReviewForm, loadReviews, ReviewForm } from '@/features/submit-review'
 import { Footer } from '@/widgets/footer'

@@ -46,9 +46,6 @@ export const generateNickname = (firstName: string, lastName: string): string =>
   const cleanFirstName = transliterate(firstName).replace(/[^a-z]/g, '')
   const cleanLastName = transliterate(lastName).replace(/[^a-z]/g, '')
 
-  console.log('Original:', { firstName, lastName })
-  console.log('Transliterated:', { cleanFirstName, cleanLastName })
-
   const fname = cleanFirstName || 'user'
   const lname = cleanLastName || 'name'
 

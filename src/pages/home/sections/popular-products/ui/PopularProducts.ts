@@ -1,6 +1,6 @@
 import { productService } from '@/entities/product'
 import { initAddToCartButtons } from '@/features/add-to-cart'
-import { initFavoriteButtons } from '@/features/add-to-favorites'
+import { initFavoriteButtons } from '@/features/favorite-toggle'
 import { ProductList } from '@/widgets/product-list'
 
 import { cn, html } from '@/shared/lib'

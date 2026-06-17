@@ -4,19 +4,13 @@ import { Header } from '@/widgets/header'
 
 import { html } from '@/shared/lib'
 
-import { initFavoritesPage } from '../model/favorites-controller'
-import { createInitialState } from '../model/favorites-state'
-
-let currentState = createInitialState()
-const updateState = (updater: (state: typeof currentState) => typeof currentState) => {
-  currentState = updater(currentState)
-}
+import { getCurrentSort, initFavoritesPage } from '../model/init'
 
 export const FavoritesPage = (): string => {
   const observer = new MutationObserver((_, obs) => {
     if (!document.getElementById('favorites-product-list')) return
     obs.disconnect()
-    initFavoritesPage(updateState, () => currentState)
+    initFavoritesPage()
   })
   if (typeof window !== 'undefined') observer.observe(document.body, { childList: true, subtree: true })
 
@@ -33,7 +27,7 @@ export const FavoritesPage = (): string => {
           </span>
         </div>
 
-        ${SortSelect(currentState.currentSort)}
+        ${SortSelect(getCurrentSort())}
       </div>
 
       <div class="px-4 pb-6 md:px-6 lg:px-30">

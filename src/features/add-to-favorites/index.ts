@@ -1,5 +1,0 @@
-export type { Favorite } from './api/favoritesApi'
-export { favoritesApi } from './api/favoritesApi'
-export { favoritesStore } from './model/favoritesStore'
-export { initFavoriteButtons } from './model/init-favorites-button'
-export { FavoriteButton } from './ui/FavoriteButton'

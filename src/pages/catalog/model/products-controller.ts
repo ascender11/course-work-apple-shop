@@ -1,6 +1,6 @@
 import { productService } from '@/entities/product'
 import { initAddToCartButtons } from '@/features/add-to-cart'
-import { initFavoriteButtons } from '@/features/add-to-favorites'
+import { initFavoriteButtons } from '@/features/favorite-toggle'
 import type { FiltersState } from '@/features/filter-products'
 import { initPaginationController, Pagination } from '@/features/pagination'
 import { ProductList } from '@/widgets/product-list'

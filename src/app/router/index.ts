@@ -2,7 +2,7 @@ import Navigo from 'navigo'
 
 import { cartStore } from '@/entities/cart'
 import { userStore } from '@/entities/user'
-import { favoritesStore } from '@/features/add-to-favorites'
+import { favoritesStore } from '@/features/favorite-toggle'
 import { AdminDashboard, AdminProductsPage, AdminReviewsPage } from '@/pages/admin'
 import { LoginPage, RegisterPage } from '@/pages/auth'
 import { CartPage } from '@/pages/cart'

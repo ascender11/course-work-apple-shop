@@ -1,10 +1,11 @@
 import type { Product } from '@/entities/product'
 import { ProductAvailability } from '@/entities/product'
 import { AddToCartButton } from '@/features/add-to-cart'
+import { FavoriteButton } from '@/features/favorite-toggle'
 
 import { cn, html } from '@/shared/lib'
 import { Button } from '@/shared/ui/components'
-import { Heart, Star } from '@/shared/ui/icons'
+import { Star } from '@/shared/ui/icons'
 
 export interface ProductCardProps {
   product: Product
@@ -23,13 +24,7 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
           <div class="flex gap-px">${stars}</div>
           <span class="text-primary">(${product.rating.reviewsCount})</span>
         </div>
-        <button
-          class="js-fav-btn flex items-center justify-center w-8 h-8 rounded-full transition-transform duration-150 hover:scale-110 active:scale-95"
-          data-product-id="${product.id}"
-          data-favorite-id=""
-          aria-label="Добавить в избранное"
-          type="button"
-        >${Heart()}</button>
+        ${FavoriteButton({ productId: product.id })}
       </div>
 
       <a href="/product/${product.id}" data-navigo class="font-medium text-2xl text-text-primary text-center w-full hover:text-primary transition-colors">

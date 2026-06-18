@@ -19,7 +19,7 @@ export const RegisterForm = () => html`
           id="reg-lastname"
           name="lastName"
           type="text"
-          placeholder="Иванов"
+          placeholder="${t('auth.register.lastNamePlaceholder')}"
           autocomplete="family-name"
           class="${INPUT_BASE}"
         />
@@ -34,7 +34,7 @@ export const RegisterForm = () => html`
           id="reg-firstname"
           name="firstName"
           type="text"
-          placeholder="Иван"
+          placeholder="${t('auth.register.firstNamePlaceholder')}"
           autocomplete="given-name"
           class="${INPUT_BASE}"
         />
@@ -47,7 +47,7 @@ export const RegisterForm = () => html`
           id="reg-patronymic"
           name="patronymic"
           type="text"
-          placeholder="Иванович"
+          placeholder="${t('auth.register.patronymicPlaceholder')}"
           autocomplete="additional-name"
           class="${INPUT_BASE}"
         />

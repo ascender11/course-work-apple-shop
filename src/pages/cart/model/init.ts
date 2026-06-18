@@ -1,5 +1,7 @@
 import { cartStore } from '@/entities/cart'
 
+import { t } from '@/shared/i18n'
+
 import { animateRemoval } from '../lib/animations'
 import { updateCartTitle, updateLineItem, updateSummary } from '../lib/updaters'
 import { CartEmpty } from '../ui/CartEmpty'
@@ -35,7 +37,7 @@ const renderEmptyState = () => {
   if (!container) return
 
   container.innerHTML = `
-    <h1 class="text-2xl font-bold text-text-primary mb-6">Корзина</h1>
+    <h1 class="text-2xl font-bold text-text-primary mb-6">${t('cart.title')}</h1>
     ${CartEmpty()}
   `
 }

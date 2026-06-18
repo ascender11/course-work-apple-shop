@@ -22,11 +22,9 @@ const CategoryOptions = (state: FiltersState, prefix: string) =>
     `
   ).join('')
 
-const YEAR_OPTIONS_KEYS = ['', 'filter.year2026', 'filter.year2025', 'filter.year2024']
-
 const YearOptions = (state: FiltersState, prefix: string) =>
   YEAR_OPTIONS.map(
-    (opt, i) => html`
+    (opt) => html`
       <label class="flex cursor-pointer items-center gap-2.5 py-1 px-6 text-text-secondary">
         <input
           type="radio"
@@ -35,7 +33,7 @@ const YearOptions = (state: FiltersState, prefix: string) =>
           ${state.year === opt.value ? 'checked' : ''}
           class="radio"
         />
-        ${YEAR_OPTIONS_KEYS[i] ? t(YEAR_OPTIONS_KEYS[i]) : opt.label}
+        ${t(opt.labelKey)}
       </label>
     `
   ).join('')

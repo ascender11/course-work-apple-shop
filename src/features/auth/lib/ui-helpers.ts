@@ -82,13 +82,13 @@ export const updateStrength = (password: string) => {
 
   bar.className = `h-full rounded-full transition-all duration-300 ${width} ${color}`
   label.textContent = text
-  label.className = `text-xs font-medium w-14 text-right ${
-    text === 'Слабый'
+  const colorClass =
+    text === t('auth.strength.weak')
       ? 'text-red-400'
-      : text === 'Средний'
+      : text === t('auth.strength.medium')
         ? 'text-amber-500'
-        : text === 'Сильный'
+        : text === t('auth.strength.strong')
           ? 'text-green-600'
           : 'text-text-quinary'
-  }`
+  label.className = `text-xs font-medium w-14 text-right ${colorClass}`
 }

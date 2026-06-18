@@ -20,7 +20,7 @@ export const loadProductsAndRender = async (state: FiltersState) => {
     listEl.innerHTML = ProductList({ products })
 
     initFavoriteButtons()
-    initCartButtons()
+    initAddToCartButtons()
 
     if (paginationContainer) {
       paginationContainer.innerHTML = Pagination({

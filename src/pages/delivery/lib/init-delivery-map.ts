@@ -2,12 +2,11 @@ import type { LngLat } from '@yandex/ymaps3-types'
 
 import { getTheme, onThemeChange } from '@/shared/lib'
 
-import { MapError } from '../ui/MapError'
-import { MapMarker } from '../ui/MapMarker'
+import { MapError, MapMarker } from './map-helpers'
 
 const SHOP_COORDS: LngLat = [37.3891, 55.7319]
 
-export const createMapMarker = (): HTMLElement => {
+const createMapMarker = (): HTMLElement => {
   const wrapper = document.createElement('div')
   wrapper.className = 'map-marker-wrapper'
   wrapper.innerHTML = MapMarker()

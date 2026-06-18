@@ -6,11 +6,7 @@ import 'swiper/css/navigation'
 
 export const initHomeSlider = () => {
   const container = document.getElementById('home-slider')
-
-  if (!container) {
-    console.error('HomeSlider: #home-slider not found')
-    return
-  }
+  if (!container) return
 
   const swiper = new Swiper(container, {
     modules: [Navigation, Autoplay],

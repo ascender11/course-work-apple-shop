@@ -3,12 +3,12 @@ import { Header } from '@/widgets/header'
 
 import { html } from '@/shared/lib'
 
-import { Advantages } from '../sections/advantages'
-import { Banner } from '../sections/banner'
-import { CtaBanner } from '../sections/cta-section'
-import { HomeSlider } from '../sections/home-slider'
-import { NewProducts } from '../sections/new-products'
-import { PopularProducts } from '../sections/popular-products'
+import { Advantages } from './Advantages'
+import { Banner } from './Banner'
+import { CtaBanner } from './CtaBanner'
+import { HomeSlider } from './HomeSlider'
+import { NewProducts } from './NewProducts'
+import { PopularProducts } from './PopularProducts'
 
 export const HomePage = (): string => {
   return html`

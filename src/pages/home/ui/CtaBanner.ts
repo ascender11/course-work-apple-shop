@@ -13,7 +13,6 @@ export const CtaBanner = ({ className = '' }: CtaBannerProps = {}) => {
       'lg:px-16 lg:py-8',
       className
     )}">
-      
       <div class="flex flex-col gap-2">
         <h2 class="text-2xl font-bold md:text-3xl">
           Покупайте <span class="text-primary">Apple</span> быстрее и удобнее
@@ -22,7 +21,6 @@ export const CtaBanner = ({ className = '' }: CtaBannerProps = {}) => {
           Создайте аккаунт за минуту — и ваша корзина, избранное и заказы всегда будут с вами.
         </p>
       </div>
-
       <div class="flex gap-3">
         ${Button({
           text: 'Начать',

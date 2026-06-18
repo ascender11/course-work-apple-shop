@@ -10,7 +10,7 @@ export const CartEmpty = ({ className = '' }: CartEmptyProps = {}) => html`
     class="${cn('w-6 h-6 text-text-quinary', className)}"
     fill="none"
     stroke="currentColor"
-    stroke-width="2.4"
+    stroke-width="1.5"
     stroke-linecap="round"
     stroke-linejoin="round"
   >

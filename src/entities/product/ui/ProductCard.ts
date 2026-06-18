@@ -59,7 +59,7 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
         ${
           isInStock
             ? CartToggleButton({ productId: product.id })
-            : Button({ text: t('product.notifyMe'), variant: 'outline' })
+            : Button({ text: t('product.notifyMe'), variant: 'outline', className: 'w-full' })
         }
       </div>
     </div>

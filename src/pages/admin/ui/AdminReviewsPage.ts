@@ -4,6 +4,7 @@ import { Header } from '@/widgets/header'
 
 import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
+import { ArrowDown } from '@/shared/ui/icons'
 
 import { initReviewsPage } from '../model/reviews-controller'
 
@@ -29,7 +30,7 @@ export const AdminReviewsPage = (): string => {
   if (typeof window !== 'undefined') observer.observe(document.body, { childList: true, subtree: true })
 
   const SELECT_BASE =
-    'w-full rounded-lg border border-border px-4 py-3 text-sm text-text-primary bg-background outline-none transition-all duration-200 hover:border-border focus:border-primary focus:ring-2 focus:ring-primary/20'
+    'relative appearance-none cursor-pointer rounded-lg border border-border pl-4 pr-10 py-3 text-sm text-text-primary bg-background outline-none transition-all duration-200 hover:border-border focus:border-primary focus:ring-2 focus:ring-primary/20'
 
   return html`
     ${Header()}
@@ -53,21 +54,27 @@ export const AdminReviewsPage = (): string => {
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-6">
             <div class="flex flex-col gap-0.5">
               <label class="text-sm font-medium text-text-secondary">${t('admin.reviews.filterProduct')}</label>
-              <select
-                id="admin-review-product-select"
-                class="${SELECT_BASE}"
-              >
-                <option value="">${t('admin.reviews.allProducts')}</option>
-              </select>
+              <div class="relative">
+                <select
+                  id="admin-review-product-select"
+                  class="${SELECT_BASE} w-full"
+                >
+                  <option value="">${t('admin.reviews.allProducts')}</option>
+                </select>
+                ${ArrowDown({ className: 'pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-primary' })}
+              </div>
             </div>
             <div class="flex flex-col gap-0.5">
               <label class="text-sm font-medium text-text-secondary">${t('admin.reviews.filterUser')}</label>
-              <select
-                id="admin-review-user-select"
-                class="${SELECT_BASE}"
-              >
-                <option value="">${t('admin.reviews.allUsers')}</option>
-              </select>
+              <div class="relative">
+                <select
+                  id="admin-review-user-select"
+                  class="${SELECT_BASE} w-full"
+                >
+                  <option value="">${t('admin.reviews.allUsers')}</option>
+                </select>
+                ${ArrowDown({ className: 'pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-primary' })}
+              </div>
             </div>
           </div>
 

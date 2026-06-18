@@ -25,14 +25,14 @@ export const CtaBanner = ({ className = '' }: CtaBannerProps = {}) => {
       <div class="flex gap-3">
         ${Button({
           text: t('home.cta.start'),
-          href: '#',
+          href: '/login',
           className:
             'text-white text-sm sm:text-lg min-w-30 sm:min-w-40 py-3 rounded-xl bg-linear-to-r from-[#0071E4] to-[#9747FF]',
         })}
         ${Button({
           text: t('home.cta.more'),
           variant: 'outline',
-          href: '#',
+          href: '/delivery',
           className: 'min-w-30 text-sm sm:text-lg sm:min-w-40 py-3 rounded-xl',
         })}
       </div>

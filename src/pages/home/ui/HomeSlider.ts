@@ -48,10 +48,10 @@ export const HomeSlider = () => {
         </div>
       </div>
       <div class="swiper-button-prev bottom-0 left-4! h-6! w-6! sm:left-6! sm:h-10! sm:w-10! xl:left-30!">
-        ${ArrowLeft({ className: 'sm:h-10 sm:w-10' })}
+        ${ArrowLeft({ className: 'sm:h-10 sm:w-10 text-black' })}
       </div>
       <div class="swiper-button-next bottom-0 right-4! h-6! w-6! sm:right-6! sm:h-10! sm:w-10! xl:right-30!">
-        ${ArrowRight({ className: 'sm:h-10 sm:w-10' })}
+        ${ArrowRight({ className: 'sm:h-10 sm:w-10 text-black' })}
       </div>
     </div>
   `

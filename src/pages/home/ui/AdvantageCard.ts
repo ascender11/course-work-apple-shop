@@ -1,6 +1,4 @@
-import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
-import { Button } from '@/shared/ui/components'
 
 export interface AdvantageCardProps {
   icon: string
@@ -15,31 +13,21 @@ export const AdvantageCard = ({ icon, title, description, gradient, className = 
     <div
       style="--card-gradient: ${gradient};"
       class="${cn(
-        'grid grid-cols-[auto_1fr] gap-x-2.5 gap-y-2 p-4 bg-white rounded-2xl border border-gray-100/50',
-        'md:grid-cols-[auto_1fr_1fr] md:grid-rows-[auto_auto] md:gap-x-5 md:gap-y-1 md:items-center',
-        'lg:flex lg:flex-col lg:text-center lg:items-center lg:gap-4 lg:p-6 lg:h-full lg:bg-(image:--card-gradient)',
+        'flex flex-col items-center gap-3 p-6 rounded-2xl bg-white border border-gray-100/50',
+        'lg:bg-(image:--card-gradient)',
         className
       )}"
     >
       <img
         src="${icon}"
-        class="w-6 h-6 md:w-12 md:h-12 lg:w-40 lg:h-40 object-contain md:row-span-2 lg:mx-auto"
+        class="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain"
       />
-      <h5 class="text-xl font-bold text-gray-950 md:col-start-2 lg:col-start-auto">
+      <h5 class="text-xl font-bold text-gray-950 text-center">
         ${title}
       </h5>
-      <p class="text-base text-gray-600 max-w-sm col-span-2 md:col-span-1 md:col-start-2 lg:col-start-auto">
+      <p class="text-sm text-gray-600 text-center">
         ${description}
       </p>
-      ${Button({
-        text: t('home.adv.more'),
-        variant: 'outline',
-        href: '#',
-        className: cn(
-          'col-span-2 w-full md:col-span-1 md:row-start-1 md:col-start-3 md:row-span-2 md:self-center',
-          'lg:col-start-auto lg:row-span-1 lg:mt-auto lg:w-full'
-        ),
-      })}
     </div>
   `
 }

@@ -1,3 +1,5 @@
+import { t } from '@/shared/i18n'
+
 import { getPageNumbers } from '../model/utils'
 
 interface PaginationProps {
@@ -21,11 +23,11 @@ export const Pagination = (props: PaginationProps): string => {
     `${btn} ${disabled ? 'cursor-not-allowed text-text-quinary' : 'cursor-pointer text-text-secondary hover:bg-background-secondary'}`
 
   return `
-    <nav data-pagination class="flex items-center justify-center gap-1 py-8" aria-label="Пагинация">
+    <nav data-pagination class="flex items-center justify-center gap-1 py-8" aria-label="${t('pagination.label')}">
       <button
         class="${arrowCls(prevDisabled)}"
         ${prevDisabled ? 'disabled' : `data-page="${currentPage - 1}"`}
-        aria-label="Предыдущая страница"
+        aria-label="${t('pagination.prev')}"
       >
         <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -52,7 +54,7 @@ export const Pagination = (props: PaginationProps): string => {
       <button
         class="${arrowCls(nextDisabled)}"
         ${nextDisabled ? 'disabled' : `data-page="${currentPage + 1}"`}
-        aria-label="Следующая страница"
+        aria-label="${t('pagination.next')}"
       >
         <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

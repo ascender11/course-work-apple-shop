@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 import { Dropdown } from '@/shared/ui/components'
 
@@ -21,9 +22,11 @@ const CategoryOptions = (state: FiltersState, prefix: string) =>
     `
   ).join('')
 
+const YEAR_OPTIONS_KEYS = ['', 'filter.year2026', 'filter.year2025', 'filter.year2024']
+
 const YearOptions = (state: FiltersState, prefix: string) =>
   YEAR_OPTIONS.map(
-    (opt) => html`
+    (opt, i) => html`
       <label class="flex cursor-pointer items-center gap-2.5 py-1 px-6 text-text-secondary">
         <input
           type="radio"
@@ -32,7 +35,7 @@ const YearOptions = (state: FiltersState, prefix: string) =>
           ${state.year === opt.value ? 'checked' : ''}
           class="radio"
         />
-        ${opt.label}
+        ${YEAR_OPTIONS_KEYS[i] ? t(YEAR_OPTIONS_KEYS[i]) : opt.label}
       </label>
     `
   ).join('')
@@ -43,14 +46,14 @@ export const FilterPanel = (state: FiltersState, prefix: string) => html`
     <div class="flex flex-col gap-2">
       ${Dropdown({
         id: `${prefix}-category-list`,
-        title: 'Категория',
+        title: t('filter.category'),
         content: CategoryOptions(state, prefix),
         openByDefault: state.categories.length > 0,
         isActive: state.categories.length > 0,
       })}
       ${Dropdown({
         id: `${prefix}-year-list`,
-        title: 'Год релиза',
+        title: t('filter.year'),
         content: YearOptions(state, prefix),
         openByDefault: state.year !== '',
         isActive: state.year !== '',

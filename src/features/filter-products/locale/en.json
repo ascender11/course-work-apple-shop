@@ -1,0 +1,11 @@
+{
+  "filter.price": "Price",
+  "filter.priceFrom": "from",
+  "filter.priceTo": "to",
+  "filter.category": "Category",
+  "filter.year": "Release year",
+  "filter.yearAll": "All years",
+  "filter.year2026": "New 2026",
+  "filter.year2025": "Lineup 2025",
+  "filter.year2024": "Models 2024"
+}

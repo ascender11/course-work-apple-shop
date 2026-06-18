@@ -1,0 +1,11 @@
+{
+  "filter.price": "Цена",
+  "filter.priceFrom": "от",
+  "filter.priceTo": "до",
+  "filter.category": "Категория",
+  "filter.year": "Год релиза",
+  "filter.yearAll": "Все годы",
+  "filter.year2026": "Новинки 2026",
+  "filter.year2025": "Линейка 2025",
+  "filter.year2024": "Модели 2024"
+}

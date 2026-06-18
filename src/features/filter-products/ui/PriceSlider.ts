@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 import { PRICE_ABS_MAX, PRICE_ABS_MIN } from '../model/constants'
@@ -5,7 +6,7 @@ import type { FiltersState } from '../model/types'
 
 export const PriceSlider = (state: FiltersState, prefix: string) => html`
   <div class="py-4">
-    <p class="mb-4 text-sm font-semibold text-text-primary">Цена</p>
+    <p class="mb-4 text-sm font-semibold text-text-primary">${t('filter.price')}</p>
 
     <div class="relative mb-5 h-6">
       <div class="pointer-events-none absolute left-0 right-0 top-1/2 h-2 -translate-y-1/2 rounded-full bg-border">
@@ -33,7 +34,7 @@ export const PriceSlider = (state: FiltersState, prefix: string) => html`
 
     <div class="flex gap-2">
       <div class="flex flex-1 items-center gap-1 rounded-lg border border-border px-3 py-2">
-        <span class="shrink-0 text-xs text-text-quinary">от</span>
+        <span class="shrink-0 text-xs text-text-quinary">${t('filter.priceFrom')}</span>
         <input
           type="number"
           id="${prefix}-price-min-input"
@@ -43,7 +44,7 @@ export const PriceSlider = (state: FiltersState, prefix: string) => html`
         <span class="shrink-0 text-xs text-text-quinary">₽</span>
       </div>
       <div class="flex flex-1 items-center gap-1 rounded-lg border border-border px-3 py-2">
-        <span class="shrink-0 text-xs text-text-quinary">до</span>
+        <span class="shrink-0 text-xs text-text-quinary">${t('filter.priceTo')}</span>
         <input
           type="number"
           id="${prefix}-price-max-input"

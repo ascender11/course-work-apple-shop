@@ -1,11 +1,13 @@
 import type { Review } from '@/entities/review'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 import { Star } from '@/shared/ui/icons'
 
 const formatDate = (dateStr: string): string => {
   const date = new Date(dateStr)
-  return date.toLocaleDateString('ru-RU', {
+  const lang = document.documentElement.lang || 'ru'
+  return date.toLocaleDateString(lang === 'en' ? 'en-US' : 'ru-RU', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -22,8 +24,8 @@ export const ReviewList = (reviews: Review[]): string => {
   if (!reviews.length) {
     return html`
       <div class="mt-8 p-6 rounded-2xl bg-background-secondary">
-        <h3 class="text-lg font-semibold text-text-primary mb-2">Отзывы</h3>
-        <p class="text-text-quinary text-sm">Пока нет отзывов. Будьте первым!</p>
+        <h3 class="text-lg font-semibold text-text-primary mb-2">${t('review.reviews')}</h3>
+        <p class="text-text-quinary text-sm">${t('review.noReviews')}</p>
       </div>
     `
   }
@@ -45,7 +47,7 @@ export const ReviewList = (reviews: Review[]): string => {
 
   return html`
     <div class="mt-8 p-6 rounded-2xl bg-background-secondary">
-      <h3 class="text-lg font-semibold text-text-primary mb-4">Отзывы (${reviews.length})</h3>
+      <h3 class="text-lg font-semibold text-text-primary mb-4">${t('review.reviews')} (${reviews.length})</h3>
       <div data-review-list>${reviewItems}</div>
     </div>
   `

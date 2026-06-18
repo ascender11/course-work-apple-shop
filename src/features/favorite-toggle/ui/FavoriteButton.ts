@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
 import { Heart } from '@/shared/ui/icons'
 
@@ -11,7 +12,7 @@ export const FavoriteButton = ({ productId, className = '' }: FavoriteButtonProp
     class="js-fav-btn flex items-center justify-center w-8 h-8 rounded-full transition-transform duration-150 hover:scale-110 active:scale-95 ${cn(className)}"
     data-product-id="${productId}"
     data-favorite-id=""
-    aria-label="Добавить в избранное"
+    aria-label="${t('fav.addTo')}"
     type="button"
   >${Heart()}</button>
 `

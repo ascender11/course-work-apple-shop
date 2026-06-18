@@ -1,0 +1,12 @@
+{
+  "review.title": "Write a review",
+  "review.cannotReview": "You cannot write a review because you haven't purchased this product.",
+  "review.rating": "Your rating",
+  "review.text": "Review text",
+  "review.placeholder": "Write your review of the product (minimum 20 characters)...",
+  "review.submit": "Submit review",
+  "review.success": "Thank you! Your review has been submitted successfully.",
+  "review.reviews": "Reviews",
+  "review.noReviews": "No reviews yet. Be the first!",
+  "review.of5": "of 5"
+}

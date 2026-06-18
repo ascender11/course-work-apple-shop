@@ -1,6 +1,6 @@
 export const SORT_OPTIONS = [
-  { value: '', label: 'По умолчанию' },
-  { value: 'price.current|asc', label: 'По цене ↑' },
-  { value: 'price.current|desc', label: 'По цене ↓' },
-  { value: 'rating.score|desc', label: 'По рейтингу ↓' },
+  { value: '', labelKey: 'sort.default' },
+  { value: 'price.current|asc', labelKey: 'sort.priceAsc' },
+  { value: 'price.current|desc', labelKey: 'sort.priceDesc' },
+  { value: 'rating.score|desc', labelKey: 'sort.ratingDesc' },
 ] as const

@@ -52,6 +52,7 @@
   "auth.validators.nickname.required": "Введите никнейм",
   "auth.validators.nickname.min": "Никнейм должен содержать минимум 3 символа",
   "auth.validators.nickname.invalid": "Только латиница, цифры и _",
+  "auth.validators.nickname.generateFirst": "Сначала введите имя и фамилию для генерации",
   "auth.validators.password.required": "Введите пароль",
   "auth.validators.password.min": "Минимум 8 символов",
   "auth.validators.password.max": "Максимум 20 символов",

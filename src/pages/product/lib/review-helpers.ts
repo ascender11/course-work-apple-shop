@@ -2,6 +2,7 @@ import { productService } from '@/entities/product'
 import { userStore } from '@/entities/user'
 import { canUserReview, initReviewForm, loadReviews, ReviewForm } from '@/features/submit-review'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 import { renderProductRating } from './render-helpers'
@@ -13,9 +14,9 @@ export const setupReviewSection = (productId: string) => {
   if (userStore.isAdmin) {
     reviewSection.innerHTML = html`
       <div class="mt-8 p-6 rounded-2xl bg-background-secondary">
-        <h3 class="text-lg font-semibold text-text-primary mb-2">Оставить отзыв</h3>
+        <h3 class="text-lg font-semibold text-text-primary mb-2">${t('review.title')}</h3>
         <p class="text-text-quinary text-sm">
-          Администраторы не могут оставлять отзывы.
+          ${t('review.cannotReview')}
         </p>
       </div>
     `

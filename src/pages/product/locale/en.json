@@ -1,0 +1,12 @@
+{
+  "product.loading": "Loading product…",
+  "product.error": "Failed to load product. Try refreshing the page.",
+  "product.inStock": "In stock",
+  "product.outOfStock": "Awaiting delivery",
+  "product.outOfStockHint": "We can notify you when the product becomes available",
+  "product.notifyMe": "Notify me",
+  "product.specs": "Specifications",
+  "product.viewAllSpecs": "View all specifications",
+  "product.sold": "Sold: {count} pcs",
+  "product.reviews": "reviews"
+}

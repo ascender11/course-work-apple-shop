@@ -5,6 +5,8 @@ import type { FiltersState } from '@/features/filter-products'
 import { initPaginationController, Pagination } from '@/features/pagination'
 import { ProductList } from '@/widgets/product-list'
 
+import { t } from '@/shared/i18n'
+
 import { ErrorState } from '../ui/ErrorState'
 
 export const loadProductsAndRender = async (state: FiltersState) => {
@@ -31,7 +33,7 @@ export const loadProductsAndRender = async (state: FiltersState) => {
       initPaginationController()
     }
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : 'Неизвестная ошибка'
+    const msg = err instanceof Error ? err.message : t('catalog.loadError', { error: 'Unknown' })
     listEl.innerHTML = ErrorState(msg)
   }
 }

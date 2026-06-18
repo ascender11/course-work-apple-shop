@@ -1,3 +1,5 @@
+import { t } from '@/shared/i18n'
+
 import { generateNickname, generatePassword } from '../model/generators'
 import { showError, updateSubmitButton } from './ui-helpers'
 
@@ -6,14 +8,14 @@ export const initNicknameGeneration = () => {
   const generateBtn = document.getElementById('generate-nickname')
 
   nicknameInput.readOnly = false
-  nicknameInput.placeholder = 'Введите никнейм'
+  nicknameInput.placeholder = t('auth.register.nickname')
 
   const generate = () => {
     const lastName = (document.getElementById('reg-lastname') as HTMLInputElement)?.value || ''
     const firstName = (document.getElementById('reg-firstname') as HTMLInputElement)?.value || ''
 
     if (!lastName || !firstName) {
-      showError('reg-nickname', 'Сначала введите имя и фамилию для генерации')
+      showError('reg-nickname', t('auth.validators.nickname.generateFirst'))
       return
     }
 

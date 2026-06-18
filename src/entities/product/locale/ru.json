@@ -1,0 +1,6 @@
+{
+  "product.inStock": "В наличии",
+  "product.outOfStock": "Ожидается поступление",
+  "product.outOfStockHint": "Мы можем сообщить вам, когда товар появится в наличии",
+  "product.notifyMe": "Сообщить о поступлении"
+}

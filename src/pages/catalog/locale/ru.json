@@ -1,0 +1,16 @@
+{
+  "catalog.loadError": "Ошибка загрузки: {error}",
+  "catalog.filter": "Фильтр",
+  "catalog.resetFilter": "Сбросить фильтр",
+  "catalog.filters": "Фильтры",
+  "catalog.title": "Каталог",
+  "catalog.loading": "Загрузка товаров…",
+  "catalog.adv.delivery": "Доставка за 2 часа",
+  "catalog.adv.deliveryDesc": "Быстро и бесплатно доставляем все заказы по Москве",
+  "catalog.adv.payment": "Оплата",
+  "catalog.adv.paymentDesc": "Все виды наличного и безналичного расчета",
+  "catalog.adv.credit": "Кредит",
+  "catalog.adv.creditDesc": "Выгодные кредитные предложения от самых популярных банков",
+  "catalog.adv.warranty": "Гарантия",
+  "catalog.adv.warrantyDesc": "Предоставляем целый год сервисного обслуживания"
+}

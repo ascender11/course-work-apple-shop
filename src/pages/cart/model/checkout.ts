@@ -1,6 +1,7 @@
 import { cartStore } from '@/entities/cart'
 import { userStore } from '@/entities/user'
 
+import { t } from '@/shared/i18n'
 import { Spinner } from '@/shared/ui/components'
 
 import { SuccessModal } from '../ui/SuccessModal'
@@ -11,7 +12,7 @@ export const handleCheckout = async () => {
   if (!btn || !label) return
 
   btn.disabled = true
-  label.innerHTML = `${Spinner()}<span>Обрабатываем…</span>`
+  label.innerHTML = `${Spinner()}<span>${t('cart.processing')}</span>`
 
   await new Promise((r) => setTimeout(r, 1200))
 
@@ -32,6 +33,6 @@ export const handlePromoCode = () => {
   if (!input || !msg) return
   if (input.value.trim()) {
     msg.classList.remove('hidden')
-    msg.textContent = `Промокод «${input.value.trim()}» не найден`
+    msg.textContent = t('cart.promoNotFound', { code: input.value.trim() })
   }
 }

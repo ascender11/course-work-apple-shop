@@ -1,5 +1,6 @@
 import type { ProductSpecificationGroup } from '@/entities/product'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 export interface SpecificationsSectionProps {
@@ -36,7 +37,7 @@ export const SpecificationsSection = ({ specifications }: SpecificationsSectionP
   return html`
     <section id="specifications" class="py-10 mt-8">
       <div>
-        <h2 class="text-2xl font-semibold text-text-primary mb-8 lg:text-3xl">Характеристики</h2>
+        <h2 class="text-2xl font-semibold text-text-primary mb-8 lg:text-3xl">${t('product.specs')}</h2>
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           ${groups}
         </div>

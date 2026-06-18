@@ -8,5 +8,9 @@
   "review.success": "Спасибо! Ваш отзыв успешно отправлен.",
   "review.reviews": "Отзывы",
   "review.noReviews": "Пока нет отзывов. Будьте первым!",
-  "review.of5": "из 5"
+  "review.of5": "из 5",
+  "review.minChars": "Минимум {min} символов ({current}/{min})",
+  "review.anonymous": "Аноним",
+  "review.sending": "Отправка...",
+  "review.error": "Не удалось отправить отзыв. Попробуйте ещё раз."
 }

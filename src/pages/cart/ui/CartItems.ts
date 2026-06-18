@@ -1,6 +1,7 @@
 import type { CartItem } from '@/entities/cart'
 import { CartItemCard } from '@/entities/cart'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 export const CartItems = (items: CartItem[]) => html`
@@ -13,7 +14,7 @@ export const CartItems = (items: CartItem[]) => html`
         id="cart-clear-btn"
         class="text-sm text-text-quinary hover:text-error transition-colors duration-150 cursor-pointer"
       >
-        Очистить корзину
+        ${t('cart.clear')}
       </button>
     </div>
   </div>

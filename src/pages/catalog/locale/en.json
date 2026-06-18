@@ -1,0 +1,16 @@
+{
+  "catalog.loadError": "Load error: {error}",
+  "catalog.filter": "Filter",
+  "catalog.resetFilter": "Reset filter",
+  "catalog.filters": "Filters",
+  "catalog.title": "Catalog",
+  "catalog.loading": "Loading products…",
+  "catalog.adv.delivery": "Delivery in 2 hours",
+  "catalog.adv.deliveryDesc": "Fast and free delivery for all orders in Moscow",
+  "catalog.adv.payment": "Payment",
+  "catalog.adv.paymentDesc": "All types of cash and non-cash payment",
+  "catalog.adv.credit": "Credit",
+  "catalog.adv.creditDesc": "Best credit offers from the most popular banks",
+  "catalog.adv.warranty": "Warranty",
+  "catalog.adv.warrantyDesc": "We provide a full year of service"
+}

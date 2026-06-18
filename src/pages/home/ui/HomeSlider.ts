@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 import { Button } from '@/shared/ui/components'
 import { ArrowLeft, ArrowRight } from '@/shared/ui/icons'
@@ -25,8 +26,8 @@ export const HomeSlider = () => {
           <h1 class="text-center font-semibold text-4xl text-[#1E3240] sm:text-6xl xl:text-[88px]">
             iPh<span class="mx-1 inline-block h-4.5 w-10.5 rounded-full border-4 border-[#1E3240] sm:mx-1.25 sm:h-8 sm:w-17.5 sm:border-8 xl:h-11.25 xl:w-25.25 xl:border-11"></span>ne 14
           </h1>
-          <h2 class="text-center text-3xl text-[#1E3240] sm:text-4xl xl:text-6xl">от 137 900 ₽</h2>
-          ${Button({ text: 'Подробнее', className: 'sm:px-7.5 sm:py-3.75' })}
+          <h2 class="text-center text-3xl text-[#1E3240] sm:text-4xl xl:text-6xl">${t('home.slider.price')}</h2>
+          ${Button({ text: t('home.slider.more'), className: 'sm:px-7.5 sm:py-3.75' })}
           <img
             class="absolute top-42.5 w-42.5 sm:top-69.5 sm:w-67.5 xl:left-67.5 xl:top-26.75 xl:w-99.5"
             src="/home/iPhone-14.png"
@@ -37,8 +38,8 @@ export const HomeSlider = () => {
           <h1 class="text-center font-semibold text-4xl text-[#1E3240] sm:text-6xl xl:text-[88px]">
             iPh<span class="mx-1 inline-block h-4.5 w-10.5 rounded-full border-4 border-[#1E3240] sm:mx-1.25 sm:h-8 sm:w-17.5 sm:border-8 xl:h-11.25 xl:w-25.25 xl:border-11"></span>ne 14
           </h1>
-          <h2 class="text-center text-3xl text-[#1E3240] sm:text-4xl xl:text-6xl">от 137 900 ₽</h2>
-          ${Button({ text: 'Подробнее', className: 'sm:px-7.5 sm:py-3.75' })}
+          <h2 class="text-center text-3xl text-[#1E3240] sm:text-4xl xl:text-6xl">${t('home.slider.price')}</h2>
+          ${Button({ text: t('home.slider.more'), className: 'sm:px-7.5 sm:py-3.75' })}
           <img
             class="absolute top-42.5 w-42.5 sm:top-69.5 sm:w-67.5 xl:left-67.5 xl:top-26.75 xl:w-99.5"
             src="/home/iPhone-14.png"

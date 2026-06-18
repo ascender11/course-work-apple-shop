@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { cn, getTheme, html } from '@/shared/lib'
 
 export const ThemeToggle = (): string => {
@@ -8,14 +9,14 @@ export const ThemeToggle = (): string => {
     <div class="flex gap-1 rounded-lg bg-background-tertiary p-1">
       <button
         data-theme="light"
-        aria-label="Светлая тема"
+        aria-label="${t('theme.lightAria')}"
         class="${cn(base, currentTheme === 'light' ? 'bg-background shadow-sm text-text-primary' : 'text-text-quinary hover:text-text-secondary')}"
-      >Светлая</button>
+      >${t('theme.light')}</button>
       <button
         data-theme="dark"
-        aria-label="Тёмная тема"
+        aria-label="${t('theme.darkAria')}"
         class="${cn(base, currentTheme === 'dark' ? 'bg-background shadow-sm text-text-primary' : 'text-text-quinary hover:text-text-secondary')}"
-      >Тёмная</button>
+      >${t('theme.dark')}</button>
     </div>
   `
 }

@@ -4,6 +4,7 @@ import { ThemeToggle } from '@/features/theme-switch'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 import { CartEmpty, ChevronRight, Gear, Heart, LogoutIcon } from '@/shared/ui/icons'
 
@@ -77,17 +78,18 @@ export const ProfilePage = (): string => {
         </div>
 
         ${SectionCard(
-          'Навигация',
-          NavRow('/favorites', Heart(), 'Избранное') +
-            NavRow('/cart', CartEmpty(), 'Корзина') +
+          t('profile.navigation'),
+          NavRow('/favorites', Heart(), t('profile.favorites')) +
+            NavRow('/cart', CartEmpty(), t('profile.cart')) +
             (userStore.isAdmin
-              ? NavRow('/admin/dashboard', Gear({ className: 'w-6 h-6' }), 'Панель администратора', false)
+              ? NavRow('/admin/dashboard', Gear({ className: 'w-6 h-6' }), t('profile.admin'), false)
               : '')
         )}
 
         ${SectionCard(
-          'Внешний вид',
-          SettingsRow('Тема', '', ThemeToggle()) + SettingsRow('Язык', '', LanguageToggle(), false)
+          t('profile.appearance'),
+          SettingsRow(t('profile.theme'), '', ThemeToggle()) +
+            SettingsRow(t('profile.language'), '', LanguageToggle(), false)
         )}
 
         <button
@@ -95,7 +97,7 @@ export const ProfilePage = (): string => {
           class="w-full bg-background rounded-2xl border border-border-light shadow-card-sm px-5 py-4 flex items-center justify-center gap-2 text-error hover:bg-error/10 active:bg-error/20 transition-colors duration-200 cursor-pointer"
         >
           ${LogoutIcon()}
-          <span class="text-sm font-medium">Выйти из аккаунта</span>
+          <span class="text-sm font-medium">${t('profile.logout')}</span>
         </button>
 
       </div>

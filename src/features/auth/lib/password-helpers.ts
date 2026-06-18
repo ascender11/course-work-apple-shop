@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { EyeOff, EyeOpen } from '@/shared/ui/icons'
 
 import { generatePassword } from '../model/generators'
@@ -25,7 +26,7 @@ export const initTogglePassword = (inputId: string, toggleId: string) => {
     input.type = isPassword ? 'text' : 'password'
 
     toggle.innerHTML = isPassword ? EyeOff() : EyeOpen()
-    toggle.setAttribute('aria-label', isPassword ? 'Скрыть пароль' : 'Показать пароль')
+    toggle.setAttribute('aria-label', isPassword ? t('auth.login.showPassword') : t('auth.login.showPassword'))
   })
 }
 

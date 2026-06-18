@@ -52,6 +52,7 @@
   "auth.validators.nickname.required": "Enter nickname",
   "auth.validators.nickname.min": "Nickname must be at least 3 characters",
   "auth.validators.nickname.invalid": "Only Latin letters, digits, and _",
+  "auth.validators.nickname.generateFirst": "Enter first and last name to generate",
   "auth.validators.password.required": "Enter password",
   "auth.validators.password.min": "Minimum 8 characters",
   "auth.validators.password.max": "Maximum 20 characters",

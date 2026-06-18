@@ -1,5 +1,6 @@
 import type { LngLat } from '@yandex/ymaps3-types'
 
+import { t } from '@/shared/i18n'
 import { getTheme, onThemeChange } from '@/shared/lib'
 
 import { MapError, MapMarker } from './map-helpers'
@@ -57,7 +58,7 @@ export const initDeliveryMap = async (): Promise<void> => {
   const loaded = await waitForYmaps3()
 
   if (!loaded) {
-    container.innerHTML = MapError('Карта временно недоступна')
+    container.innerHTML = MapError(t('delivery.mapUnavailable'))
     return
   }
 
@@ -85,6 +86,6 @@ export const initDeliveryMap = async (): Promise<void> => {
       map.update({ theme })
     })
   } catch {
-    container.innerHTML = MapError('Не удалось загрузить карту')
+    container.innerHTML = MapError(t('delivery.mapError'))
   }
 }

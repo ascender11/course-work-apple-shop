@@ -1,0 +1,12 @@
+{
+  "product.loading": "Загрузка товара…",
+  "product.error": "Не удалось загрузить товар. Попробуйте обновить страницу.",
+  "product.inStock": "В наличии",
+  "product.outOfStock": "Ожидается поступление",
+  "product.outOfStockHint": "Мы можем сообщить вам, когда товар появится в наличии",
+  "product.notifyMe": "Сообщить о поступлении",
+  "product.specs": "Характеристики",
+  "product.viewAllSpecs": "Смотреть все характеристики",
+  "product.sold": "Было продано: {count} шт",
+  "product.reviews": "отз."
+}

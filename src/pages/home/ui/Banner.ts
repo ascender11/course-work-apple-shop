@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
 import { Button } from '@/shared/ui/components'
 
@@ -14,10 +15,10 @@ export const Banner = ({ className = '' }: BannerProps = {}) => {
       />
       <div class="flex flex-col gap-5">
         <div class="flex flex-col gap-1 text-white">
-          <h1 class="text-xl font-bold sm:text-3xl lg:text-6xl">iPhone 14 Pro Max</h1>
-          <p class="lg:text-2xl">по лучшей цене в Москве</p>
+          <h1 class="text-xl font-bold sm:text-3xl lg:text-6xl">${t('home.banner.title')}</h1>
+          <p class="lg:text-2xl">${t('home.banner.subtitle')}</p>
         </div>
-        ${Button({ text: 'Подробнее', className: 'w-40' })}
+        ${Button({ text: t('home.slider.more'), className: 'w-40' })}
       </div>
     </section>
   `

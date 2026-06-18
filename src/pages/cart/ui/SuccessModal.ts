@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 export const SuccessModal = () => html`
@@ -10,10 +11,10 @@ export const SuccessModal = () => html`
         </svg>
       </div>
       <div class="text-center">
-        <p class="text-xl font-semibold text-text-primary">Заказ оформлен!</p>
-        <p class="text-sm text-text-quinary mt-1.5">Мы свяжемся с вами в ближайшее время для подтверждения</p>
+        <p class="text-xl font-semibold text-text-primary">${t('cart.orderSuccess')}</p>
+        <p class="text-sm text-text-quinary mt-1.5">${t('cart.orderSuccessHint')}</p>
       </div>
-      <button id="cart-modal-close" class="button w-full">Отлично</button>
+      <button id="cart-modal-close" class="button w-full">${t('cart.orderClose')}</button>
     </div>
   </div>
 `

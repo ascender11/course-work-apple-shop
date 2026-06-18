@@ -1,6 +1,7 @@
 import type { Product } from '@/entities/product'
 import { ProductCard } from '@/entities/product'
 
+import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
 
 export interface ProductListProps {
@@ -13,7 +14,7 @@ export const ProductList = ({ products, className = '' }: ProductListProps) => {
     return html`
       <div class="flex justify-center items-center py-16">
         <p class="text-center text-text-tertiary text-lg">
-          Ничего не найдено.
+          ${t('productList.empty')}
         </p>
       </div>
     `

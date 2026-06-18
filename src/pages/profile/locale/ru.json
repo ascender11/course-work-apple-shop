@@ -1,0 +1,10 @@
+{
+  "profile.navigation": "Навигация",
+  "profile.favorites": "Избранное",
+  "profile.cart": "Корзина",
+  "profile.admin": "Панель администратора",
+  "profile.appearance": "Внешний вид",
+  "profile.theme": "Тема",
+  "profile.language": "Язык",
+  "profile.logout": "Выйти из аккаунта"
+}

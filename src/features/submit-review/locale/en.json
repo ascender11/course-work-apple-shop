@@ -8,5 +8,9 @@
   "review.success": "Thank you! Your review has been submitted successfully.",
   "review.reviews": "Reviews",
   "review.noReviews": "No reviews yet. Be the first!",
-  "review.of5": "of 5"
+  "review.of5": "of 5",
+  "review.minChars": "Minimum {min} characters ({current}/{min})",
+  "review.anonymous": "Anonymous",
+  "review.sending": "Sending...",
+  "review.error": "Failed to submit review. Please try again."
 }

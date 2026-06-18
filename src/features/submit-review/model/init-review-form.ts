@@ -1,6 +1,8 @@
 import { reviewService } from '@/entities/review'
 import { userStore } from '@/entities/user'
 
+import { t } from '@/shared/i18n'
+
 const MIN_REVIEW_LENGTH = 20
 const CURRENT_USER_ID_KEY = 'currentUserId'
 
@@ -75,7 +77,7 @@ export const initReviewForm = (onSubmitSuccess?: () => void): void => {
           })
 
           if (ratingText) {
-            ratingText.textContent = `${selectedRating} из 5`
+            ratingText.textContent = `${selectedRating} ${t('review.of5')}`
           }
           validateForm()
         })
@@ -102,7 +104,7 @@ export const initReviewForm = (onSubmitSuccess?: () => void): void => {
 
       if (errorEl) {
         if (text.length > 0 && text.length < MIN_REVIEW_LENGTH) {
-          errorEl.textContent = `Минимум ${MIN_REVIEW_LENGTH} символов (${text.length}/${MIN_REVIEW_LENGTH})`
+          errorEl.textContent = t('review.minChars', { min: MIN_REVIEW_LENGTH, current: text.length })
           errorEl.classList.remove('hidden')
         } else {
           errorEl.classList.add('hidden')
@@ -125,11 +127,11 @@ export const initReviewForm = (onSubmitSuccess?: () => void): void => {
       if (!userId) return
 
       const user = userStore.user
-      const userName = user ? `${user.fullName.firstName} ${user.fullName.lastName}` : 'Аноним'
+      const userName = user ? `${user.fullName.firstName} ${user.fullName.lastName}` : t('review.anonymous')
 
       submitBtn.disabled = true
       const submitSpan = submitBtn.querySelector('span')
-      if (submitSpan) submitSpan.textContent = 'Отправка...'
+      if (submitSpan) submitSpan.textContent = t('review.sending')
 
       try {
         await reviewService.submit({
@@ -159,18 +161,18 @@ export const initReviewForm = (onSubmitSuccess?: () => void): void => {
           }
         })
         const ratingText = ratingContainer?.querySelector<HTMLElement>('[data-rating-text]')
-        if (ratingText) ratingText.textContent = '0 из 5'
+        if (ratingText) ratingText.textContent = `0 ${t('review.of5')}`
 
         if (onSubmitSuccess) onSubmitSuccess()
       } catch {
         if (errorEl) {
-          errorEl.textContent = 'Не удалось отправить отзыв. Попробуйте ещё раз.'
+          errorEl.textContent = t('review.error')
           errorEl.classList.remove('hidden')
         }
       } finally {
         submitBtn.disabled = false
         const submitSpan = submitBtn.querySelector('span')
-        if (submitSpan) submitSpan.textContent = 'Отправить отзыв'
+        if (submitSpan) submitSpan.textContent = t('review.submit')
         validateForm()
       }
     })

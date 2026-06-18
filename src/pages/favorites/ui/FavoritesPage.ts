@@ -2,6 +2,7 @@ import { SortSelect } from '@/features/sort-products'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 import { getCurrentSort, initFavoritesPage } from '../model/init'
@@ -21,7 +22,7 @@ export const FavoritesPage = (): string => {
 
       <div class="flex items-center justify-between px-4 py-4 md:px-6 lg:px-30">
         <div class="flex items-center gap-3">
-          <h1 class="text-2xl font-bold text-text-primary">Избранное</h1>
+          <h1 class="text-2xl font-bold text-text-primary">${t('fav.title')}</h1>
           <span id="favorites-count" class="flex items-center justify-center min-w-6 h-6 rounded-full bg-primary px-1.5 text-xs font-medium text-text-button">
             …
           </span>
@@ -32,7 +33,7 @@ export const FavoritesPage = (): string => {
 
       <div class="px-4 pb-6 md:px-6 lg:px-30">
         <div id="favorites-product-list">
-          <p class="py-16 text-center font-medium text-text-quinary">Загрузка…</p>
+          <p class="py-16 text-center font-medium text-text-quinary">${t('fav.loading')}</p>
         </div>
       </div>
 

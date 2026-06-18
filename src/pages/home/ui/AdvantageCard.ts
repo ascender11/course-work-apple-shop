@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
 import { Button } from '@/shared/ui/components'
 
@@ -31,7 +32,7 @@ export const AdvantageCard = ({ icon, title, description, gradient, className = 
         ${description}
       </p>
       ${Button({
-        text: 'Подробнее',
+        text: t('home.adv.more'),
         variant: 'outline',
         href: '#',
         className: cn(

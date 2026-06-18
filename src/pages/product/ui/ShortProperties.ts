@@ -1,5 +1,6 @@
 import type { ProductSpecificationGroup } from '@/entities/product'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 export interface ShortPropertiesProps {
@@ -25,10 +26,10 @@ export const ShortProperties = ({ specifications }: ShortPropertiesProps): strin
 
   return html`
     <div class="flex flex-col gap-3 w-full">
-      <p class="text-sm font-medium text-text-secondary">Характеристики</p>
+      <p class="text-sm font-medium text-text-secondary">${t('product.specs')}</p>
       <ul class="flex flex-col divide-y-0">${rows}</ul>
       <a href="#specifications" class="text-sm text-primary hover:text-secondary transition-colors duration-150 self-start">
-        Смотреть все характеристики
+        ${t('product.viewAllSpecs')}
       </a>
     </div>
   `

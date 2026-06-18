@@ -1,0 +1,22 @@
+{
+  "cart.title": "Корзина",
+  "cart.itemsCount": "{count} товар",
+  "cart.itemsCount2": "{count} товара",
+  "cart.itemsCount5": "{count} товаров",
+  "cart.empty": "Корзина пуста",
+  "cart.emptyHint": "Добавьте товары из каталога, чтобы оформить заказ",
+  "cart.goToCatalog": "Перейти в каталог",
+  "cart.clear": "Очистить корзину",
+  "cart.yourOrder": "Ваш заказ",
+  "cart.products": "Товары",
+  "cart.delivery": "Доставка",
+  "cart.free": "Бесплатно",
+  "cart.total": "Итого",
+  "cart.checkout": "Оформить заказ",
+  "cart.checkoutDisclaimer": "Нажимая «Оформить заказ», вы соглашаетесь с условиями оферты",
+  "cart.processing": "Обрабатываем…",
+  "cart.orderSuccess": "Заказ оформлен!",
+  "cart.orderSuccessHint": "Мы свяжемся с вами в ближайшее время для подтверждения",
+  "cart.orderClose": "Отлично",
+  "cart.promoNotFound": "Промокод «{code}» не найден"
+}

@@ -3,6 +3,7 @@ import { initAddToCartButtons } from '@/features/cart-toggle'
 import { initFavoriteButtons } from '@/features/favorite-toggle'
 import { ProductList } from '@/widgets/product-list'
 
+import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
 
 export interface NewProductsProps {
@@ -21,9 +22,9 @@ export const NewProducts = ({ className = '' }: NewProductsProps = {}) => {
           await initFavoriteButtons()
           await initAddToCartButtons()
         } catch (error: unknown) {
-          const errorMessage = error instanceof Error ? error.message : 'Неизвестная ошибка'
+          const errorMessage = error instanceof Error ? error.message : 'Unknown error'
           listContainer.innerHTML = html`
-            <div class="py-10 text-center text-error">Не удалось загрузить товары: ${errorMessage}</div>
+            <div class="py-10 text-center text-error">${t('home.new.error', { error: errorMessage })}</div>
           `
         }
       }
@@ -35,9 +36,9 @@ export const NewProducts = ({ className = '' }: NewProductsProps = {}) => {
 
   return html`
     <section class="${cn('py-4 px-3 sm:py-6 sm:px-4', className)}">
-      <p class="text-lg text-primary sm:text-2xl mb-6">Новинки</p>
+      <p class="text-lg text-primary sm:text-2xl mb-6">${t('home.new.subtitle')}</p>
       <div id="new-products-list" class="w-full">
-        <div class="py-12 text-center text-text-quinary font-medium">Загрузка новых товаров...</div>
+        <div class="py-12 text-center text-text-quinary font-medium">${t('home.new.loading')}</div>
       </div>
     </section>
   `

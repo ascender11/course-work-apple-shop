@@ -3,6 +3,7 @@ import { ProductAvailability } from '@/entities/product'
 import { CartToggleButton } from '@/features/cart-toggle'
 import { FavoriteButton } from '@/features/favorite-toggle'
 
+import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
 import { Button } from '@/shared/ui/components'
 import { Star } from '@/shared/ui/icons'
@@ -38,7 +39,7 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
       <div class="flex items-center gap-1.25 text-text-quinary w-full">
         <span class="${cn('w-4 h-4 rounded-full inline-block', isInStock ? 'bg-success' : 'bg-primary')}"></span>
         <span class="flex justify-between w-full">
-          <span>${isInStock ? 'Есть в наличии' : 'Ожидается поступление'}</span>
+          <span>${isInStock ? t('product.inStock') : t('product.outOfStock')}</span>
           ${isInStock && product.warrantyPeriod ? html`<span>${product.warrantyPeriod}</span>` : ''}
         </span>
       </div>
@@ -51,14 +52,14 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
             <span class="text-3xl font-medium text-text-primary">${product.price.current.toLocaleString()} ₽</span>
           </div>
         `
-          : html`<p class="text-sm text-text-quinary">Мы можем сообщить вам, когда товар появится в наличии</p>`
+          : html`<p class="text-sm text-text-quinary">${t('product.outOfStockHint')}</p>`
       }
 
       <div class="w-full mt-1">
         ${
           isInStock
             ? CartToggleButton({ productId: product.id })
-            : Button({ text: 'Сообщить о поступлении', variant: 'outline' })
+            : Button({ text: t('product.notifyMe'), variant: 'outline' })
         }
       </div>
     </div>

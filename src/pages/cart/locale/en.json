@@ -1,0 +1,22 @@
+{
+  "cart.title": "Cart",
+  "cart.itemsCount": "{count} item",
+  "cart.itemsCount2": "{count} items",
+  "cart.itemsCount5": "{count} items",
+  "cart.empty": "Cart is empty",
+  "cart.emptyHint": "Add items from the catalog to place an order",
+  "cart.goToCatalog": "Go to catalog",
+  "cart.clear": "Clear cart",
+  "cart.yourOrder": "Your order",
+  "cart.products": "Products",
+  "cart.delivery": "Delivery",
+  "cart.free": "Free",
+  "cart.total": "Total",
+  "cart.checkout": "Place order",
+  "cart.checkoutDisclaimer": "By clicking \"Place order\" you agree to the offer terms",
+  "cart.processing": "Processing…",
+  "cart.orderSuccess": "Order placed!",
+  "cart.orderSuccessHint": "We will contact you shortly for confirmation",
+  "cart.orderClose": "Great",
+  "cart.promoNotFound": "Promo code \"{code}\" not found"
+}

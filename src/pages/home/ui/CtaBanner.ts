@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
 import { Button } from '@/shared/ui/components'
 
@@ -15,21 +16,21 @@ export const CtaBanner = ({ className = '' }: CtaBannerProps = {}) => {
     )}">
       <div class="flex flex-col gap-2">
         <h2 class="text-2xl font-bold md:text-3xl">
-          Покупайте <span class="text-primary">Apple</span> быстрее и удобнее
+          ${t('home.cta.title')}
         </h2>
         <p class="text-base text-text-quinary sm:text-xl">
-          Создайте аккаунт за минуту — и ваша корзина, избранное и заказы всегда будут с вами.
+          ${t('home.cta.subtitle')}
         </p>
       </div>
       <div class="flex gap-3">
         ${Button({
-          text: 'Начать',
+          text: t('home.cta.start'),
           href: '#',
           className:
             'text-white text-sm sm:text-lg min-w-30 sm:min-w-40 py-3 rounded-xl bg-linear-to-r from-[#0071E4] to-[#9747FF]',
         })}
         ${Button({
-          text: 'Подробнее',
+          text: t('home.cta.more'),
           variant: 'outline',
           href: '#',
           className: 'min-w-30 text-sm sm:text-lg sm:min-w-40 py-3 rounded-xl',

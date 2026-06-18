@@ -1,6 +1,7 @@
 import type { AvailableProduct } from '@/entities/product'
 import { CartToggleButton } from '@/features/cart-toggle'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 export type PriceCardProps = Pick<AvailableProduct, 'price' | 'availability' | 'warrantyPeriod'> & {
@@ -20,7 +21,7 @@ export const PriceCard = ({ price, warrantyPeriod, productId }: PriceCardProps):
           ${oldPrice}
           <div class="flex items-center gap-1.5 text-sm text-text-quinary">
             <span class="w-3.5 h-3.5 rounded-full bg-success inline-block shrink-0"></span>
-            <span>В наличии</span>
+            <span>${t('product.inStock')}</span>
           </div>
         </div>
         <p class="text-3xl font-semibold text-text-primary">${price.current.toLocaleString('ru-RU')} ₽</p>

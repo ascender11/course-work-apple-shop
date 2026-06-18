@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 import { EyeOpen } from '@/shared/ui/icons'
 
@@ -9,7 +10,7 @@ export const LoginForm = () => html`
 
     <div class="flex flex-col gap-1">
       <label for="login-email" class="text-sm font-medium text-text-secondary">
-        Email<span class="text-error ml-0.5">*</span>
+        ${t('auth.login.email')}<span class="text-error ml-0.5">*</span>
       </label>
       <input
         id="login-email"
@@ -24,14 +25,14 @@ export const LoginForm = () => html`
 
     <div class="flex flex-col gap-1">
       <label for="login-password" class="text-sm font-medium text-text-secondary">
-        Пароль<span class="text-error ml-0.5">*</span>
+        ${t('auth.login.password')}<span class="text-error ml-0.5">*</span>
       </label>
       <div class="relative">
         <input
           id="login-password"
           name="password"
           type="password"
-          placeholder="Введите пароль"
+          placeholder="${t('auth.login.password')}"
           autocomplete="current-password"
           class="${INPUT_BASE} pr-11"
         />
@@ -39,7 +40,7 @@ export const LoginForm = () => html`
           id="toggle-login-pass"
           type="button"
           class="absolute right-3 top-1/2 -translate-y-1/2 text-text-quinary hover:text-text-secondary transition-colors duration-150 cursor-pointer"
-          aria-label="Показать пароль"
+          aria-label="${t('auth.login.showPassword')}"
         >
           ${EyeOpen()}
         </button>
@@ -55,7 +56,7 @@ export const LoginForm = () => html`
       disabled
       class="button flex items-center justify-center w-full mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      Войти
+      ${t('auth.login.submit')}
     </button>
 
   </form>

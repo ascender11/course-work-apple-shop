@@ -1,5 +1,6 @@
 import { userStore } from '@/entities/user'
 
+import { t } from '@/shared/i18n'
 import { navigate } from '@/shared/lib'
 
 import { initAutoPasswordGeneration, initNicknameGeneration } from '../lib/nickname-helpers'
@@ -192,7 +193,7 @@ export const initRegisterForm = () => {
     } else {
       const autoPassword = (document.getElementById('reg-auto-password') as HTMLInputElement)?.value || ''
       if (!autoPassword) {
-        showError('reg-auto-password', 'Сгенерируйте пароль')
+        showError('reg-auto-password', t('auth.validators.generatePassword'))
         hasError = true
       }
       password = autoPassword
@@ -201,7 +202,7 @@ export const initRegisterForm = () => {
     if (!hasError && mode === 'manual') {
       const isTop = await isTop100Password(password)
       if (isTop) {
-        showError('reg-password', 'Этот пароль слишком распространён. Выберите другой')
+        showError('reg-password', t('auth.validators.commonPassword'))
         hasError = true
       }
     }
@@ -214,7 +215,7 @@ export const initRegisterForm = () => {
 
     const submitBtn = document.getElementById('reg-submit') as HTMLButtonElement
     submitBtn.disabled = true
-    submitBtn.textContent = 'Регистрация...'
+    submitBtn.textContent = t('auth.register.loading')
 
     try {
       await userStore.register({
@@ -233,10 +234,10 @@ export const initRegisterForm = () => {
       navigate('/')
     } catch (err) {
       if (serverError) {
-        serverError.textContent = err instanceof Error ? err.message : 'Ошибка регистрации'
+        serverError.textContent = err instanceof Error ? err.message : t('auth.register.error')
       }
       submitBtn.disabled = false
-      submitBtn.textContent = 'Зарегистрироваться'
+      submitBtn.textContent = t('auth.register.submit')
     }
   })
 }

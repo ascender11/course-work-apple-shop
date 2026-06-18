@@ -1,3 +1,5 @@
+import { t } from '@/shared/i18n'
+
 let submitButtonUpdateCallback: (() => void) | null = null
 
 export const setSubmitButtonUpdater = (callback: () => void) => {
@@ -67,15 +69,15 @@ export const updateStrength = (password: string) => {
   } else if (score <= 2) {
     width = 'w-1/3'
     color = 'bg-red-400'
-    text = 'Слабый'
+    text = t('auth.strength.weak')
   } else if (score <= 4) {
     width = 'w-2/3'
     color = 'bg-amber-400'
-    text = 'Средний'
+    text = t('auth.strength.medium')
   } else {
     width = 'w-full'
     color = 'bg-green-500'
-    text = 'Сильный'
+    text = t('auth.strength.strong')
   }
 
   bar.className = `h-full rounded-full transition-all duration-300 ${width} ${color}`

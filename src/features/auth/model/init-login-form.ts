@@ -1,5 +1,6 @@
 import { userStore } from '@/entities/user'
 
+import { t } from '@/shared/i18n'
 import { navigate } from '@/shared/lib'
 
 import { initTogglePassword } from '../lib/password-helpers'
@@ -55,15 +56,15 @@ export const initLoginForm = () => {
     if (emailError || passwordError) return
 
     submitBtn.disabled = true
-    submitBtn.textContent = 'Входим…'
+    submitBtn.textContent = t('auth.login.loading')
 
     try {
       await userStore.login({ email, password })
       navigate('/')
     } catch (err) {
-      serverError.textContent = err instanceof Error ? err.message : 'Ошибка входа'
+      serverError.textContent = err instanceof Error ? err.message : t('auth.login.error')
       submitBtn.disabled = false
-      submitBtn.textContent = 'Войти'
+      submitBtn.textContent = t('auth.login.submit')
     }
   })
 }

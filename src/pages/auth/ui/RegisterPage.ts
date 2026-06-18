@@ -2,6 +2,7 @@ import { initRegisterForm, RegisterForm } from '@/features/auth'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 export const RegisterPage = (): string => {
@@ -19,16 +20,16 @@ export const RegisterPage = (): string => {
         <div class="bg-background rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] px-6 py-7 sm:px-8 sm:py-8">
 
           <div class="mb-6">
-            <h1 class="text-2xl font-semibold text-text-primary">Создать аккаунт</h1>
-            <p class="text-sm text-text-quinary mt-1">Заполните все обязательные поля для регистрации</p>
+            <h1 class="text-2xl font-semibold text-text-primary">${t('auth.register.title')}</h1>
+            <p class="text-sm text-text-quinary mt-1">${t('auth.register.subtitle')}</p>
           </div>
 
           ${RegisterForm()}
 
           <p class="text-sm text-text-quinary text-center mt-6">
-            Уже есть аккаунт?
+            ${t('auth.register.hasAccount')}
             <a href="/login" data-navigo class="text-primary hover:text-secondary transition-colors duration-150 ml-1">
-              Войти
+              ${t('auth.register.loginLink')}
             </a>
           </p>
 

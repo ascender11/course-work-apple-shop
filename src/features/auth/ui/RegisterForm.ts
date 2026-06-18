@@ -1,3 +1,4 @@
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 import { EyeOpen } from '@/shared/ui/icons'
 
@@ -8,11 +9,11 @@ const REQUIRED_MARK = '<span class="text-error ml-0.5">*</span>'
 
 export const RegisterForm = () => html`
   <form id="register-form" novalidate class="flex flex-col gap-5">
-    
+
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <div class="flex flex-col gap-0.5">
         <label class="text-sm font-medium text-text-secondary">
-          Фамилия${REQUIRED_MARK}
+          ${t('auth.register.lastName')}${REQUIRED_MARK}
         </label>
         <input
           id="reg-lastname"
@@ -24,10 +25,10 @@ export const RegisterForm = () => html`
         />
         <span data-error="reg-lastname" class="text-xs text-error min-h-3.5 block"></span>
       </div>
-      
+
       <div class="flex flex-col gap-0.5">
         <label class="text-sm font-medium text-text-secondary">
-          Имя${REQUIRED_MARK}
+          ${t('auth.register.firstName')}${REQUIRED_MARK}
         </label>
         <input
           id="reg-firstname"
@@ -39,9 +40,9 @@ export const RegisterForm = () => html`
         />
         <span data-error="reg-firstname" class="text-xs text-error min-h-3.5 block"></span>
       </div>
-      
+
       <div class="flex flex-col gap-0.5">
-        <label class="text-sm font-medium text-text-secondary">Отчество</label>
+        <label class="text-sm font-medium text-text-secondary">${t('auth.register.patronymic')}</label>
         <input
           id="reg-patronymic"
           name="patronymic"
@@ -57,7 +58,7 @@ export const RegisterForm = () => html`
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
       <div class="flex flex-col gap-0.5">
         <label class="text-sm font-medium text-text-secondary">
-          Телефон${REQUIRED_MARK}
+          ${t('auth.register.phone')}${REQUIRED_MARK}
         </label>
         <input
           id="reg-phone"
@@ -68,12 +69,12 @@ export const RegisterForm = () => html`
           class="${INPUT_BASE}"
         />
         <span data-error="reg-phone" class="text-xs text-error min-h-3.5 block"></span>
-        <p class="text-xs text-text-quinary mt-0.5">Только номера РБ</p>
+        <p class="text-xs text-text-quinary mt-0.5">${t('auth.register.phoneHint')}</p>
       </div>
-      
+
       <div class="flex flex-col gap-0.5">
         <label class="text-sm font-medium text-text-secondary">
-          Email${REQUIRED_MARK}
+          ${t('auth.register.email')}${REQUIRED_MARK}
         </label>
         <input
           id="reg-email"
@@ -89,7 +90,7 @@ export const RegisterForm = () => html`
 
     <div class="flex flex-col gap-0.5">
       <label class="text-sm font-medium text-text-secondary">
-        Дата рождения${REQUIRED_MARK}
+        ${t('auth.register.birthDate')}${REQUIRED_MARK}
       </label>
       <input
         id="reg-birthdate"
@@ -98,12 +99,12 @@ export const RegisterForm = () => html`
         class="${INPUT_BASE}"
       />
       <span data-error="reg-birthdate" class="text-xs text-error min-h-3.5 block"></span>
-      <p class="text-xs text-text-quinary mt-0.5">Должно быть не менее 16 лет</p>
+      <p class="text-xs text-text-quinary mt-0.5">${t('auth.register.birthDateHint')}</p>
     </div>
 
     <div class="flex flex-col gap-0.5">
       <label class="text-sm font-medium text-text-secondary">
-        Никнейм${REQUIRED_MARK}
+        ${t('auth.register.nickname')}${REQUIRED_MARK}
       </label>
       <div class="flex gap-2">
         <input
@@ -120,28 +121,28 @@ export const RegisterForm = () => html`
           type="button"
           class="px-4 py-3 text-sm font-medium text-primary border border-border rounded-lg hover:bg-background-secondary transition-colors shrink-0 whitespace-nowrap"
         >
-          Сгенерировать
+          ${t('auth.register.generate')}
         </button>
       </div>
       <span data-error="reg-nickname" class="text-xs text-error min-h-3.5 block"></span>
       <p id="nickname-hint" class="text-xs text-text-quinary mt-0.5 hidden">
-        Вы исчерпали 5 попыток. Введите никнейм вручную.
+        ${t('auth.register.nicknameLimit')}
       </p>
     </div>
 
     <div class="flex flex-col gap-0.5">
       <label class="text-sm font-medium text-text-secondary">
-        Пароль${REQUIRED_MARK}
+        ${t('auth.register.password')}${REQUIRED_MARK}
       </label>
-      
+
       <div class="flex gap-4 mb-2">
         <label class="flex items-center gap-2 cursor-pointer">
           <input type="radio" name="password-mode" value="manual" checked class="radio" />
-          <span class="text-sm text-text-secondary">Ввести самостоятельно</span>
+          <span class="text-sm text-text-secondary">${t('auth.register.passwordManual')}</span>
         </label>
         <label class="flex items-center gap-2 cursor-pointer">
           <input type="radio" name="password-mode" value="auto" class="radio" />
-          <span class="text-sm text-text-secondary">Сгенерировать автоматически</span>
+          <span class="text-sm text-text-secondary">${t('auth.register.passwordAuto')}</span>
         </label>
       </div>
 
@@ -151,7 +152,7 @@ export const RegisterForm = () => html`
             id="reg-password"
             name="password"
             type="password"
-            placeholder="Придумайте пароль"
+            placeholder="${t('auth.register.passwordPlaceholder')}"
             autocomplete="new-password"
             class="${INPUT_BASE} pr-11"
           />
@@ -159,7 +160,7 @@ export const RegisterForm = () => html`
             id="toggle-reg-pass"
             type="button"
             class="absolute right-3 top-1/2 -translate-y-1/2 text-text-quinary hover:text-text-secondary"
-            aria-label="Показать пароль"
+            aria-label="${t('auth.login.showPassword')}"
           >
             ${EyeOpen()}
           </button>
@@ -171,13 +172,13 @@ export const RegisterForm = () => html`
           <span id="strength-label" class="text-xs font-medium w-14 text-right text-text-quinary"></span>
         </div>
         <span data-error="reg-password" class="text-xs text-error min-h-3.5 block"></span>
-        
+
         <div class="relative mt-3">
           <input
             id="reg-confirm"
             name="confirmPassword"
             type="password"
-            placeholder="Повторите пароль"
+            placeholder="${t('auth.register.confirmPassword')}"
             autocomplete="new-password"
             class="${INPUT_BASE} pr-11"
           />
@@ -185,7 +186,7 @@ export const RegisterForm = () => html`
             id="toggle-reg-confirm"
             type="button"
             class="absolute right-3 top-1/2 -translate-y-1/2 text-text-quinary hover:text-text-secondary"
-            aria-label="Показать пароль"
+            aria-label="${t('auth.login.showPassword')}"
           >
             ${EyeOpen()}
           </button>
@@ -207,14 +208,14 @@ export const RegisterForm = () => html`
             type="button"
             class="absolute right-3 top-1/2 -translate-y-1/2 text-primary hover:text-secondary text-sm"
           >
-            Сгенерировать новый
+            ${t('auth.register.generateNew')}
           </button>
         </div>
         <span data-error="reg-auto-password" class="text-xs text-error min-h-3.5 block"></span>
       </div>
-      
+
       <p class="text-xs text-text-quinary mt-1">
-        Пароль должен содержать 8-20 символов, включая заглавную и строчную буквы, цифру и спецсимвол
+        ${t('auth.register.passwordHint')}
       </p>
     </div>
 
@@ -225,9 +226,9 @@ export const RegisterForm = () => html`
         class="checkbox shrink-0"
       />
       <span class="text-sm text-text-secondary">
-        Я прочитал и принимаю 
+        ${t('auth.register.agreement')}
         <a href="/agreement" data-navigo class="text-primary hover:text-secondary transition-colors">
-          Соглашение пользователя
+          ${t('auth.register.agreementLink')}
         </a>
         ${REQUIRED_MARK}
       </span>
@@ -242,7 +243,7 @@ export const RegisterForm = () => html`
       disabled
       class="button flex items-center justify-center w-full disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      Зарегистрироваться
+      ${t('auth.register.submit')}
     </button>
 
   </form>

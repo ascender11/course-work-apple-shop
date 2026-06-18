@@ -1,0 +1,11 @@
+{
+  "auth.login.title": "Вход в аккаунт",
+  "auth.login.subtitle": "Войдите, чтобы отслеживать заказы и управлять аккаунтом",
+  "auth.login.noAccount": "Нет аккаунта?",
+  "auth.login.registerLink": "Зарегистрироваться",
+
+  "auth.register.title": "Создать аккаунт",
+  "auth.register.subtitle": "Заполните все обязательные поля для регистрации",
+  "auth.register.hasAccount": "Уже есть аккаунт?",
+  "auth.register.loginLink": "Войти"
+}

@@ -1,32 +1,34 @@
+import { t } from '@/shared/i18n'
+
 export const validateLastName = (value: string): string => {
-  if (!value.trim()) return 'Введите фамилию'
-  if (value.trim().length < 2) return 'Фамилия должна содержать минимум 2 символа'
+  if (!value.trim()) return t('auth.validators.lastName.required')
+  if (value.trim().length < 2) return t('auth.validators.lastName.min')
   return ''
 }
 
 export const validateFirstName = (value: string): string => {
-  if (!value.trim()) return 'Введите имя'
-  if (value.trim().length < 2) return 'Имя должно содержать минимум 2 символа'
+  if (!value.trim()) return t('auth.validators.firstName.required')
+  if (value.trim().length < 2) return t('auth.validators.firstName.min')
   return ''
 }
 
 export const validatePhone = (value: string): string => {
   const cleaned = value.replace(/\s/g, '')
   const phoneRegex = /^\+375(29|33|44|25)\d{7}$/
-  if (!cleaned) return 'Введите номер телефона'
-  if (!phoneRegex.test(cleaned)) return 'Введите корректный номер РБ (+375XXXXXXXXX)'
+  if (!cleaned) return t('auth.validators.phone.required')
+  if (!phoneRegex.test(cleaned)) return t('auth.validators.phone.invalid')
   return ''
 }
 
 export const validateEmail = (value: string): string => {
-  if (!value.trim()) return 'Введите email'
+  if (!value.trim()) return t('auth.validators.email.required')
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (!emailRegex.test(value)) return 'Введите корректный email'
+  if (!emailRegex.test(value)) return t('auth.validators.email.invalid')
   return ''
 }
 
 export const validateBirthDate = (value: string): string => {
-  if (!value) return 'Введите дату рождения'
+  if (!value) return t('auth.validators.birthDate.required')
 
   const birthDate = new Date(value)
   const today = new Date()
@@ -37,36 +39,36 @@ export const validateBirthDate = (value: string): string => {
     age--
   }
 
-  if (age < 16) return 'Вам должно быть не менее 16 лет'
-  if (age > 120) return 'Проверьте дату рождения'
+  if (age < 16) return t('auth.validators.birthDate.tooYoung')
+  if (age > 120) return t('auth.validators.birthDate.invalid')
   return ''
 }
 
 export const validateNickname = (value: string): string => {
-  if (!value.trim()) return 'Введите никнейм'
-  if (value.length < 3) return 'Никнейм должен содержать минимум 3 символа'
-  if (!/^[a-zA-Z0-9_]+$/.test(value)) return 'Только латиница, цифры и _'
+  if (!value.trim()) return t('auth.validators.nickname.required')
+  if (value.length < 3) return t('auth.validators.nickname.min')
+  if (!/^[a-zA-Z0-9_]+$/.test(value)) return t('auth.validators.nickname.invalid')
   return ''
 }
 
 export const validatePassword = (value: string): string => {
-  if (!value) return 'Введите пароль'
-  if (value.length < 8) return 'Минимум 8 символов'
-  if (value.length > 20) return 'Максимум 20 символов'
-  if (!/[A-Z]/.test(value)) return 'Должна быть хотя бы одна заглавная буква'
-  if (!/[a-z]/.test(value)) return 'Должна быть хотя бы одна строчная буква'
-  if (!/[0-9]/.test(value)) return 'Должна быть хотя бы одна цифра'
-  if (!/[!@#$%^&*]/.test(value)) return 'Должен быть хотя бы один спецсимвол (!@#$%^&*)'
+  if (!value) return t('auth.validators.password.required')
+  if (value.length < 8) return t('auth.validators.password.min')
+  if (value.length > 20) return t('auth.validators.password.max')
+  if (!/[A-Z]/.test(value)) return t('auth.validators.password.uppercase')
+  if (!/[a-z]/.test(value)) return t('auth.validators.password.lowercase')
+  if (!/[0-9]/.test(value)) return t('auth.validators.password.digit')
+  if (!/[!@#$%^&*]/.test(value)) return t('auth.validators.password.special')
   return ''
 }
 
 export const validateConfirm = (password: string, confirm: string): string => {
-  if (!confirm) return 'Подтвердите пароль'
-  if (password !== confirm) return 'Пароли не совпадают'
+  if (!confirm) return t('auth.validators.confirm.required')
+  if (password !== confirm) return t('auth.validators.confirm.mismatch')
   return ''
 }
 
 export const validateAgreement = (checked: boolean): string => {
-  if (!checked) return 'Необходимо принять Соглашение пользователя'
+  if (!checked) return t('auth.validators.agreement.required')
   return ''
 }

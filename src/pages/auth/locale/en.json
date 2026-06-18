@@ -1,0 +1,11 @@
+{
+  "auth.login.title": "Sign in",
+  "auth.login.subtitle": "Sign in to track orders and manage your account",
+  "auth.login.noAccount": "Don't have an account?",
+  "auth.login.registerLink": "Sign up",
+
+  "auth.register.title": "Create account",
+  "auth.register.subtitle": "Fill in all required fields to register",
+  "auth.register.hasAccount": "Already have an account?",
+  "auth.register.loginLink": "Sign in"
+}

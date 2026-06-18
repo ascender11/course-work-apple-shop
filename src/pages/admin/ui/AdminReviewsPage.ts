@@ -2,6 +2,7 @@ import { userStore } from '@/entities/user'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 import { initReviewsPage } from '../model/reviews-controller'
@@ -12,8 +13,8 @@ export const AdminReviewsPage = (): string => {
       ${Header()}
       <main class="min-h-[calc(100vh-60px)] bg-background-secondary flex items-center justify-center px-4 py-8">
         <div class="text-center">
-          <h1 class="text-2xl font-semibold text-text-primary mb-2">Доступ запрещён</h1>
-          <p class="text-sm text-text-quinary">У вас нет прав администратора</p>
+          <h1 class="text-2xl font-semibold text-text-primary mb-2">${t('admin.accessDenied')}</h1>
+          <p class="text-sm text-text-quinary">${t('admin.noRights')}</p>
         </div>
       </main>
       ${Footer()}
@@ -43,35 +44,35 @@ export const AdminReviewsPage = (): string => {
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
           </a>
           <div>
-            <h1 class="text-2xl font-semibold text-text-primary">Управление отзывами</h1>
-            <p class="text-sm text-text-quinary mt-0.5">Просмотр и удаление отзывов</p>
+            <h1 class="text-2xl font-semibold text-text-primary">${t('admin.reviews.title')}</h1>
+            <p class="text-sm text-text-quinary mt-0.5">${t('admin.reviews.subtitle')}</p>
           </div>
         </div>
 
         <div class="bg-background rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 sm:p-8">
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 mb-6">
             <div class="flex flex-col gap-0.5">
-              <label class="text-sm font-medium text-text-secondary">Показать отзывы по товару</label>
+              <label class="text-sm font-medium text-text-secondary">${t('admin.reviews.filterProduct')}</label>
               <select
                 id="admin-review-product-select"
                 class="${SELECT_BASE}"
               >
-                <option value="">Все товары</option>
+                <option value="">${t('admin.reviews.allProducts')}</option>
               </select>
             </div>
             <div class="flex flex-col gap-0.5">
-              <label class="text-sm font-medium text-text-secondary">Показать отзывы по пользователю</label>
+              <label class="text-sm font-medium text-text-secondary">${t('admin.reviews.filterUser')}</label>
               <select
                 id="admin-review-user-select"
                 class="${SELECT_BASE}"
               >
-                <option value="">Все пользователи</option>
+                <option value="">${t('admin.reviews.allUsers')}</option>
               </select>
             </div>
           </div>
 
           <div id="admin-reviews-list" class="flex flex-col gap-3">
-            <p class="text-sm text-text-quinary text-center py-8">Загрузка отзывов...</p>
+            <p class="text-sm text-text-quinary text-center py-8">${t('admin.reviews.loading')}</p>
           </div>
         </div>
       </div>

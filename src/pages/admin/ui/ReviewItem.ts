@@ -1,8 +1,11 @@
 import type { Review } from '@/entities/review'
 
+import { t } from '@/shared/i18n'
+
 const formatDate = (dateStr: string): string => {
   const date = new Date(dateStr)
-  return date.toLocaleDateString('ru-RU', {
+  const lang = document.documentElement.lang || 'ru'
+  return date.toLocaleDateString(lang === 'en' ? 'en-US' : 'ru-RU', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -29,10 +32,10 @@ export const ReviewItem = (review: Review, productName?: string): string => {
         <button
           data-delete-review="${review.id}"
           class="px-3 py-1.5 text-xs font-medium text-error border border-border rounded-lg hover:bg-red-50 transition-colors"
-        >Удалить</button>
+        >${t('admin.reviews.deleteBtn')}</button>
       </div>
       <p class="text-sm text-text-secondary leading-relaxed">${review.text}</p>
-      ${productName ? `<p class="text-xs text-text-quinary mt-2">Товар: ${productName}</p>` : ''}
+      ${productName ? `<p class="text-xs text-text-quinary mt-2">${t('admin.reviews.product')} ${productName}</p>` : ''}
     </div>
   `
 }

@@ -5,6 +5,8 @@ import { reviewService } from '@/entities/review'
 import type { PublicUser } from '@/entities/user'
 import { userService } from '@/entities/user'
 
+import { t } from '@/shared/i18n'
+
 import { filterReviews, populateSelects, renderReviewsList } from '../lib/review-helpers'
 
 let allReviews: Review[] = []
@@ -16,7 +18,7 @@ const attachReviewListeners = (reviews: Review[]) => {
     btn.addEventListener('click', async () => {
       const id = btn.dataset.deleteReview
       if (!id) return
-      if (!confirm('Вы уверены, что хотите удалить отзыв?')) return
+      if (!confirm(t('admin.reviews.deleteConfirm'))) return
       try {
         await reviewService.delete(id)
         const review = reviews.find((r) => r.id === id)
@@ -26,7 +28,7 @@ const attachReviewListeners = (reviews: Review[]) => {
         allReviews = allReviews.filter((r) => r.id !== id)
         filterReviews(allReviews, allProducts, attachReviewListeners)
       } catch {
-        alert('Ошибка при удалении отзыва')
+        alert(t('admin.reviews.deleteError'))
       }
     })
   })
@@ -58,6 +60,7 @@ const loadData = async () => {
     populateSelects(allProducts, allUsers)
   } catch {
     const container = document.getElementById('admin-reviews-list')
-    if (container) container.innerHTML = '<p class="text-sm text-error text-center py-8">Ошибка загрузки отзывов</p>'
+    if (container)
+      container.innerHTML = `<p class="text-sm text-error text-center py-8">${t('admin.reviews.loadError')}</p>`
   }
 }

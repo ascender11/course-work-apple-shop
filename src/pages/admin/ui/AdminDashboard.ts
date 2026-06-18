@@ -2,6 +2,7 @@ import { userStore } from '@/entities/user'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 import { Chat, Package } from '@/shared/ui/icons'
 
@@ -29,8 +30,8 @@ export const AdminDashboard = (): string => {
       ${Header()}
       <main class="min-h-[calc(100vh-60px)] bg-background-secondary flex items-center justify-center px-4 py-8">
         <div class="text-center">
-          <h1 class="text-2xl font-semibold text-text-primary mb-2">Доступ запрещён</h1>
-          <p class="text-sm text-text-quinary">У вас нет прав администратора</p>
+          <h1 class="text-2xl font-semibold text-text-primary mb-2">${t('admin.accessDenied')}</h1>
+          <p class="text-sm text-text-quinary">${t('admin.noRights')}</p>
         </div>
       </main>
       ${Footer()}
@@ -42,21 +43,21 @@ export const AdminDashboard = (): string => {
     <main class="min-h-[calc(100vh-60px)] bg-background-secondary px-4 py-8 sm:px-6 lg:px-25">
       <div class="max-w-3xl mx-auto">
         <div class="mb-8">
-          <h1 class="text-2xl font-semibold text-text-primary">Панель администратора</h1>
-          <p class="text-sm text-text-quinary mt-1">Управление товарами и отзывами</p>
+          <h1 class="text-2xl font-semibold text-text-primary">${t('admin.dashboard.title')}</h1>
+          <p class="text-sm text-text-quinary mt-1">${t('admin.dashboard.subtitle')}</p>
         </div>
 
         <div class="flex flex-col gap-4">
           ${AdminLink(
             '/admin/products',
-            'Управление товарами',
-            'Добавление, редактирование и удаление товаров',
+            t('admin.dashboard.products'),
+            t('admin.dashboard.productsDesc'),
             Package({ className: 'w-6 h-6 text-primary' })
           )}
           ${AdminLink(
             '/admin/reviews',
-            'Управление отзывами',
-            'Просмотр и удаление отзывов по товарам и пользователям',
+            t('admin.dashboard.reviews'),
+            t('admin.dashboard.reviewsDesc'),
             Chat({ className: 'w-6 h-6 text-primary' })
           )}
         </div>
@@ -67,7 +68,7 @@ export const AdminDashboard = (): string => {
           class="inline-flex items-center gap-2 mt-8 px-4 py-2 text-sm font-medium text-text-quinary hover:text-text-primary transition-colors"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-          Назад в профиль
+          ${t('admin.dashboard.back')}
         </a>
       </div>
     </main>

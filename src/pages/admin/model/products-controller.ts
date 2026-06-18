@@ -1,6 +1,8 @@
 import type { Product } from '@/entities/product'
 import { productService } from '@/entities/product'
 
+import { t } from '@/shared/i18n'
+
 import { clearErrorOnInput } from '../lib/dom-helpers'
 import { buildProduct, collectProductFormData, openEditForm, resetForm, validateProductForm } from '../lib/form-helpers'
 import { ProductItem } from '../ui/ProductItem'
@@ -19,7 +21,7 @@ const renderProductsList = () => {
   const container = document.getElementById('admin-products-list')
   if (!container) return
   if (allProducts.length === 0) {
-    container.innerHTML = '<p class="text-sm text-text-quinary text-center py-8">Товары не найдены</p>'
+    container.innerHTML = `<p class="text-sm text-text-quinary text-center py-8">${t('admin.products.notFound')}</p>`
     return
   }
   container.innerHTML = allProducts.map(ProductItem).join('')
@@ -41,13 +43,13 @@ const attachProductListeners = () => {
     btn.addEventListener('click', async () => {
       const id = btn.dataset.deleteProduct
       if (!id) return
-      if (!confirm('Вы уверены, что хотите удалить товар?')) return
+      if (!confirm(t('admin.products.deleteConfirm'))) return
       try {
         await productService.delete(id)
         allProducts = allProducts.filter((p) => p.id !== id)
         renderProductsList()
       } catch {
-        alert('Ошибка при удалении товара')
+        alert(t('admin.products.deleteError'))
       }
     })
   })
@@ -87,7 +89,7 @@ export const initProductsPage = () => {
 
     const submitBtn = document.getElementById('admin-product-submit') as HTMLButtonElement
     submitBtn.disabled = true
-    submitBtn.textContent = isEdit ? 'Сохранение...' : 'Создание...'
+    submitBtn.textContent = isEdit ? t('admin.products.saving') : t('admin.products.creating')
 
     try {
       if (isEdit) {
@@ -106,10 +108,10 @@ export const initProductsPage = () => {
       resetForm()
       updateSubmitButton()
     } catch {
-      if (errorEl) errorEl.textContent = 'Ошибка при сохранении товара'
+      if (errorEl) errorEl.textContent = t('admin.products.saveError')
     } finally {
       submitBtn.disabled = false
-      submitBtn.textContent = 'Сохранить'
+      submitBtn.textContent = t('admin.products.save')
       updateSubmitButton()
     }
   })
@@ -123,6 +125,7 @@ const loadProducts = async () => {
     renderProductsList()
   } catch {
     const container = document.getElementById('admin-products-list')
-    if (container) container.innerHTML = '<p class="text-sm text-error text-center py-8">Ошибка загрузки товаров</p>'
+    if (container)
+      container.innerHTML = `<p class="text-sm text-error text-center py-8">${t('admin.products.loadError')}</p>`
   }
 }

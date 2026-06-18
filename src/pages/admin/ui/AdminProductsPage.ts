@@ -2,6 +2,7 @@ import { userStore } from '@/entities/user'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 import { initProductsPage } from '../model/products-controller'
@@ -12,8 +13,8 @@ export const AdminProductsPage = (): string => {
       ${Header()}
       <main class="min-h-[calc(100vh-60px)] bg-background-secondary flex items-center justify-center px-4 py-8">
         <div class="text-center">
-          <h1 class="text-2xl font-semibold text-text-primary mb-2">Доступ запрещён</h1>
-          <p class="text-sm text-text-quinary">У вас нет прав администратора</p>
+          <h1 class="text-2xl font-semibold text-text-primary mb-2">${t('admin.accessDenied')}</h1>
+          <p class="text-sm text-text-quinary">${t('admin.noRights')}</p>
         </div>
       </main>
       ${Footer()}
@@ -44,29 +45,29 @@ export const AdminProductsPage = (): string => {
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
           </a>
           <div>
-            <h1 class="text-2xl font-semibold text-text-primary">Управление товарами</h1>
-            <p class="text-sm text-text-quinary mt-0.5">Добавление, редактирование и удаление товаров</p>
+            <h1 class="text-2xl font-semibold text-text-primary">${t('admin.products.title')}</h1>
+            <p class="text-sm text-text-quinary mt-0.5">${t('admin.products.subtitle')}</p>
           </div>
         </div>
 
         <div class="bg-background rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 sm:p-8">
           <div class="flex items-center justify-between mb-6">
-            <h2 class="text-lg font-semibold text-text-primary">Товары</h2>
+            <h2 class="text-lg font-semibold text-text-primary">${t('admin.products.list')}</h2>
             <button
               id="admin-add-product-btn"
               class="button text-sm"
-            >Добавить товар</button>
+            >${t('admin.products.add')}</button>
           </div>
 
           <div id="admin-product-form-container" class="hidden mb-6">
             <div class="p-5 rounded-xl border border-border-light bg-background-secondary">
-              <h3 id="admin-product-form-title" class="text-base font-semibold text-text-primary mb-4">Добавить товар</h3>
+              <h3 id="admin-product-form-title" class="text-base font-semibold text-text-primary mb-4">${t('admin.products.add')}</h3>
               <form id="admin-product-form" novalidate class="flex flex-col gap-4">
                 <input type="hidden" id="admin-product-id" />
 
                 <div class="flex flex-col gap-0.5">
                   <label class="text-sm font-medium text-text-secondary">
-                    Название${REQUIRED_MARK}
+                    ${t('admin.products.field.title')}${REQUIRED_MARK}
                   </label>
                   <input
                     id="admin-field-title"
@@ -80,13 +81,13 @@ export const AdminProductsPage = (): string => {
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div class="flex flex-col gap-0.5">
                     <label class="text-sm font-medium text-text-secondary">
-                      Категория${REQUIRED_MARK}
+                      ${t('admin.products.field.category')}${REQUIRED_MARK}
                     </label>
                     <select
                       id="admin-field-category"
                       class="${INPUT_BASE}"
                     >
-                      <option value="">Выберите категорию</option>
+                      <option value="">${t('admin.products.field.categoryPlaceholder')}</option>
                       <option value="iPhone">iPhone</option>
                       <option value="MacBook">MacBook</option>
                       <option value="AirPods">AirPods</option>
@@ -95,7 +96,7 @@ export const AdminProductsPage = (): string => {
                     <span data-error="admin-field-category" class="text-xs text-error min-h-3.5 block"></span>
                   </div>
                   <div class="flex flex-col gap-0.5">
-                    <label class="text-sm font-medium text-text-secondary">Год</label>
+                    <label class="text-sm font-medium text-text-secondary">${t('admin.products.field.year')}</label>
                     <input
                       id="admin-field-year"
                       type="text"
@@ -109,7 +110,7 @@ export const AdminProductsPage = (): string => {
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   <div class="flex flex-col gap-0.5">
                     <label class="text-sm font-medium text-text-secondary">
-                      Цена (₽)${REQUIRED_MARK}
+                      ${t('admin.products.field.price')}${REQUIRED_MARK}
                     </label>
                     <input
                       id="admin-field-price-current"
@@ -121,7 +122,7 @@ export const AdminProductsPage = (): string => {
                     <span data-error="admin-field-price-current" class="text-xs text-error min-h-3.5 block"></span>
                   </div>
                   <div class="flex flex-col gap-0.5">
-                    <label class="text-sm font-medium text-text-secondary">Старая цена (₽)</label>
+                    <label class="text-sm font-medium text-text-secondary">${t('admin.products.field.priceOld')}</label>
                     <input
                       id="admin-field-price-old"
                       type="number"
@@ -133,14 +134,14 @@ export const AdminProductsPage = (): string => {
                   </div>
                   <div class="flex flex-col gap-0.5">
                     <label class="text-sm font-medium text-text-secondary">
-                      Наличие${REQUIRED_MARK}
+                      ${t('admin.products.field.availability')}${REQUIRED_MARK}
                     </label>
                     <select
                       id="admin-field-availability"
                       class="${INPUT_BASE}"
                     >
-                      <option value="in_stock">В наличии</option>
-                      <option value="out_of_stock">Нет в наличии</option>
+                      <option value="in_stock">${t('admin.products.inStock')}</option>
+                      <option value="out_of_stock">${t('admin.products.outOfStock')}</option>
                     </select>
                     <span data-error="admin-field-availability" class="text-xs text-error min-h-3.5 block"></span>
                   </div>
@@ -148,17 +149,17 @@ export const AdminProductsPage = (): string => {
 
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div class="flex flex-col gap-0.5">
-                    <label class="text-sm font-medium text-text-secondary">Гарантия</label>
+                    <label class="text-sm font-medium text-text-secondary">${t('admin.products.field.warranty')}</label>
                     <input
                       id="admin-field-warranty"
                       type="text"
-                      placeholder="Гарантия 1 год"
+                      placeholder="${t('admin.products.field.warrantyPlaceholder')}"
                       class="${INPUT_BASE}"
                     />
                     <span data-error="admin-field-warranty" class="text-xs text-error min-h-3.5 block"></span>
                   </div>
                   <div class="flex flex-col gap-0.5">
-                    <label class="text-sm font-medium text-text-secondary">Количество продаж</label>
+                    <label class="text-sm font-medium text-text-secondary">${t('admin.products.field.sold')}</label>
                     <input
                       id="admin-field-sold"
                       type="number"
@@ -171,7 +172,7 @@ export const AdminProductsPage = (): string => {
                 </div>
 
                 <div class="flex flex-col gap-0.5">
-                  <label class="text-sm font-medium text-text-secondary">URL изображений (по одному на строку)</label>
+                  <label class="text-sm font-medium text-text-secondary">${t('admin.products.field.images')}</label>
                   <textarea
                     id="admin-field-images"
                     rows="3"
@@ -182,7 +183,7 @@ export const AdminProductsPage = (): string => {
                 </div>
 
                 <div class="flex flex-col gap-0.5">
-                  <label class="text-sm font-medium text-text-secondary">Спецификации (JSON)</label>
+                  <label class="text-sm font-medium text-text-secondary">${t('admin.products.field.specs')}</label>
                   <textarea
                     id="admin-field-specifications"
                     rows="6"
@@ -200,19 +201,19 @@ export const AdminProductsPage = (): string => {
                     type="submit"
                     disabled
                     class="button flex items-center justify-center px-6 py-2.5 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-                  >Сохранить</button>
+                  >${t('admin.products.save')}</button>
                   <button
                     id="admin-product-cancel"
                     type="button"
                     class="button outline flex items-center justify-center px-6 py-2.5 text-sm"
-                  >Отмена</button>
+                  >${t('admin.products.cancel')}</button>
                 </div>
               </form>
             </div>
           </div>
 
           <div id="admin-products-list" class="flex flex-col gap-3">
-            <p class="text-sm text-text-quinary text-center py-8">Загрузка товаров...</p>
+            <p class="text-sm text-text-quinary text-center py-8">${t('admin.products.loading')}</p>
           </div>
         </div>
       </div>

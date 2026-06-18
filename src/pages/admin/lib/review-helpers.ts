@@ -2,6 +2,8 @@ import type { Product } from '@/entities/product'
 import type { Review } from '@/entities/review'
 import type { PublicUser } from '@/entities/user'
 
+import { t } from '@/shared/i18n'
+
 import { ReviewItem } from '../ui/ReviewItem'
 
 export const renderReviewsList = (
@@ -12,7 +14,7 @@ export const renderReviewsList = (
   const container = document.getElementById('admin-reviews-list')
   if (!container) return
   if (reviews.length === 0) {
-    container.innerHTML = '<p class="text-sm text-text-quinary text-center py-8">Отзывы не найдены</p>'
+    container.innerHTML = `<p class="text-sm text-text-quinary text-center py-8">${t('admin.reviews.notFound')}</p>`
     return
   }
   container.innerHTML = reviews
@@ -30,7 +32,7 @@ export const populateSelects = (allProducts: Product[], allUsers: PublicUser[]) 
 
   if (productSelect) {
     const options = allProducts.map((p) => `<option value="${p.id}">${p.title}</option>`).join('')
-    productSelect.innerHTML = `<option value="">Все товары</option>${options}`
+    productSelect.innerHTML = `<option value="">${t('admin.reviews.allProducts')}</option>${options}`
   }
 
   if (userSelect) {
@@ -45,7 +47,7 @@ export const populateSelects = (allProducts: Product[], allUsers: PublicUser[]) 
         return `<option value="${u.id}">${name} (${u.email})</option>`
       })
       .join('')
-    userSelect.innerHTML = `<option value="">Все пользователи</option>${options}`
+    userSelect.innerHTML = `<option value="">${t('admin.reviews.allUsers')}</option>${options}`
   }
 }
 

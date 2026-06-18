@@ -1,6 +1,8 @@
 import type { Product, ProductSpecificationGroup } from '@/entities/product'
 import { ProductAvailability } from '@/entities/product'
 
+import { t } from '@/shared/i18n'
+
 import { showError } from './dom-helpers'
 import { validateCategory, validatePrice, validateTitle } from './validators'
 
@@ -61,11 +63,11 @@ export const validateProductForm = (): boolean => {
     try {
       const parsed = JSON.parse(specsRaw)
       if (!Array.isArray(parsed)) {
-        showError('admin-field-specifications', 'Спецификации должны быть массивом JSON')
+        showError('admin-field-specifications', t('admin.products.error.specsArray'))
         hasError = true
       }
     } catch {
-      showError('admin-field-specifications', 'Некорректный JSON')
+      showError('admin-field-specifications', t('admin.products.error.specsJson'))
       hasError = true
     }
   } else {
@@ -138,7 +140,7 @@ export const openEditForm = (productId: string, allProducts: Product[]) => {
 
   if (!formContainer || !formTitle || !idInput) return
 
-  formTitle.textContent = 'Редактировать товар'
+  formTitle.textContent = t('admin.products.edit')
   idInput.value = product.id
   titleInput.value = product.title
   yearInput.value = ('year' in product ? (product as unknown as { year?: string }).year : '') || ''
@@ -174,7 +176,7 @@ export const resetForm = () => {
 
   if (formContainer) formContainer.classList.add('hidden')
   if (form) form.reset()
-  if (formTitle) formTitle.textContent = 'Добавить товар'
+  if (formTitle) formTitle.textContent = t('admin.products.add')
 
   const idInput = document.getElementById('admin-product-id') as HTMLInputElement
   if (idInput) idInput.value = ''

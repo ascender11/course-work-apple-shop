@@ -1,6 +1,7 @@
 import type { Product } from '@/entities/product'
 import { ProductAvailability } from '@/entities/product'
 
+import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 export const ProductItem = (product: Product): string => {
@@ -14,7 +15,7 @@ export const ProductItem = (product: Product): string => {
         ${
           product.images?.[0]
             ? `<img src="${product.images[0]}" alt="" class="w-full h-full object-cover" />`
-            : `<span class="text-text-quinary text-xs">Нет фото</span>`
+            : `<span class="text-text-quinary text-xs">${t('admin.products.noPhoto')}</span>`
         }
       </div>
       <div class="flex-1 min-w-0">
@@ -23,7 +24,7 @@ export const ProductItem = (product: Product): string => {
           ${
             price !== null
               ? `<span class="text-sm font-semibold text-text-primary">${price.toLocaleString('ru-RU')} ₽</span>`
-              : `<span class="text-sm text-text-quinary">Нет цены</span>`
+              : `<span class="text-sm text-text-quinary">${t('admin.products.noPrice')}</span>`
           }
           ${
             oldPrice !== null
@@ -31,7 +32,7 @@ export const ProductItem = (product: Product): string => {
               : ''
           }
           <span class="text-xs px-2 py-0.5 rounded-full ${isAvailable ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-500'}">
-            ${isAvailable ? 'В наличии' : 'Нет в наличии'}
+            ${isAvailable ? t('admin.products.inStock') : t('admin.products.outOfStock')}
           </span>
         </div>
       </div>
@@ -39,11 +40,11 @@ export const ProductItem = (product: Product): string => {
         <button
           data-edit-product="${product.id}"
           class="px-3 py-1.5 text-xs font-medium text-primary border border-border rounded-lg hover:bg-background-secondary transition-colors"
-        >Редактировать</button>
+        >${t('admin.products.editBtn')}</button>
         <button
           data-delete-product="${product.id}"
           class="px-3 py-1.5 text-xs font-medium text-error border border-border rounded-lg hover:bg-red-50 transition-colors"
-        >Удалить</button>
+        >${t('admin.products.deleteBtn')}</button>
       </div>
     </div>
   `

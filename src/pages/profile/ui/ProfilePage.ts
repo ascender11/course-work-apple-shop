@@ -1,4 +1,5 @@
 import { userStore } from '@/entities/user'
+import { LanguageToggle } from '@/features/language-switch'
 import { ThemeToggle } from '@/features/theme-switch'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
@@ -7,21 +8,6 @@ import { html } from '@/shared/lib'
 import { CartEmpty, ChevronRight, Gear, Heart, LogoutIcon } from '@/shared/ui/icons'
 
 import { initProfile } from '../model/initProfile'
-
-const SegmentedControl = (items: { value: string; label: string; active: boolean; attr: string }[]) => html`
-  <div class="flex gap-1 rounded-lg bg-background-tertiary p-1">
-    ${items
-      .map(
-        (item) => html`
-      <button
-        ${item.attr}="${item.value}"
-        class="px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${item.active ? 'bg-background shadow-sm text-text-primary' : 'text-text-quinary hover:text-text-secondary'}"
-      >${item.label}</button>
-    `
-      )
-      .join('')}
-  </div>
-`
 
 const SettingsRow = (label: string, sublabel: string, control: string, border = true) => html`
   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-5 py-4 ${border ? 'border-b border-border-light' : ''}">
@@ -101,16 +87,7 @@ export const ProfilePage = (): string => {
 
         ${SectionCard(
           'Внешний вид',
-          SettingsRow('Тема', '', ThemeToggle()) +
-            SettingsRow(
-              'Язык',
-              'Скоро будет доступно',
-              SegmentedControl([
-                { value: 'ru', label: 'RU', active: true, attr: 'data-lang' },
-                { value: 'en', label: 'EN', active: false, attr: 'data-lang' },
-              ]),
-              false
-            )
+          SettingsRow('Тема', '', ThemeToggle()) + SettingsRow('Язык', '', LanguageToggle(), false)
         )}
 
         <button

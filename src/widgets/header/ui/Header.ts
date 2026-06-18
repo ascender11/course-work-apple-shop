@@ -1,5 +1,6 @@
 import { userStore } from '@/entities/user'
 
+import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
 import { Link } from '@/shared/ui/components'
 import { BurgerMenu, Logo, Phone, User } from '@/shared/ui/icons'
@@ -28,11 +29,11 @@ export const Header = ({ className = '' }: HeaderProps = {}) => {
   }
 
   const navLinks = [
-    { href: '/', text: 'Главная' },
-    { href: '/catalog', text: 'Каталог' },
-    { href: '/favorites', text: 'Избранное' },
-    { href: '/cart', text: 'Корзина' },
-    { href: '/delivery', text: 'Доставка и оплата' },
+    { href: '/', text: t('nav.home') },
+    { href: '/catalog', text: t('nav.catalog') },
+    { href: '/favorites', text: t('nav.favorites') },
+    { href: '/cart', text: t('nav.cart') },
+    { href: '/delivery', text: t('nav.delivery') },
   ]
 
   return html`
@@ -66,7 +67,7 @@ export const Header = ({ className = '' }: HeaderProps = {}) => {
             userStore.isAuthenticated
               ? html`<button
                 id="header-profile-btn"
-                aria-label="Профиль"
+                aria-label="${t('nav.profile')}"
                 class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-150"
               >${User()}</button>`
               : ''

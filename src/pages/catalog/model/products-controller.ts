@@ -5,7 +5,7 @@ import type { FiltersState } from '@/features/filter-products'
 import { initPaginationController, Pagination } from '@/features/pagination'
 import { ProductList } from '@/widgets/product-list'
 
-import { html } from '@/shared/lib'
+import { ErrorState } from '../ui/ErrorState'
 
 export const loadProductsAndRender = async (state: FiltersState) => {
   const queryString = window.location.search.slice(1)
@@ -19,8 +19,8 @@ export const loadProductsAndRender = async (state: FiltersState) => {
 
     listEl.innerHTML = ProductList({ products })
 
-    await initFavoriteButtons()
-    await initAddToCartButtons()
+    initFavoriteButtons()
+    initCartButtons()
 
     if (paginationContainer) {
       paginationContainer.innerHTML = Pagination({
@@ -32,6 +32,6 @@ export const loadProductsAndRender = async (state: FiltersState) => {
     }
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : 'Неизвестная ошибка'
-    listEl.innerHTML = html`<p class="py-16 text-center text-error">Ошибка загрузки: ${msg}</p>`
+    listEl.innerHTML = ErrorState(msg)
   }
 }

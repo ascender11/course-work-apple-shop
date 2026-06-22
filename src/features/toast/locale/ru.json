@@ -1,0 +1,12 @@
+{
+  "toast.addedToCart": "Товар добавлен в корзину",
+  "toast.removedFromCart": "Товар удалён из корзины",
+  "toast.addedToFavorites": "Добавлено в избранное",
+  "toast.removedFromFavorites": "Удалено из избранного",
+  "toast.orderSuccess": "Заказ успешно оформлен",
+  "toast.reviewSuccess": "Отзыв отправлен",
+  "toast.serverError": "Ошибка сервера. Попробуйте позже",
+  "toast.loginError": "Неверный email или пароль",
+  "toast.registerError": "Ошибка регистрации",
+  "toast.reviewError": "Ошибка отправки отзыва"
+}

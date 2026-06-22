@@ -1,0 +1,12 @@
+{
+  "toast.addedToCart": "Added to cart",
+  "toast.removedFromCart": "Removed from cart",
+  "toast.addedToFavorites": "Added to favorites",
+  "toast.removedFromFavorites": "Removed from favorites",
+  "toast.orderSuccess": "Order placed successfully",
+  "toast.reviewSuccess": "Review submitted",
+  "toast.serverError": "Server error. Please try again",
+  "toast.loginError": "Invalid email or password",
+  "toast.registerError": "Registration failed",
+  "toast.reviewError": "Failed to submit review"
+}

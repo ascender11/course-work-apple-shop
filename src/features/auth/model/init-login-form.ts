@@ -1,4 +1,5 @@
 import { userStore } from '@/entities/user'
+import { toast } from '@/features/toast'
 
 import { t } from '@/shared/i18n'
 import { navigate } from '@/shared/lib'
@@ -63,6 +64,7 @@ export const initLoginForm = () => {
       navigate('/')
     } catch (err) {
       serverError.textContent = err instanceof Error ? err.message : t('auth.login.error')
+      toast.error(err instanceof Error ? err.message : t('toast.loginError'))
       submitBtn.disabled = false
       submitBtn.textContent = t('auth.login.submit')
     }

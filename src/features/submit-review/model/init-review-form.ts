@@ -1,5 +1,6 @@
 import { reviewService } from '@/entities/review'
 import { userStore } from '@/entities/user'
+import { toast } from '@/features/toast'
 
 import { t } from '@/shared/i18n'
 
@@ -148,6 +149,8 @@ export const initReviewForm = (onSubmitSuccess?: () => void): void => {
           successEl.classList.remove('hidden')
         }
 
+        toast.success(t('toast.reviewSuccess'))
+
         textarea.value = ''
         selectedRating = 0
         if (charCount) charCount.textContent = '0 / 1000'
@@ -169,6 +172,7 @@ export const initReviewForm = (onSubmitSuccess?: () => void): void => {
           errorEl.textContent = t('review.error')
           errorEl.classList.remove('hidden')
         }
+        toast.error(t('toast.reviewError'))
       } finally {
         submitBtn.disabled = false
         const submitSpan = submitBtn.querySelector('span')

@@ -1,5 +1,6 @@
 import { cartStore } from '@/entities/cart'
 import { userStore } from '@/entities/user'
+import { toast } from '@/features/toast'
 
 import { t } from '@/shared/i18n'
 import { Spinner } from '@/shared/ui/components'
@@ -18,6 +19,8 @@ export const handleCheckout = async () => {
 
   const userId = userStore.user?.id
   if (userId) await cartStore.clear(userId)
+
+  toast.success(t('toast.orderSuccess'))
 
   const container = document.getElementById('cart-modal-container')
   if (container) {

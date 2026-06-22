@@ -1,4 +1,5 @@
 import { cartStore } from '@/entities/cart'
+import { toast } from '@/features/toast'
 
 import { t } from '@/shared/i18n'
 
@@ -13,7 +14,10 @@ export const initCartPage = () => {
 
   document.querySelectorAll<HTMLElement>('.js-cart-item').forEach(wireCartItem)
 
-  document.getElementById('cart-clear-btn')?.addEventListener('click', () => clearCart())
+  document.getElementById('cart-clear-btn')?.addEventListener('click', () => {
+    clearCart()
+    toast.success(t('toast.removedFromCart'))
+  })
   document.getElementById('cart-promo-apply')?.addEventListener('click', handlePromoCode)
   document.getElementById('cart-checkout-btn')?.addEventListener('click', () => handleCheckout())
 
@@ -56,6 +60,7 @@ const wireCartItem = (itemEl: HTMLElement) => {
     const removed = handleDecrement(productId, color, storage)
     if (removed) {
       animateRemoval(itemEl, updateSummary)
+      toast.success(t('toast.removedFromCart'))
     } else {
       updateLineItem(itemEl, productId, color, storage)
     }
@@ -64,5 +69,6 @@ const wireCartItem = (itemEl: HTMLElement) => {
   itemEl.querySelector('.js-cart-remove')?.addEventListener('click', () => {
     handleRemove(productId, color, storage)
     animateRemoval(itemEl, updateSummary)
+    toast.success(t('toast.removedFromCart'))
   })
 }

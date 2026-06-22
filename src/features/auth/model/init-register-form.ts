@@ -1,4 +1,5 @@
 import { userStore } from '@/entities/user'
+import { toast } from '@/features/toast'
 
 import { t } from '@/shared/i18n'
 import { navigate } from '@/shared/lib'
@@ -236,6 +237,7 @@ export const initRegisterForm = () => {
       if (serverError) {
         serverError.textContent = err instanceof Error ? err.message : t('auth.register.error')
       }
+      toast.error(err instanceof Error ? err.message : t('toast.registerError'))
       submitBtn.disabled = false
       submitBtn.textContent = t('auth.register.submit')
     }

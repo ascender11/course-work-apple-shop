@@ -1,5 +1,8 @@
 import { favoritesStore } from '@/entities/favorites'
 import { userStore } from '@/entities/user'
+import { toast } from '@/features/toast'
+
+import { t } from '@/shared/i18n'
 
 import { updateBtn } from '../lib/update-button'
 
@@ -29,13 +32,15 @@ export const initFavoriteButtons = (): void => {
       if (currentlyFav) {
         updateBtn(btn, false, '')
         favoritesStore.remove(pid)
+        toast.success(t('toast.removedFromFavorites'))
       } else {
         try {
           await favoritesStore.add(user.id, pid)
           const newFavId = favoritesStore.getId(pid)
           updateBtn(btn, true, newFavId)
+          toast.success(t('toast.addedToFavorites'))
         } catch {
-          // silent fail — button stays untoggled
+          toast.error(t('toast.serverError'))
         }
       }
     })

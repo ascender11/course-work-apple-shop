@@ -1,6 +1,9 @@
 import { cartStore, findItem } from '@/entities/cart'
 import { productService } from '@/entities/product'
 import { userStore } from '@/entities/user'
+import { toast } from '@/features/toast'
+
+import { t } from '@/shared/i18n'
 
 import { updateBtn } from '../lib/update-button'
 
@@ -35,13 +38,15 @@ export const initAddToCartButtons = (): void => {
           cartStore.remove(user.id, item.id)
         }
         updateBtn(btn, false)
+        toast.success(t('toast.removedFromCart'))
       } else {
         try {
           const product = await productService.getById(productId)
           cartStore.add(user.id, { product, quantity: 1 })
           updateBtn(btn, true)
+          toast.success(t('toast.addedToCart'))
         } catch {
-          // silent fail — button stays unchanged
+          toast.error(t('toast.serverError'))
         }
       }
     })

@@ -28,7 +28,7 @@ export const CatalogPage = (): string => {
       initFiltersPanel()
       initSortController()
       initModalController()
-      initResetController(state)
+      initResetController()
       initSearch((qs) => loadProductsAndRender(parseFiltersFromQuery(qs)))
       loadProductsAndRender(state)
     })

@@ -1,4 +1,5 @@
 import { FilterPanel, initFiltersPanel, parseFiltersFromQuery } from '@/features/filter-products'
+import { initSearch, SearchInput } from '@/features/search'
 import { initSortController, parseSortFromQuery, SortSelect } from '@/features/sort-products'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
@@ -16,6 +17,7 @@ export const CatalogPage = (): string => {
   const queryString = getQueryString()
   const state = parseFiltersFromQuery(queryString)
   const currentSort = parseSortFromQuery(queryString)
+  const searchQuery = new URLSearchParams(queryString).get('q') ?? ''
 
   const init = () => {
     const observer = new MutationObserver((_, obs) => {
@@ -27,6 +29,7 @@ export const CatalogPage = (): string => {
       initSortController()
       initModalController()
       initResetController(state)
+      initSearch((qs) => loadProductsAndRender(parseFiltersFromQuery(qs)))
       loadProductsAndRender(state)
     })
 
@@ -78,7 +81,10 @@ export const CatalogPage = (): string => {
 
     <div class="hidden md:flex items-center justify-between px-6 py-4 lg:px-30">
       <h1 class="text-2xl font-bold text-text-primary">${t('catalog.title')}</h1>
-      ${SortSelect(currentSort)}
+      <div class="flex items-center gap-4">
+        ${SearchInput(searchQuery)}
+        ${SortSelect(currentSort)}
+      </div>
     </div>
 
     <div id="catalog-root" class="flex min-h-[calc(100vh-56px)]">

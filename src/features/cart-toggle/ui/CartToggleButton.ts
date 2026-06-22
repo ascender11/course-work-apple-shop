@@ -10,13 +10,13 @@ export interface CartToggleButtonProps {
 
 export const CartToggleButton = ({ productId, isInCart = false, className = '' }: CartToggleButtonProps) => html`
   <button
-    class="js-add-to-cart button flex items-center justify-center gap-2 w-full ${cn(isInCart ? 'bg-success hover:bg-success-hover' : 'bg-primary hover:bg-primary-hover', className)}"
+    class="js-add-to-cart button flex items-center justify-center gap-2 w-full ${cn(isInCart ? 'bg-success hover:bg-success/80' : '', className)}"
     data-product-id="${productId}"
     ${isInCart ? 'data-in-cart="1"' : ''}
     aria-label="${isInCart ? t('cart.remove') : t('cart.addToCart')}"
     type="button"
   >
     ${isInCart ? AddedToCart() : AddToCart()}
-    <span>${isInCart ? t('cart.inCart') : t('cart.addToCart')}</span>
+    <span class="whitespace-nowrap">${isInCart ? t('cart.inCart') : t('cart.addToCart')}</span>
   </button>
 `

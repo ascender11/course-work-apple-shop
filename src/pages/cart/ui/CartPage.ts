@@ -31,7 +31,7 @@ export const CartPage = (): string => {
 
   return html`
     ${Header()}
-    <div id="cart-root" class="min-h-[calc(100vh-56px)] bg-background-secondary">
+    <div id="cart-root" class="min-h-[calc(100vh-56px)] bg-background">
       <div class="px-4 py-6 md:px-6 lg:px-30">
         <h1 class="text-2xl font-bold text-text-primary mb-6">
           ${t('cart.title')}${!isEmpty ? html` <span class="ml-2 text-base font-normal text-text-quinary">${pluralize(count)}</span>` : ''}

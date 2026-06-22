@@ -26,7 +26,7 @@ export const Button = ({
         class="${classes}"${navigo ? ' data-navigo' : ''}
       >
         ${icon ? icon : ''}
-        <span>${text}</span>
+        <span class="whitespace-nowrap">${text}</span>
       </a>
     `
   }
@@ -36,7 +36,7 @@ export const Button = ({
       class="${classes}"
     >
       ${icon ? icon : ''}
-      <span>${text}</span>
+      <span class="whitespace-nowrap">${text}</span>
     </button>
   `
 }

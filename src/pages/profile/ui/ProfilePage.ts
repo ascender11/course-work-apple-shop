@@ -1,7 +1,6 @@
 import { userStore } from '@/entities/user'
 import { ColorSchemeToggle, FontSizeToggle, ImagesToggle } from '@/features/accessibility-switch'
 import { LanguageToggle } from '@/features/language-switch'
-import { ThemeToggle } from '@/features/theme-switch'
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
@@ -88,14 +87,9 @@ export const ProfilePage = (): string => {
         )}
 
         ${SectionCard(
-          t('profile.appearance'),
-          SettingsRow(t('profile.theme'), '', ThemeToggle()) +
-            SettingsRow(t('profile.language'), '', LanguageToggle(), false)
-        )}
-
-        ${SectionCard(
           t('accessibility.title'),
-          SettingsRow(t('accessibility.fontSize'), '', FontSizeToggle()) +
+          SettingsRow(t('accessibility.language'), '', LanguageToggle()) +
+            SettingsRow(t('accessibility.fontSize'), '', FontSizeToggle()) +
             SettingsRow(t('accessibility.colorScheme'), '', ColorSchemeToggle()) +
             SettingsRow(t('accessibility.hideImages'), t('accessibility.hideImages.sub'), ImagesToggle(), false)
         )}

@@ -20,38 +20,38 @@ export const DeliveryPage = (): string => {
     <div class="px-4 py-20 md:px-6 lg:px-30 max-w-360 mx-auto flex flex-col gap-4">
 
       <section class="grid grid-cols-1 xl:grid-cols-2 gap-4">
-        <div class="relative rounded-2xl bg-linear-to-r from-secondary to-primary">
+        <div class="relative rounded-2xl bg-linear-to-r from-secondary to-primary overflow-hidden">
           <div class="flex flex-col-reverse sm:flex-row sm:items-center p-3.75 sm:p-0 gap-3 sm:h-53">
-            <div class="flex flex-col gap-2 sm:w-full sm:pl-56 sm:pr-6 sm:py-6">
+            <div class="flex flex-col gap-2 sm:w-full sm:pl-44 sm:pr-6 sm:py-6">
               <h2 class="text-base sm:text-3xl font-bold text-text-button leading-tight">
                 ${t('delivery.freeTitle')}
               </h2>
-              <p class="text-xs sm:text-base font-medium text-text-button/90 leading-snug">
+              <p class="text-xs sm:text-sm font-medium text-text-button/90 leading-snug">
                 ${t('delivery.freeDesc')}
               </p>
             </div>
             <img
               src="${getAssetPath('scooter.png')}"
               alt=""
-              class="w-32 h-auto mx-auto -mt-8 sm:mt-0 sm:mx-0 sm:absolute sm:left-5 sm:-bottom-2 sm:h-67.5 sm:w-52.5 object-contain pointer-events-none drop-shadow-lg"
+              class="w-32 h-auto mx-auto -mt-8 sm:mt-0 sm:mx-0 sm:absolute sm:left-5 sm:-bottom-2 sm:h-55 sm:w-44 object-contain pointer-events-none drop-shadow-lg"
             />
           </div>
         </div>
 
-        <div class="relative rounded-2xl bg-linear-to-r from-secondary to-primary">
+        <div class="relative rounded-2xl bg-linear-to-r from-secondary to-primary overflow-hidden">
           <div class="flex flex-col-reverse sm:flex-row sm:items-center p-3.75 sm:p-0 gap-3 sm:h-53">
-            <div class="flex flex-col gap-2 sm:w-full sm:pl-48 sm:pr-6 sm:py-6">
+            <div class="flex flex-col gap-2 sm:w-full sm:pl-40 sm:pr-6 sm:py-6">
               <h2 class="text-base sm:text-3xl font-bold text-text-button leading-tight">
                 ${t('delivery.russiaTitle')}
               </h2>
-              <p class="text-sm sm:text-base font-medium text-text-button/90 leading-snug">
+              <p class="text-sm sm:text-sm font-medium text-text-button/90 leading-snug">
                 ${t('delivery.russiaDesc')}
               </p>
             </div>
             <img
               src="${getAssetPath('drone.png')}"
               alt=""
-              class="w-32 h-auto mx-auto -mt-8 sm:mt-0 sm:mx-0 sm:absolute sm:-top-3 sm:-left-4 sm:h-53 sm:w-50 object-contain pointer-events-none"
+              class="w-32 h-auto mx-auto -mt-8 sm:mt-0 sm:mx-0 sm:absolute sm:-top-3 sm:-left-4 sm:h-45 sm:w-42 object-contain pointer-events-none"
             />
           </div>
         </div>
@@ -78,11 +78,11 @@ export const DeliveryPage = (): string => {
       </section>
 
       <section class="relative bg-background-quaternary rounded-2xl overflow-hidden px-6 py-8 sm:px-10 sm:py-10 lg:px-12 min-h-64">
-        <div class="hidden sm:block absolute left-10 top-5.75 w-114.25 h-111 pointer-events-none select-none">
+        <div class="hidden sm:block absolute left-4 top-5.75 w-90 h-90 pointer-events-none select-none">
           <img src="${getAssetPath('delivery-man.png')}" alt="" class="relative w-full object-contain" />
         </div>
 
-        <div class="sm:pl-80 flex flex-col gap-3">
+        <div class="sm:pl-72 flex flex-col gap-3">
           <div class="flex items-center justify-between gap-3 flex-wrap">
             <h2 class="text-2xl sm:text-4xl font-bold text-primary leading-tight">
               ${t('delivery.happyTitle')}
@@ -92,13 +92,13 @@ export const DeliveryPage = (): string => {
             </span>
           </div>
           <ul class="flex flex-col gap-2 mt-1">
-            <li class="flex items-center gap-2 text-sm sm:text-base font-bold text-primary">
+            <li class="flex items-center gap-2 text-sm sm:text-sm font-bold text-primary">
               • ${t('delivery.happyPoint1')}
             </li>
-            <li class="flex items-center gap-2 text-sm sm:text-base font-bold text-primary">
+            <li class="flex items-center gap-2 text-sm sm:text-sm font-bold text-primary">
               • ${t('delivery.happyPoint2')}
             </li>
-            <li class="flex items-center gap-2 text-sm sm:text-base font-bold text-primary">
+            <li class="flex items-center gap-2 text-sm sm:text-sm font-bold text-primary">
               • ${t('delivery.happyPoint3')}
             </li>
           </ul>
@@ -121,7 +121,7 @@ export const DeliveryPage = (): string => {
       </section>
 
       <section class="relative bg-background-secondary rounded-2xl overflow-hidden px-6 py-8 sm:px-10 lg:px-12 sm:py-10 min-h-56 sm:min-h-80 flex items-center">
-        <div class="hidden md:block absolute -right-5.5 top-11.5 h-full lg:w-111.5 lg:h-114 pointer-events-none select-none">
+        <div class="hidden md:block absolute -right-20 top-11.5 h-full lg:w-111.5 lg:h-114 pointer-events-none select-none">
           <img src="${getAssetPath('phone-cta.png')}" alt="" class="h-full object-contain object-bottom" />
         </div>
 

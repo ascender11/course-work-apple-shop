@@ -1,11 +1,15 @@
 import type { LngLat } from '@yandex/ymaps3-types'
 
 import { t } from '@/shared/i18n'
-import { getTheme, onThemeChange } from '@/shared/lib'
+import { getColorScheme, onAccessibilityChange } from '@/shared/lib'
 
 import { MapError, MapMarker } from './map-helpers'
 
 const SHOP_COORDS: LngLat = [37.3891, 55.7319]
+
+const DARK_SCHEMES = ['black-white', 'black-green']
+
+const getMapTheme = (): 'light' | 'dark' => (DARK_SCHEMES.includes(getColorScheme()) ? 'dark' : 'light')
 
 const createMapMarker = (): HTMLElement => {
   const wrapper = document.createElement('div')
@@ -67,11 +71,11 @@ export const initDeliveryMap = async (): Promise<void> => {
 
     const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker } = ymaps3
 
-    const currentTheme = getTheme()
+    const mapTheme = getMapTheme()
 
     const map = new YMap(container, {
       location: { center: SHOP_COORDS, zoom: 15 },
-      theme: currentTheme,
+      theme: mapTheme,
     })
 
     map.addChild(new YMapDefaultSchemeLayer({}))
@@ -82,8 +86,8 @@ export const initDeliveryMap = async (): Promise<void> => {
       cleanupThemeListener()
     }
 
-    cleanupThemeListener = onThemeChange((theme) => {
-      map.update({ theme })
+    cleanupThemeListener = onAccessibilityChange(() => {
+      map.update({ theme: getMapTheme() })
     })
   } catch {
     container.innerHTML = MapError(t('delivery.mapError'))

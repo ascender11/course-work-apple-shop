@@ -3,6 +3,7 @@
 @import "./base.css";
 
 @import "./theme.css";
+@import "./accessibility.css";
 
 @import "./components/burger-menu-icon.css";
 @import "./components/link.css";

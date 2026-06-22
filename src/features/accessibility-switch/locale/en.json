@@ -1,0 +1,17 @@
+{
+  "accessibility.title": "Accessibility",
+  "accessibility.fontSize": "Font size",
+  "accessibility.fontSize.normal": "Normal",
+  "accessibility.fontSize.large": "Large",
+  "accessibility.fontSize.xlarge": "Extra large",
+  "accessibility.colorScheme": "Color scheme",
+  "accessibility.colorScheme.default": "Default",
+  "accessibility.colorScheme.black-white": "Black/white",
+  "accessibility.colorScheme.black-green": "Black/green",
+  "accessibility.colorScheme.white-black": "White/black",
+  "accessibility.colorScheme.beige-brown": "Beige/brown",
+  "accessibility.colorScheme.blue-darkblue": "Blue/dark blue",
+  "accessibility.hideImages": "Hide images",
+  "accessibility.hideImages.sub": "Page is displayed without pictures",
+  "accessibility.imagesHiddenNotice": "Images are hidden"
+}

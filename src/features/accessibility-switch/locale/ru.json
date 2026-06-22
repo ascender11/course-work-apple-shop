@@ -1,0 +1,17 @@
+{
+  "accessibility.title": "Специальные возможности",
+  "accessibility.fontSize": "Размер шрифта",
+  "accessibility.fontSize.normal": "Обычный",
+  "accessibility.fontSize.large": "Крупный",
+  "accessibility.fontSize.xlarge": "Крупнее",
+  "accessibility.colorScheme": "Цветовая схема",
+  "accessibility.colorScheme.default": "Стандартная",
+  "accessibility.colorScheme.black-white": "Чёрный/белый",
+  "accessibility.colorScheme.black-green": "Чёрный/зелёный",
+  "accessibility.colorScheme.white-black": "Белый/чёрный",
+  "accessibility.colorScheme.beige-brown": "Бежевый/коричневый",
+  "accessibility.colorScheme.blue-darkblue": "Голубой/синий",
+  "accessibility.hideImages": "Скрыть изображения",
+  "accessibility.hideImages.sub": "Страница отображается без картинок",
+  "accessibility.imagesHiddenNotice": "Изображения скрыты"
+}

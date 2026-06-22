@@ -1,5 +1,6 @@
 import { cartStore } from '@/entities/cart'
 import { userStore } from '@/entities/user'
+import { initAccessibility } from '@/features/accessibility-switch'
 import { initLanguageToggle } from '@/features/language-switch'
 import { initThemeToggle } from '@/features/theme-switch'
 
@@ -15,4 +16,5 @@ export const initProfile = () => {
 
   initThemeToggle()
   initLanguageToggle()
+  initAccessibility()
 }

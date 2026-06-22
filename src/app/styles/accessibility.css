@@ -1,0 +1,160 @@
+html[data-font-size="large"] {
+  font-size: 125%;
+}
+
+html[data-font-size="xlarge"] {
+  font-size: 150%;
+}
+
+.accessibility-mode,
+html[data-font-size="large"] body,
+html[data-font-size="xlarge"] body {
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  word-spacing: 0.16em;
+}
+
+.accessibility-mode p,
+html[data-font-size="large"] p,
+html[data-font-size="xlarge"] p {
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+  text-align: left;
+  max-width: 80ch;
+}
+
+.images-hidden-notice {
+  display: none;
+}
+
+html[data-hide-images="true"] .images-hidden-notice {
+  display: block;
+}
+
+html[data-hide-images="true"] img,
+html[data-hide-images="true"] [style*="background-image"],
+html[data-hide-images="true"] picture,
+html[data-hide-images="true"] video,
+html[data-hide-images="true"] svg:not(.icon) {
+  display: none !important;
+}
+
+html[data-color-scheme="black-white"] {
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e0e0e0;
+  --color-text-tertiary: #cccccc;
+  --color-text-quaternary: #b0b0b0;
+  --color-text-quinary: #999999;
+  --color-text-button: #000000;
+
+  --color-background: #000000;
+  --color-background-secondary: #0a0a0a;
+  --color-background-tertiary: #1a1a1a;
+  --color-background-quaternary: #111111;
+
+  --color-border: #333333;
+  --color-border-hover: #444444;
+  --color-border-light: #222222;
+
+  --color-primary: #4da6ff;
+  --color-secondary: #2997ff;
+}
+
+html[data-color-scheme="black-green"] {
+  --color-text-primary: #00ff41;
+  --color-text-secondary: #00cc33;
+  --color-text-tertiary: #00aa29;
+  --color-text-quaternary: #008822;
+  --color-text-quinary: #006619;
+  --color-text-button: #000000;
+
+  --color-background: #000000;
+  --color-background-secondary: #0a0a0a;
+  --color-background-tertiary: #1a1a1a;
+  --color-background-quaternary: #111111;
+
+  --color-border: #003300;
+  --color-border-hover: #004d00;
+  --color-border-light: #002200;
+
+  --color-primary: #00ff41;
+  --color-secondary: #00cc33;
+}
+
+html[data-color-scheme="white-black"] {
+  --color-text-primary: #000000;
+  --color-text-secondary: #1a1a1a;
+  --color-text-tertiary: #333333;
+  --color-text-quaternary: #555555;
+  --color-text-quinary: #777777;
+  --color-text-button: #ffffff;
+
+  --color-background: #ffffff;
+  --color-background-secondary: #f5f5f5;
+  --color-background-tertiary: #e0e0e0;
+  --color-background-quaternary: #f0f0f0;
+
+  --color-border: #cccccc;
+  --color-border-hover: #aaaaaa;
+  --color-border-light: #dddddd;
+
+  --color-primary: #000000;
+  --color-secondary: #333333;
+}
+
+html[data-color-scheme="beige-brown"] {
+  --color-text-primary: #4a2c0a;
+  --color-text-secondary: #5c3a14;
+  --color-text-tertiary: #7a5230;
+  --color-text-quaternary: #8c6440;
+  --color-text-quinary: #9e7650;
+  --color-text-button: #ffffff;
+
+  --color-background: #f5f0e1;
+  --color-background-secondary: #ede6d3;
+  --color-background-tertiary: #ddd4bf;
+  --color-background-quaternary: #f0ead8;
+
+  --color-border: #c4b89a;
+  --color-border-hover: #b0a282;
+  --color-border-light: #d6ccb5;
+
+  --color-primary: #6b3a0a;
+  --color-secondary: #8c5a2a;
+}
+
+html[data-color-scheme="blue-darkblue"] {
+  --color-text-primary: #001a4d;
+  --color-text-secondary: #002266;
+  --color-text-tertiary: #003380;
+  --color-text-quaternary: #004499;
+  --color-text-quinary: #0055b3;
+  --color-text-button: #ffffff;
+
+  --color-background: #cce5ff;
+  --color-background-secondary: #b8d9f5;
+  --color-background-tertiary: #99c7eb;
+  --color-background-quaternary: #c0dffa;
+
+  --color-border: #80b3d9;
+  --color-border-hover: #6699cc;
+  --color-border-light: #a0ccee;
+
+  --color-primary: #003380;
+  --color-secondary: #004499;
+}
+
+html[data-color-scheme="black-white"] .border-border-light,
+html[data-color-scheme="black-green"] .border-border-light,
+html[data-color-scheme="beige-brown"] .border-border-light,
+html[data-color-scheme="blue-darkblue"] .border-border-light {
+  border-color: var(--color-border-light);
+}
+
+html {
+  overflow-x: hidden;
+}
+
+html[data-font-size="xlarge"] body {
+  overflow-x: hidden;
+}

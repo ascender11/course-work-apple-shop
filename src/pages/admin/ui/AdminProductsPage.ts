@@ -4,6 +4,7 @@ import { Header } from '@/widgets/header'
 
 import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
+import { Spinner } from '@/shared/ui/components'
 
 import { initProductsPage } from '../model/products-controller'
 
@@ -213,7 +214,7 @@ export const AdminProductsPage = (): string => {
           </div>
 
           <div id="admin-products-list" class="flex flex-col gap-3">
-            <p class="text-sm text-text-quinary text-center py-8">${t('admin.products.loading')}</p>
+            <div class="py-8 flex justify-center items-center text-text-quinary">${Spinner()}</div>
           </div>
         </div>
       </div>

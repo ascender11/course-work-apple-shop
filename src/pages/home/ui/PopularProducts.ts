@@ -5,6 +5,7 @@ import { ProductList } from '@/widgets/product-list'
 
 import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
+import { Spinner } from '@/shared/ui/components'
 
 export interface PopularProductsProps {
   className?: string
@@ -39,7 +40,7 @@ export const PopularProducts = ({ className = '' }: PopularProductsProps = {}) =
       <h1 class="text-2xl sm:text-4xl xl:text-5xl font-bold mb-2 text-text-primary">${t('home.popular.title')}</h1>
       <p class="text-lg text-primary sm:text-2xl mb-6">${t('home.popular.subtitle')}</p>
       <div id="popular-products-list" class="w-full">
-        <div class="py-12 text-center text-text-quinary font-medium">${t('home.popular.loading')}</div>
+        <div class="py-12 flex justify-center items-center text-text-quinary">${Spinner()}</div>
       </div>
     </section>
   `

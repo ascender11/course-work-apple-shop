@@ -5,6 +5,7 @@ import { Header } from '@/widgets/header'
 
 import { t } from '@/shared/i18n'
 import { getQueryString, html } from '@/shared/lib'
+import { Spinner } from '@/shared/ui/components'
 
 import { clearModalState, initModalController } from '../model/modal-controller'
 import { loadProductsAndRender } from '../model/products-controller'
@@ -88,7 +89,7 @@ export const CatalogPage = (): string => {
 
       <div class="flex-1 px-4 py-6 sm:px-6 lg:pr-30">
         <div id="catalog-product-list">
-          <p class="py-16 text-center font-medium text-text-tertiary">${t('catalog.loading')}</p>
+          <div class="py-16 flex justify-center items-center text-text-tertiary">${Spinner()}</div>
         </div>
       </div>
     </div>

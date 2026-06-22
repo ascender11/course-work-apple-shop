@@ -4,6 +4,7 @@ import { Header } from '@/widgets/header'
 
 import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
+import { Spinner } from '@/shared/ui/components'
 
 import { getCurrentSort, initFavoritesPage } from '../model/init'
 
@@ -33,7 +34,7 @@ export const FavoritesPage = (): string => {
 
       <div class="px-4 pb-6 md:px-6 lg:px-30">
         <div id="favorites-product-list">
-          <p class="py-16 text-center font-medium text-text-quinary">${t('fav.loading')}</p>
+          <div class="py-16 flex justify-center items-center text-text-quinary">${Spinner()}</div>
         </div>
       </div>
 

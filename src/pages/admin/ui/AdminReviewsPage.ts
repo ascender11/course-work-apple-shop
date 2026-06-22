@@ -4,6 +4,7 @@ import { Header } from '@/widgets/header'
 
 import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
+import { Spinner } from '@/shared/ui/components'
 import { ArrowDown } from '@/shared/ui/icons'
 
 import { initReviewsPage } from '../model/reviews-controller'
@@ -79,7 +80,7 @@ export const AdminReviewsPage = (): string => {
           </div>
 
           <div id="admin-reviews-list" class="flex flex-col gap-3">
-            <p class="text-sm text-text-quinary text-center py-8">${t('admin.reviews.loading')}</p>
+            <div class="py-8 flex justify-center items-center text-text-quinary">${Spinner()}</div>
           </div>
         </div>
       </div>

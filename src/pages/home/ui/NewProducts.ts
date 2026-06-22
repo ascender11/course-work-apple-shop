@@ -5,6 +5,7 @@ import { ProductList } from '@/widgets/product-list'
 
 import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
+import { Spinner } from '@/shared/ui/components'
 
 export interface NewProductsProps {
   className?: string
@@ -38,7 +39,7 @@ export const NewProducts = ({ className = '' }: NewProductsProps = {}) => {
     <section class="${cn('py-4 px-3 sm:py-6 sm:px-4', className)}">
       <p class="text-lg text-primary sm:text-2xl mb-6">${t('home.new.subtitle')}</p>
       <div id="new-products-list" class="w-full">
-        <div class="py-12 text-center text-text-quinary font-medium">${t('home.new.loading')}</div>
+        <div class="py-12 flex justify-center items-center text-text-quinary">${Spinner()}</div>
       </div>
     </section>
   `

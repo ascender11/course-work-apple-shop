@@ -1,8 +1,8 @@
 import { Footer } from '@/widgets/footer'
 import { Header } from '@/widgets/header'
 
-import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
+import { Spinner } from '@/shared/ui/components'
 
 import { initProductPage } from '../model/init'
 
@@ -23,7 +23,7 @@ export const ProductPage = (id: string): string => {
     ${Header()}
     <main id="product-page-root" class="py-12.5 px-30">
       <div id="product-page-content">
-        <p>${t('product.loading')}</p>
+        <div class="py-12 flex justify-center items-center text-text-quinary">${Spinner()}</div>
       </div>
     </main>
     ${Footer()}

@@ -13,8 +13,8 @@ export const initHomeSlider = () => {
     slidesPerView: 1,
     loop: true,
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.home-slider__arrow--next',
+      prevEl: '.home-slider__arrow--prev',
       addIcons: false,
     },
     autoplay: {

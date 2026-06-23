@@ -15,9 +15,7 @@ export const HomePage = (): string => {
     <div id="home-root">
       ${Header()}
       <main>
-        <section>
-          ${HomeSlider()}
-        </section>
+        ${HomeSlider()}
         ${PopularProducts()}
         ${Banner()}
         ${NewProducts()}

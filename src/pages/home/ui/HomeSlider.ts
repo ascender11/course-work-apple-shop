@@ -5,6 +5,39 @@ import { ArrowLeft, ArrowRight } from '@/shared/ui/icons'
 
 import { initHomeSlider } from '../model/slider-init'
 
+const slides = [
+  {
+    titleKey: 'home.slider.slide1.title',
+    specsKey: 'home.slider.slide1.specs',
+    image: '/catalog/iPadPro13.png',
+    bg: '#1a2332',
+  },
+  {
+    titleKey: 'home.slider.slide2.title',
+    specsKey: 'home.slider.slide2.specs',
+    image: '/catalog/iPhone16.png',
+    bg: '#1a1a1a',
+  },
+  {
+    titleKey: 'home.slider.slide3.title',
+    specsKey: 'home.slider.slide3.specs',
+    image: '/catalog/iPhone16ProMax.png',
+    bg: '#1a2332',
+  },
+  {
+    titleKey: 'home.slider.slide4.title',
+    specsKey: 'home.slider.slide4.specs',
+    image: '/catalog/AppleWatchSeries10.png',
+    bg: '#f8d7d7',
+  },
+  {
+    titleKey: 'home.slider.slide5.title',
+    specsKey: 'home.slider.slide5.specs',
+    image: '/catalog/iPadPro11.png',
+    bg: '#1a1a1a',
+  },
+]
+
 export const HomeSlider = () => {
   const init = () => {
     const observer = new MutationObserver((_, obs) => {
@@ -19,40 +52,50 @@ export const HomeSlider = () => {
 
   if (typeof window !== 'undefined') init()
 
+  const renderSlide = (slide: (typeof slides)[number]) => {
+    return html`
+      <div class="swiper-slide">
+        <div class="home-slide" style="background-color: ${slide.bg};">
+          <div class="home-slide-mobile">
+            <div class="home-slide__content">
+              <h2 class="home-slide__title" style="color: ${slide.bg === '#f8d7d7' ? '#1a1a1a' : '#fff'};">${t(slide.titleKey)}</h2>
+              <div class="home-slide__specs" style="color: ${slide.bg === '#f8d7d7' ? '#1a1a1a' : '#fff'};">
+                ${t(slide.specsKey)}
+              </div>
+              ${Button({ text: t('home.slider.more'), className: 'rounded-full px-6 py-2.5 text-base font-semibold', variant: 'outline' })}
+            </div>
+            <img class="home-slide__image" src="${slide.image}" alt="${t(slide.titleKey)}" />
+          </div>
+          <div class="home-slide-desktop">
+            <div class="home-slide__content">
+              <h2 class="home-slide__title" style="color: ${slide.bg === '#f8d7d7' ? '#1a1a1a' : '#fff'};">${t(slide.titleKey)}</h2>
+              <div class="home-slide__specs" style="color: ${slide.bg === '#f8d7d7' ? '#1a1a1a' : '#fff'};">
+                ${t(slide.specsKey)}
+              </div>
+              ${Button({ text: t('home.slider.more'), className: 'rounded-full px-6 py-2.5 text-base font-semibold', variant: 'outline' })}
+            </div>
+            <img class="home-slide__image" src="${slide.image}" alt="${t(slide.titleKey)}" />
+          </div>
+        </div>
+      </div>
+    `
+  }
+
   return html`
-    <div id="home-slider" class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide relative flex! flex-col! items-center! gap-2.5 bg-[#D0EAFC] pt-4 min-h-80 sm:gap-3.75 sm:pt-12.5 sm:min-h-120 xl:items-start! xl:pl-179 xl:pt-32 xl:min-h-122">
-          <h1 class="text-center font-semibold text-4xl text-[#1E3240] sm:text-6xl xl:text-[88px]">
-            iPh<span class="mx-1 inline-block h-4.5 w-10.5 rounded-full border-4 border-[#1E3240] sm:mx-1.25 sm:h-8 sm:w-17.5 sm:border-8 xl:h-11.25 xl:w-25.25 xl:border-11"></span>ne 14
-          </h1>
-          <h2 class="text-center text-3xl text-[#1E3240] sm:text-4xl xl:text-6xl">${t('home.slider.price')}</h2>
-          ${Button({ text: t('home.slider.more'), className: 'sm:px-7.5 sm:py-3.75' })}
-          <img
-            class="absolute top-42.5 w-42.5 sm:top-69.5 sm:w-67.5 xl:left-67.5 xl:top-26.75 xl:w-99.5"
-            src="/home/iPhone-14.png"
-            alt="iPhone 14"
-          />
-        </div>
-        <div class="swiper-slide relative flex! flex-col! items-center! gap-2.5 bg-[#D0EAFC] pt-4 min-h-80 sm:gap-3.75 sm:pt-12.5 sm:min-h-120 xl:items-start! xl:pl-179 xl:pt-32 xl:min-h-122">
-          <h1 class="text-center font-semibold text-4xl text-[#1E3240] sm:text-6xl xl:text-[88px]">
-            iPh<span class="mx-1 inline-block h-4.5 w-10.5 rounded-full border-4 border-[#1E3240] sm:mx-1.25 sm:h-8 sm:w-17.5 sm:border-8 xl:h-11.25 xl:w-25.25 xl:border-11"></span>ne 14
-          </h1>
-          <h2 class="text-center text-3xl text-[#1E3240] sm:text-4xl xl:text-6xl">${t('home.slider.price')}</h2>
-          ${Button({ text: t('home.slider.more'), className: 'sm:px-7.5 sm:py-3.75' })}
-          <img
-            class="absolute top-42.5 w-42.5 sm:top-69.5 sm:w-67.5 xl:left-67.5 xl:top-26.75 xl:w-99.5"
-            src="/home/iPhone-14.png"
-            alt="iPhone 14"
-          />
+    <section class="home-slider-section">
+      <div class="home-slider-container">
+        <div id="home-slider" class="home-slider swiper">
+          <div class="swiper-wrapper">
+            ${slides.map((slide) => renderSlide(slide)).join('')}
+          </div>
         </div>
       </div>
-      <div class="swiper-button-prev bottom-0 left-4! h-6! w-6! sm:left-6! sm:h-10! sm:w-10! xl:left-30!">
-        ${ArrowLeft({ className: 'sm:h-10 sm:w-10 text-black' })}
+      <div class="home-slider__arrow home-slider__arrow--prev">
+        ${ArrowLeft({ className: 'w-6 h-6 sm:w-8 sm:h-8 xl:w-10 xl:h-10 text-text-primary/50' })}
       </div>
-      <div class="swiper-button-next bottom-0 right-4! h-6! w-6! sm:right-6! sm:h-10! sm:w-10! xl:right-30!">
-        ${ArrowRight({ className: 'sm:h-10 sm:w-10 text-black' })}
+      <div class="home-slider__arrow home-slider__arrow--next">
+        ${ArrowRight({ className: 'w-6 h-6 sm:w-8 sm:h-8 xl:w-10 xl:h-10 text-text-primary/50' })}
       </div>
-    </div>
+    </section>
   `
 }

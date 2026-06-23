@@ -1,0 +1,58 @@
+@layer components {
+  .home-slider-section {
+    @apply relative w-full mt-6 px-6 sm:mt-8 sm:px-10 xl:mt-10 xl:px-16;
+  }
+
+  .home-slider-container {
+    @apply mx-auto xl:max-w-none;
+  }
+
+  .home-slider {
+    @apply relative w-full overflow-hidden rounded-2xl;
+  }
+
+  .home-slide {
+    @apply relative flex flex-col gap-4 px-6 py-5 h-132 sm:py-6 sm:px-8 sm:h-144;
+  }
+
+  .home-slide-desktop {
+    @apply hidden xl:flex xl:flex-row xl:items-center xl:justify-start xl:py-16 xl:pl-8 xl:h-122;
+    gap: clamp(1.5rem, 2vw, 3rem);
+  }
+
+  .home-slide-mobile {
+    @apply flex flex-1 flex-col items-center justify-between text-center xl:hidden;
+  }
+
+  .home-slide__content {
+    @apply flex flex-col items-center gap-4 z-10;
+  }
+
+  .home-slide-desktop .home-slide__content {
+    @apply items-start text-left xl:max-w-2/3;
+  }
+
+  .home-slide__title {
+    @apply text-2xl font-bold tracking-wide sm:text-4xl xl:text-5xl;
+  }
+
+  .home-slide__specs {
+    @apply rounded-xl px-4 py-3 text-sm leading-relaxed bg-black/20 sm:text-lg xl:text-xl;
+  }
+
+  .home-slide__image {
+    @apply relative z-10 w-48 h-48 object-contain sm:w-64 sm:h-64 xl:absolute xl:right-12 xl:top-1/2 xl:-translate-y-1/2 xl:h-112 xl:w-auto;
+  }
+
+  .home-slider__arrow {
+    @apply hidden absolute top-1/2 -translate-y-1/2 z-30 items-center justify-center w-8 h-8 cursor-pointer bg-transparent border-none sm:flex sm:w-10 sm:h-10 xl:w-10 xl:h-10;
+  }
+
+  .home-slider__arrow--prev {
+    @apply left-0 sm:left-0 xl:left-3;
+  }
+
+  .home-slider__arrow--next {
+    @apply right-0 sm:right-0 xl:right-3;
+  }
+}

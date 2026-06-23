@@ -51,6 +51,19 @@ export const createRouter = () => {
     favoritesStore.init(user.id)
   }
 
+  router.hooks({
+    after: () => {
+      setTimeout(() => {
+        const path = window.location.pathname
+        document.querySelectorAll<HTMLAnchorElement>('[data-active-route]').forEach((link) => {
+          const href = link.getAttribute('data-active-route') ?? ''
+          const isActive = href === '/' ? path === '/' : path.startsWith(href)
+          link.classList.toggle('active', isActive)
+        })
+      }, 0)
+    },
+  })
+
   router
     .on('/', () => mount(HomePage))
     .on('/catalog', () => {

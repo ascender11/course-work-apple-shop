@@ -38,7 +38,7 @@ export const Header = ({ className = '' }: HeaderProps = {}) => {
 
   return html`
     <div class="relative">
-      <header class="${cn('relative z-20 flex flex-row items-center justify-between px-4 py-1 bg-background md:px-6 md:py-2 lg:px-25 lg:py-2.5', className)}">
+      <header class="${cn('relative z-20 bg-background flex flex-row items-center justify-between px-4 py-1 md:px-6 md:py-2 lg:px-25 lg:py-2.5', className)}">
         ${Logo()}
 
         <nav class="flex items-center">

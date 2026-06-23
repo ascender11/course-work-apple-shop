@@ -19,7 +19,7 @@ export const FavoritesPage = (): string => {
   return html`
     ${Header()}
 
-    <div class="min-h-[calc(100vh-56px)] bg-background">
+    <div class="min-h-[calc(100vh-56px)]">
 
       <div class="flex items-center justify-between px-4 py-4 md:px-6 lg:px-30">
         <div class="flex items-center gap-3">

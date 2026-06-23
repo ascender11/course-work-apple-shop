@@ -21,7 +21,7 @@ export const Dropdown = ({
   const isOpen = openByDefault || isActive
 
   return html`
-    <div class="${cn('bg-background rounded-lg', className)}">
+    <div class="${cn('bg-background rounded-lg shadow-sm', className)}">
       <button
         data-accordion-target="${id}"
         class="flex w-full items-center font-medium justify-between py-3 px-6 transition-colors"

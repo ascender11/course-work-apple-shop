@@ -20,8 +20,9 @@ export const PopularProducts = ({ className = '' }: PopularProductsProps = {}) =
         try {
           const products = await productService.getAll()
           listContainer.innerHTML = ProductList({ products })
-          await initFavoriteButtons()
-          await initAddToCartButtons()
+
+          initFavoriteButtons()
+          initAddToCartButtons()
         } catch (error: unknown) {
           const errorMessage = error instanceof Error ? error.message : 'Unknown error'
           listContainer.innerHTML = html`
@@ -36,7 +37,7 @@ export const PopularProducts = ({ className = '' }: PopularProductsProps = {}) =
   if (typeof window !== 'undefined') init()
 
   return html`
-    <section class="${cn('py-4 px-3 sm:py-6 sm:px-4', className)}">
+    <section class="${cn('py-4 px-6 sm:py-6 sm:px-10 xl:px-16', className)}">
       <h1 class="text-2xl sm:text-4xl xl:text-5xl font-bold mb-2 text-text-primary">${t('home.popular.title')}</h1>
       <p class="text-lg text-primary sm:text-2xl mb-6">${t('home.popular.subtitle')}</p>
       <div id="popular-products-list" class="w-full">

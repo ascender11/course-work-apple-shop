@@ -23,7 +23,7 @@ export const ProductList = ({ products, className = '' }: ProductListProps) => {
   return html`
     <div class="@container">
       <div class="${cn(
-        'grid grid-cols-1 @[640px]:grid-cols-2 @[768px]:grid-cols-3 @[1024px]:grid-cols-4 @[1280px]:grid-cols-5 gap-2.5 justify-items-center items-start',
+        'grid grid-cols-1 @[640px]:grid-cols-2 @[768px]:grid-cols-3 @[1024px]:grid-cols-4 gap-5 @[1024px]:gap-6 items-start',
         className
       )}">
         ${products.map((product) => ProductCard({ product })).join('')}

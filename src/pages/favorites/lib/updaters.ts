@@ -21,7 +21,7 @@ export const renderEmptyState = () => {
         </svg>
         <p class="text-lg font-medium text-text-secondary">${t('fav.empty')}</p>
         <p class="text-sm text-text-quinary">${t('fav.emptyHint')}</p>
-        <a href="/catalog" data-navigo class="mt-2 text-sm font-medium text-primary hover:text-secondary transition-colors">
+        <a href="/catalog" data-navigo class="button mt-2">
           ${t('fav.goToCatalog')}
         </a>
       </div>

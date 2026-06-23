@@ -36,7 +36,7 @@ export const NewProducts = ({ className = '' }: NewProductsProps = {}) => {
   if (typeof window !== 'undefined') init()
 
   return html`
-    <section class="${cn('py-4 px-3 sm:py-6 sm:px-4', className)}">
+    <section class="${cn('py-4 px-6 sm:py-6 sm:px-10 xl:px-16', className)}">
       <p class="text-lg text-primary sm:text-2xl mb-6">${t('home.new.subtitle')}</p>
       <div id="new-products-list" class="w-full">
         <div class="py-12 flex justify-center items-center text-text-quinary">${Spinner()}</div>

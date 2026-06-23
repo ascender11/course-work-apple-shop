@@ -5,7 +5,7 @@ import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 export const CartItems = (items: CartItem[]) => html`
-  <div class="flex-1 min-w-0 bg-background rounded-2xl border border-border-light shadow-card-sm px-4 sm:px-6">
+  <div class="flex-1 min-w-0 bg-background-secondary rounded-2xl border border-border-light shadow-card-sm px-4 sm:px-6">
     <div id="cart-items-list">
       ${items.map((item) => CartItemCard(item)).join('')}
     </div>

@@ -9,9 +9,7 @@ export interface CtaBannerProps {
 export const CtaBanner = ({ className = '' }: CtaBannerProps = {}) => {
   return html`
     <section class="${cn(
-      'flex flex-col items-center text-center p-4 gap-5 bg-background',
-      'md:p-6 md:px-8 md:gap-6',
-      'lg:px-16 lg:py-8',
+      'flex flex-col items-center text-center p-6 sm:px-10 xl:px-16 gap-5 bg-background',
       className
     )}">
       <div class="flex flex-col gap-2">

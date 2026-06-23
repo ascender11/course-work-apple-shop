@@ -42,7 +42,7 @@ export const Advantages = ({ className = '' }: AdvantagesProps = {}) => {
   ]
 
   return html`
-    <section class="${cn('flex flex-col py-6 px-4 gap-5', className)}">
+    <section class="${cn('flex flex-col py-6 px-6 sm:px-10 xl:px-16 gap-5', className)}">
       <h1 class="w-full text-2xl md:text-3xl lg:text-6xl lg:text-center">${t('home.advantages.title')}</h1>
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-5 items-stretch">
         ${advantages.map((advantage) => AdvantageCard(advantage)).join('')}

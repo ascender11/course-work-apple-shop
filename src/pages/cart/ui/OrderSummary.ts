@@ -2,7 +2,7 @@ import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
 export const OrderSummary = (total: number, count: number) => html`
-  <div class="bg-background rounded-2xl border border-border-light shadow-card p-6 flex flex-col gap-4 lg:sticky lg:top-6">
+  <div class="bg-background-secondary rounded-2xl border border-border-light shadow-card p-6 flex flex-col gap-4 lg:sticky lg:top-6">
     <h2 class="text-lg font-semibold text-text-primary">${t('cart.yourOrder')}</h2>
 
     <div class="flex flex-col gap-2 text-sm text-text-secondary">

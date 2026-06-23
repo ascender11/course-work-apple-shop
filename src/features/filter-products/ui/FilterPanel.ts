@@ -57,6 +57,6 @@ export const FilterPanel = (state: FiltersState, prefix: string) => html`
         isActive: state.year !== '',
       })}
     </div>
-    <button data-reset-filters class="mt-4 w-full rounded-lg border border-border py-2 text-sm font-medium text-primary transition-colors hover:bg-background-secondary cursor-pointer">${t('catalog.resetFilter')}</button>
+    <button data-reset-filters class="mt-4 w-full rounded-lg border border-border py-2 text-sm font-medium text-primary transition-colors hover:bg-background-tertiary cursor-pointer">${t('catalog.resetFilter')}</button>
   </div>
 `

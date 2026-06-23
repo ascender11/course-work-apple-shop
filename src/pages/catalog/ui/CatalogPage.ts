@@ -50,7 +50,7 @@ export const CatalogPage = (): string => {
       <div class="flex items-center gap-3">
         <button
           id="mobile-filter-btn"
-          class="flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-text-secondary transition-colors hover:bg-background-secondary"
+          class="flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-text-secondary transition-colors hover:bg-background-tertiary hover:border-border-hover"
         >
           <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none">
             <path d="M3 6h18M7 12h10M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />

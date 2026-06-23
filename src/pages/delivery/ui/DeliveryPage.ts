@@ -60,7 +60,7 @@ export const DeliveryPage = (): string => {
       <section class="bg-background-quaternary rounded-2xl p-6 sm:p-10 lg:p-12">
         <h2 class="text-2xl sm:text-3xl font-bold text-text-primary mb-6">${t('delivery.pickupTitle')}</h2>
 
-        <div class="bg-background rounded-2xl px-4 py-4 sm:px-6 sm:py-5 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-2 gap-2 mb-3">
+        <div class="bg-background-secondary rounded-2xl px-4 py-4 sm:px-6 sm:py-5 flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-2 gap-2 mb-3">
           <span class="text-base font-medium text-text-primary">${t('delivery.pickupAddress')}</span>
           <div class="flex items-center gap-1 bg-background-secondary rounded-full px-3 py-1 text-sm text-text-secondary w-fit">
             ${Walk({ className: 'w-4 h-4 text-text-secondary' })}
@@ -87,7 +87,7 @@ export const DeliveryPage = (): string => {
             <h2 class="text-2xl sm:text-4xl font-bold text-primary leading-tight">
               ${t('delivery.happyTitle')}
             </h2>
-            <span class="bg-background text-primary text-sm font-medium px-4 py-2 rounded-2xl whitespace-nowrap shrink-0">
+            <span class="bg-background-secondary text-primary text-sm font-medium px-4 py-2 rounded-2xl whitespace-nowrap shrink-0">
               ${t('delivery.happyBadge')}
             </span>
           </div>

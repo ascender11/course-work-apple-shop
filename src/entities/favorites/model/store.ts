@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios'
 
-import type { Product } from '@/entities/product'
-import { productService } from '@/entities/product'
+import type { Product } from '@/entities/product/@x/favorites'
+import { productService } from '@/entities/product/@x/favorites'
 
 import { favoritesService } from '../api/service'
 import type { Favorite, FavoriteItem, FavoritesState } from './types'

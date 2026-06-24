@@ -1,9 +1,9 @@
 import { cartStore } from '@/entities/cart'
-import { toast } from '@/features/toast'
 
 import { t } from '@/shared/i18n'
+import { animateRemoval } from '@/shared/lib/animate'
+import { toast } from '@/shared/toast'
 
-import { animateRemoval } from '../lib/animations'
 import { updateCartTitle, updateLineItem, updateSummary } from '../lib/updaters'
 import { CartEmpty } from '../ui/CartEmpty'
 import { clearCart, handleDecrement, handleIncrement, handleRemove } from './actions'
@@ -56,8 +56,8 @@ const wireCartItem = (itemEl: HTMLElement) => {
     updateLineItem(itemEl, productId, color, storage)
   })
 
-  itemEl.querySelector('.js-cart-dec')?.addEventListener('click', () => {
-    const removed = handleDecrement(productId, color, storage)
+  itemEl.querySelector('.js-cart-dec')?.addEventListener('click', async () => {
+    const removed = await handleDecrement(productId, color, storage)
     if (removed) {
       animateRemoval(itemEl, updateSummary)
       toast.success(t('toast.removedFromCart'))

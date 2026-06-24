@@ -1,4 +1,4 @@
-import type { ProductRating } from '@/entities/product'
+import type { ProductRating } from '@/entities/product/@x/review'
 
 import { axiosInstance } from '@/shared/api'
 

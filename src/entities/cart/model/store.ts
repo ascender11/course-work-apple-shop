@@ -1,16 +1,15 @@
 import { AxiosError } from 'axios'
 
 import { cartService } from '../api/service'
-import { addItem, calcCount, calcTotal, findItem, removeItem, replaceId, updateQuantity } from './cart.service'
+import { addItem, calcCount, calcTotal, findItem, removeItem, replaceId, updateQuantity } from './service'
 import type { CartItem, CartState } from './types'
 
 let state: CartState = { items: [], loading: false, error: null }
 let listeners: (() => void)[] = []
 
-const notify = () =>
-  listeners.forEach((fn) => {
-    fn()
-  })
+const notify = () => {
+  for (const fn of listeners) fn()
+}
 
 const setState = (patch: Partial<CartState>) => {
   state = { ...state, ...patch }
@@ -121,6 +120,29 @@ export const cartStore = {
         }
       }
     }
+  },
+
+  async decrement(userId: string, id: string): Promise<boolean> {
+    const item = state.items.find((i) => i.id === id)
+    if (!item) return false
+
+    if (item.quantity <= 1) {
+      await this.remove(userId, id)
+      return true
+    }
+
+    const newQty = item.quantity - 1
+    setState({ items: updateQuantity(state.items, id, newQty) })
+
+    try {
+      await cartService.update(id, newQty)
+      saveCache(userId)
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        setState({ items: updateQuantity(state.items, id, item.quantity), error: error.message })
+      }
+    }
+    return false
   },
 
   async clear(userId: string) {

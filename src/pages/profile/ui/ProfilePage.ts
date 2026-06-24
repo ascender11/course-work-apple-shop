@@ -8,7 +8,7 @@ import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 import { CartEmpty, ChevronRight, Gear, Heart, LogoutIcon } from '@/shared/ui/icons'
 
-import { initProfile } from '../model/initProfile'
+import { initProfile } from '../model/init'
 
 const SettingsRow = (label: string, sublabel: string, control: string, border = true) => html`
   <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-5 py-4 ${border ? 'border-b border-border-light' : ''}">
@@ -45,66 +45,62 @@ const SectionCard = (heading: string, content: string) => html`
   </div>
 `
 
-export const ProfilePage = (): string => {
-  const observer = new MutationObserver((_, obs) => {
-    if (!document.getElementById('profile-root')) return
-    obs.disconnect()
-    initProfile()
-  })
-  if (typeof window !== 'undefined') observer.observe(document.body, { childList: true, subtree: true })
-
+export const ProfilePage = () => {
   const user = userStore.user
-  if (!user) return html`${Header()}${Footer()}`
+  if (!user) return { html: html`${Header()}${Footer()}` }
 
   const firstName = user.fullName.firstName || ''
   const lastName = user.fullName.lastName || ''
   const fullName = `${firstName} ${lastName}`.trim()
   const initials = (firstName[0] + lastName[0]).toUpperCase()
 
-  return html`
-    ${Header()}
+  return {
+    html: html`
+      ${Header()}
 
-    <main id="profile-root" class="min-h-[calc(100vh-56px)] bg-background-secondary py-8 px-4 sm:py-12">
-      <div class="max-w-xl mx-auto flex flex-col gap-4">
+      <main id="profile-root" class="min-h-[calc(100vh-56px)] bg-background-secondary py-8 px-4 sm:py-12">
+        <div class="max-w-xl mx-auto flex flex-col gap-4">
 
-        <div class="bg-background rounded-2xl border border-border-light shadow-card-sm p-8 flex flex-col items-center gap-3">
-          <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center select-none">
-            <span class="text-2xl font-semibold text-primary">${initials}</span>
+          <div class="bg-background rounded-2xl border border-border-light shadow-card-sm p-8 flex flex-col items-center gap-3">
+            <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center select-none">
+              <span class="text-2xl font-semibold text-primary">${initials}</span>
+            </div>
+            <div class="text-center">
+              <h1 class="text-xl font-semibold text-text-primary">${fullName}</h1>
+              <p class="text-sm text-text-quinary mt-0.5">${user.email}</p>
+            </div>
           </div>
-          <div class="text-center">
-            <h1 class="text-xl font-semibold text-text-primary">${fullName}</h1>
-            <p class="text-sm text-text-quinary mt-0.5">${user.email}</p>
-          </div>
+
+          ${SectionCard(
+            t('profile.navigation'),
+            NavRow('/favorites', Heart(), t('profile.favorites')) +
+              NavRow('/cart', CartEmpty(), t('profile.cart')) +
+              (userStore.isAdmin
+                ? NavRow('/admin/dashboard', Gear({ className: 'w-6 h-6' }), t('profile.admin'), false)
+                : '')
+          )}
+
+          ${SectionCard(
+            t('accessibility.title'),
+            SettingsRow(t('accessibility.language'), '', LanguageToggle()) +
+              SettingsRow(t('accessibility.fontSize'), '', FontSizeToggle()) +
+              SettingsRow(t('accessibility.colorScheme'), '', ColorSchemeToggle()) +
+              SettingsRow(t('accessibility.hideImages'), t('accessibility.hideImages.sub'), ImagesToggle(), false)
+          )}
+
+          <button
+            id="profile-logout-btn"
+            class="w-full bg-background rounded-2xl border border-border-light shadow-card-sm px-5 py-4 flex items-center justify-center gap-2 text-error hover:bg-error/10 active:bg-error/20 transition-colors duration-200 cursor-pointer"
+          >
+            ${LogoutIcon()}
+            <span class="text-sm font-medium">${t('profile.logout')}</span>
+          </button>
+
         </div>
+      </main>
 
-        ${SectionCard(
-          t('profile.navigation'),
-          NavRow('/favorites', Heart(), t('profile.favorites')) +
-            NavRow('/cart', CartEmpty(), t('profile.cart')) +
-            (userStore.isAdmin
-              ? NavRow('/admin/dashboard', Gear({ className: 'w-6 h-6' }), t('profile.admin'), false)
-              : '')
-        )}
-
-        ${SectionCard(
-          t('accessibility.title'),
-          SettingsRow(t('accessibility.language'), '', LanguageToggle()) +
-            SettingsRow(t('accessibility.fontSize'), '', FontSizeToggle()) +
-            SettingsRow(t('accessibility.colorScheme'), '', ColorSchemeToggle()) +
-            SettingsRow(t('accessibility.hideImages'), t('accessibility.hideImages.sub'), ImagesToggle(), false)
-        )}
-
-        <button
-          id="profile-logout-btn"
-          class="w-full bg-background rounded-2xl border border-border-light shadow-card-sm px-5 py-4 flex items-center justify-center gap-2 text-error hover:bg-error/10 active:bg-error/20 transition-colors duration-200 cursor-pointer"
-        >
-          ${LogoutIcon()}
-          <span class="text-sm font-medium">${t('profile.logout')}</span>
-        </button>
-
-      </div>
-    </main>
-
-    ${Footer()}
-  `
+      ${Footer()}
+    `,
+    init: initProfile,
+  }
 }

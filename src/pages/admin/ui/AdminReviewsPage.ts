@@ -9,31 +9,27 @@ import { ArrowDown } from '@/shared/ui/icons'
 
 import { initReviewsPage } from '../model/reviews-controller'
 
-export const AdminReviewsPage = (): string => {
+export const AdminReviewsPage = () => {
   if (!userStore.isAdmin) {
-    return html`
-      ${Header()}
-      <main class="min-h-[calc(100vh-60px)] bg-background-secondary flex items-center justify-center px-4 py-8">
-        <div class="text-center">
-          <h1 class="text-2xl font-semibold text-text-primary mb-2">${t('admin.accessDenied')}</h1>
-          <p class="text-sm text-text-quinary">${t('admin.noRights')}</p>
-        </div>
-      </main>
-      ${Footer()}
-    `
+    return {
+      html: html`
+        ${Header()}
+        <main class="min-h-[calc(100vh-60px)] bg-background-secondary flex items-center justify-center px-4 py-8">
+          <div class="text-center">
+            <h1 class="text-2xl font-semibold text-text-primary mb-2">${t('admin.accessDenied')}</h1>
+            <p class="text-sm text-text-quinary">${t('admin.noRights')}</p>
+          </div>
+        </main>
+        ${Footer()}
+      `,
+    }
   }
-
-  const observer = new MutationObserver((_, obs) => {
-    if (!document.getElementById('admin-reviews-root')) return
-    obs.disconnect()
-    initReviewsPage()
-  })
-  if (typeof window !== 'undefined') observer.observe(document.body, { childList: true, subtree: true })
 
   const SELECT_BASE =
     'relative appearance-none cursor-pointer rounded-lg border border-border pl-4 pr-10 py-3 text-sm text-text-primary bg-background outline-none transition-all duration-200 hover:border-border focus:border-primary focus:ring-2 focus:ring-primary/20'
 
-  return html`
+  return {
+    html: html`
     ${Header()}
     <main id="admin-reviews-root" class="min-h-[calc(100vh-60px)] bg-background-secondary px-4 py-8 sm:px-6 lg:px-25">
       <div class="max-w-5xl mx-auto">
@@ -86,5 +82,7 @@ export const AdminReviewsPage = (): string => {
       </div>
     </main>
     ${Footer()}
-  `
+  `,
+    init: initReviewsPage,
+  }
 }

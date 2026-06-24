@@ -12,28 +12,26 @@ export interface NewProductsProps {
 }
 
 export const NewProducts = ({ className = '' }: NewProductsProps = {}) => {
-  const init = () => {
-    const observer = new MutationObserver(async (_, obs) => {
-      const listContainer = document.getElementById('new-products-list')
-      if (listContainer) {
-        obs.disconnect()
-        try {
-          const products = await productService.getAll()
-          listContainer.innerHTML = ProductList({ products })
-          await initFavoriteButtons()
-          await initAddToCartButtons()
-        } catch (error: unknown) {
-          const errorMessage = error instanceof Error ? error.message : 'Unknown error'
-          listContainer.innerHTML = html`
-            <div class="py-10 text-center text-error">${t('home.new.error', { error: errorMessage })}</div>
-          `
-        }
-      }
-    })
-    observer.observe(document.body, { childList: true, subtree: true })
+  const loadProducts = async () => {
+    const listContainer = document.getElementById('new-products-list')
+    if (!listContainer) return
+
+    try {
+      const products = await productService.getAll()
+      listContainer.innerHTML = ProductList({ products })
+      initFavoriteButtons()
+      initAddToCartButtons()
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      listContainer.innerHTML = html`
+        <div class="py-10 text-center text-error">${t('home.new.error', { error: errorMessage })}</div>
+      `
+    }
   }
 
-  if (typeof window !== 'undefined') init()
+  if (typeof window !== 'undefined') {
+    requestAnimationFrame(loadProducts)
+  }
 
   return html`
     <section class="${cn('py-4 px-6 sm:py-6 sm:px-10 xl:px-16', className)}">

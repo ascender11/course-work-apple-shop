@@ -1,8 +1,8 @@
 import { userStore } from '@/entities/user'
-import { toast } from '@/features/toast'
 
 import { t } from '@/shared/i18n'
 import { navigate } from '@/shared/lib'
+import { toast } from '@/shared/toast'
 
 import { initTogglePassword } from '../lib/password-helpers'
 import { clearErrorOnInput, setSubmitButtonUpdater, showError, updateSubmitButton } from '../lib/ui-helpers'

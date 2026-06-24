@@ -5,7 +5,7 @@ import { cn, html } from '@/shared/lib'
 import { Link } from '@/shared/ui/components'
 import { BurgerMenu, Logo, Phone, User } from '@/shared/ui/icons'
 
-import { initHeader } from '../model/header.init'
+import { initHeader } from '../model/init'
 
 export interface HeaderProps {
   className?: string

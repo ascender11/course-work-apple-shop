@@ -14,10 +14,21 @@ import { NotFoundPage } from '@/pages/not-found'
 import { ProductPage } from '@/pages/product'
 import { ProfilePage } from '@/pages/profile'
 
-const mount = (page: () => string) => {
+type PageResult = string | { html: string; init?: () => void }
+
+const mount = (page: () => PageResult) => {
   const app = document.querySelector<HTMLElement>('#app')
   if (!app) return
-  app.innerHTML = page()
+
+  const result = page()
+  if (typeof result === 'string') {
+    app.innerHTML = result
+  } else {
+    app.innerHTML = result.html
+    if (result.init) {
+      requestAnimationFrame(() => result.init?.())
+    }
+  }
 }
 
 const requireAuth = (next: () => void) => {

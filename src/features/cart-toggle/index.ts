@@ -6,5 +6,6 @@ import ru from './locale/ru.json'
 registerDictionary('ru', ru)
 registerDictionary('en', en)
 
+export { CartToggleButton } from '@/entities/product'
+
 export { initAddToCartButtons } from './model/init-cart-toggle-buttons'
-export { CartToggleButton } from './ui/CartToggleButton'

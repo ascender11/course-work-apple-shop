@@ -2,15 +2,13 @@ import type { Product } from '@/entities/product'
 import { userStore } from '@/entities/user'
 import { initAddToCartButtons } from '@/features/cart-toggle'
 import { favoritesStore, initFavoriteButtons } from '@/features/favorite-toggle'
-import { ProductList } from '@/widgets/product-list'
+import { PAGE_SIZE, ProductList } from '@/widgets/product-list'
 
 import { html } from '@/shared/lib'
+import { animateRemoval } from '@/shared/lib/animate'
 import { Pagination } from '@/shared/ui/components'
 
-import { animateCardRemoval } from '../lib/animations'
 import { renderEmptyState, updateFavoritesCount } from '../lib/updaters'
-
-const PAGE_SIZE = 12
 
 let currentPage = 1
 let currentSort = ''
@@ -58,7 +56,7 @@ const onStoreChange = (listEl: HTMLElement) => {
       ?.closest<HTMLElement>('[data-product-card]')
 
     if (card) {
-      animateCardRemoval(card, () => {
+      animateRemoval(card, () => {
         const maxPage = Math.max(1, Math.ceil(favoritesStore.count / PAGE_SIZE))
         currentPage = Math.min(currentPage, maxPage)
         updateFavoritesCount()

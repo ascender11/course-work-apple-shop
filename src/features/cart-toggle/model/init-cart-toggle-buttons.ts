@@ -1,9 +1,9 @@
 import { cartStore, findItem } from '@/entities/cart'
 import { productService } from '@/entities/product'
 import { userStore } from '@/entities/user'
-import { toast } from '@/features/toast'
 
 import { t } from '@/shared/i18n'
+import { toast } from '@/shared/toast'
 
 import { updateBtn } from '../lib/update-button'
 
@@ -17,8 +17,8 @@ export const initAddToCartButtons = (): void => {
   const cartIds = new Set(cartStore.items.map((i) => i.product.id))
 
   buttons.forEach((btn) => {
-    if (btn.dataset.addToCartInitialized === '1') return
-    btn.dataset.addToCartInitialized = '1'
+    if (btn.dataset.initialized === '1') return
+    btn.dataset.initialized = '1'
 
     const productId = btn.dataset.productId ?? ''
     if (cartIds.has(productId)) {

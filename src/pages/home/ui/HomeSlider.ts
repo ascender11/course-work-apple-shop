@@ -39,18 +39,9 @@ const slides = [
 ]
 
 export const HomeSlider = () => {
-  const init = () => {
-    const observer = new MutationObserver((_, obs) => {
-      const element = document.getElementById('home-slider')
-      if (element) {
-        obs.disconnect()
-        initHomeSlider()
-      }
-    })
-    observer.observe(document.body, { childList: true, subtree: true })
+  if (typeof window !== 'undefined') {
+    requestAnimationFrame(initHomeSlider)
   }
-
-  if (typeof window !== 'undefined') init()
 
   const renderSlide = (slide: (typeof slides)[number]) => {
     return html`

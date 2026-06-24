@@ -11,10 +11,9 @@ let state: UserState = {
 
 let listeners: (() => void)[] = []
 
-const notify = () =>
-  listeners.forEach((fn) => {
-    fn()
-  })
+const notify = () => {
+  for (const fn of listeners) fn()
+}
 
 const setState = (patch: Partial<UserState>) => {
   state = { ...state, ...patch }

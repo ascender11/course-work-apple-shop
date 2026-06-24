@@ -1,8 +1,8 @@
 import { favoritesStore } from '@/entities/favorites'
 import { userStore } from '@/entities/user'
-import { toast } from '@/features/toast'
 
 import { t } from '@/shared/i18n'
+import { toast } from '@/shared/toast'
 
 import { updateBtn } from '../lib/update-button'
 
@@ -14,8 +14,8 @@ export const initFavoriteButtons = (): void => {
   if (!buttons.length) return
 
   buttons.forEach((btn) => {
-    if (btn.dataset.favInitialized === '1') return
-    btn.dataset.favInitialized = '1'
+    if (btn.dataset.initialized === '1') return
+    btn.dataset.initialized = '1'
 
     const productId = btn.dataset.productId ?? ''
     const isFav = favoritesStore.has(productId)
@@ -26,17 +26,17 @@ export const initFavoriteButtons = (): void => {
       e.preventDefault()
       e.stopPropagation()
 
-      const pid = btn.dataset.productId ?? ''
-      const currentlyFav = favoritesStore.has(pid)
+      const productId = btn.dataset.productId ?? ''
+      const currentlyFav = favoritesStore.has(productId)
 
       if (currentlyFav) {
         updateBtn(btn, false, '')
-        favoritesStore.remove(pid)
+        favoritesStore.remove(productId)
         toast.success(t('toast.removedFromFavorites'))
       } else {
         try {
-          await favoritesStore.add(user.id, pid)
-          const newFavId = favoritesStore.getId(pid)
+          await favoritesStore.add(user.id, productId)
+          const newFavId = favoritesStore.getId(productId)
           updateBtn(btn, true, newFavId)
           toast.success(t('toast.addedToFavorites'))
         } catch {

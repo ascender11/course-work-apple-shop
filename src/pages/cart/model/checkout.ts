@@ -1,8 +1,8 @@
 import { cartStore } from '@/entities/cart'
 import { userStore } from '@/entities/user'
-import { toast } from '@/features/toast'
 
 import { t } from '@/shared/i18n'
+import { toast } from '@/shared/toast'
 import { Spinner } from '@/shared/ui/components'
 
 import { SuccessModal } from '../ui/SuccessModal'

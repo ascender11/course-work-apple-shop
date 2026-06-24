@@ -1,12 +1,13 @@
 import type { Product } from '@/entities/product'
 import { ProductAvailability } from '@/entities/product'
-import { CartToggleButton } from '@/features/cart-toggle'
-import { FavoriteButton } from '@/features/favorite-toggle'
 
 import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
 import { Button } from '@/shared/ui/components'
 import { Star } from '@/shared/ui/icons'
+
+import { CartToggleButton } from './CartToggleButton'
+import { FavoritesToggleButton } from './FavoritesToggleButton'
 
 export interface ProductCardProps {
   product: Product
@@ -25,7 +26,7 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
           <div class="flex gap-px shrink">${stars}</div>
           <span class="text-primary shrink">(${product.rating.reviewsCount})</span>
         </div>
-        ${FavoriteButton({ productId: product.id })}
+        ${FavoritesToggleButton({ productId: product.id })}
       </div>
 
       <a href="/product/${product.id}" data-navigo class="font-medium text-2xl text-text-primary text-center w-full min-w-0 hover:text-primary transition-colors">

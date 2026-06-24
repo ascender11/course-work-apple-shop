@@ -1,8 +1,8 @@
 import { reviewService } from '@/entities/review'
 import { userStore } from '@/entities/user'
-import { toast } from '@/features/toast'
 
 import { t } from '@/shared/i18n'
+import { toast } from '@/shared/toast'
 
 const MIN_REVIEW_LENGTH = 20
 const CURRENT_USER_ID_KEY = 'currentUserId'

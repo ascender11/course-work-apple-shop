@@ -1,4 +1,4 @@
-import type { Product } from '@/entities/product'
+import type { Product } from '@/entities/product/@x/favorites'
 
 export interface Favorite {
   id: string

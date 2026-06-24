@@ -17,4 +17,6 @@ export type {
   UnavailableProduct,
 } from './model/types'
 export { ProductAvailability } from './model/types'
+export { CartToggleButton } from './ui/CartToggleButton'
+export { FavoritesToggleButton } from './ui/FavoritesToggleButton'
 export { ProductCard } from './ui/ProductCard'

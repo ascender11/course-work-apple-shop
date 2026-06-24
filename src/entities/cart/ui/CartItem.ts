@@ -1,4 +1,4 @@
-import { ProductAvailability } from '@/entities/product'
+import { ProductAvailability } from '@/entities/product/@x/cart'
 
 import { html } from '@/shared/lib'
 

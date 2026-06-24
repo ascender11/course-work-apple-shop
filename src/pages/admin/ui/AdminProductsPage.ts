@@ -8,32 +8,28 @@ import { Spinner } from '@/shared/ui/components'
 
 import { initProductsPage } from '../model/products-controller'
 
-export const AdminProductsPage = (): string => {
+export const AdminProductsPage = () => {
   if (!userStore.isAdmin) {
-    return html`
-      ${Header()}
-      <main class="min-h-[calc(100vh-60px)] bg-background-secondary flex items-center justify-center px-4 py-8">
-        <div class="text-center">
-          <h1 class="text-2xl font-semibold text-text-primary mb-2">${t('admin.accessDenied')}</h1>
-          <p class="text-sm text-text-quinary">${t('admin.noRights')}</p>
-        </div>
-      </main>
-      ${Footer()}
-    `
+    return {
+      html: html`
+        ${Header()}
+        <main class="min-h-[calc(100vh-60px)] bg-background-secondary flex items-center justify-center px-4 py-8">
+          <div class="text-center">
+            <h1 class="text-2xl font-semibold text-text-primary mb-2">${t('admin.accessDenied')}</h1>
+            <p class="text-sm text-text-quinary">${t('admin.noRights')}</p>
+          </div>
+        </main>
+        ${Footer()}
+      `,
+    }
   }
-
-  const observer = new MutationObserver((_, obs) => {
-    if (!document.getElementById('admin-products-root')) return
-    obs.disconnect()
-    initProductsPage()
-  })
-  if (typeof window !== 'undefined') observer.observe(document.body, { childList: true, subtree: true })
 
   const INPUT_BASE =
     'w-full rounded-lg border border-border px-4 py-3 text-sm text-text-primary bg-background outline-none transition-all duration-200 hover:border-border focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-text-quinary'
   const REQUIRED_MARK = '<span class="text-error ml-0.5">*</span>'
 
-  return html`
+  return {
+    html: html`
     ${Header()}
     <main id="admin-products-root" class="min-h-[calc(100vh-60px)] bg-background-secondary px-4 py-8 sm:px-6 lg:px-25">
       <div class="max-w-5xl mx-auto">
@@ -220,5 +216,7 @@ export const AdminProductsPage = (): string => {
       </div>
     </main>
     ${Footer()}
-  `
+  `,
+    init: initProductsPage,
+  }
 }

@@ -8,15 +8,8 @@ import { Spinner } from '@/shared/ui/components'
 
 import { getCurrentSort, initFavoritesPage } from '../model/init'
 
-export const FavoritesPage = (): string => {
-  const observer = new MutationObserver((_, obs) => {
-    if (!document.getElementById('favorites-product-list')) return
-    obs.disconnect()
-    initFavoritesPage()
-  })
-  if (typeof window !== 'undefined') observer.observe(document.body, { childList: true, subtree: true })
-
-  return html`
+export const FavoritesPage = () => ({
+  html: html`
     ${Header()}
 
     <div class="min-h-[calc(100vh-56px)]">
@@ -43,5 +36,6 @@ export const FavoritesPage = (): string => {
     </div>
 
     ${Footer()}
-  `
-}
+  `,
+  init: initFavoritesPage,
+})

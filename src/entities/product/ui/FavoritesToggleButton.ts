@@ -7,7 +7,7 @@ export interface FavoriteButtonProps {
   className?: string
 }
 
-export const FavoriteButton = ({ productId, className = '' }: FavoriteButtonProps) => html`
+export const FavoritesToggleButton = ({ productId, className = '' }: FavoriteButtonProps) => html`
   <button
     class="js-fav-btn flex items-center justify-center w-8 h-8 rounded-full transition-transform duration-150 hover:scale-110 active:scale-95 ${cn(className)}"
     data-product-id="${productId}"

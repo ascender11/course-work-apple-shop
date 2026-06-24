@@ -5,15 +5,8 @@ import { Header } from '@/widgets/header'
 import { t } from '@/shared/i18n'
 import { html } from '@/shared/lib'
 
-export const LoginPage = (): string => {
-  const observer = new MutationObserver((_, obs) => {
-    if (!document.getElementById('login-form')) return
-    obs.disconnect()
-    initLoginForm()
-  })
-  if (typeof window !== 'undefined') observer.observe(document.body, { childList: true, subtree: true })
-
-  return html`
+export const LoginPage = () => ({
+  html: html`
     ${Header()}
     <main class="min-h-[calc(100vh-60px)] bg-background-secondary flex items-center justify-center px-4 py-8">
       <div class="w-full max-w-md">
@@ -37,5 +30,6 @@ export const LoginPage = (): string => {
       </div>
     </main>
     ${Footer()}
-  `
-}
+  `,
+  init: initLoginForm,
+})

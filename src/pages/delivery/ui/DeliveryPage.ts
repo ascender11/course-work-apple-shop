@@ -10,10 +10,8 @@ import { PayCard } from './PayCard'
 
 const getAssetPath = (name: string) => `/delivery/${name}`
 
-export const DeliveryPage = (): string => {
-  if (typeof window !== 'undefined') initDeliveryPage()
-
-  return html`
+export const DeliveryPage = () => ({
+  html: html`
   ${Header()}
 
   <main class="bg-background">
@@ -141,5 +139,6 @@ export const DeliveryPage = (): string => {
   </main>
 
   ${Footer()}
-`
-}
+`,
+  init: initDeliveryPage,
+})

@@ -3,7 +3,7 @@ import { initAddToCartButtons } from '@/features/cart-toggle'
 import { initFavoriteButtons } from '@/features/favorite-toggle'
 import type { FiltersState } from '@/features/filter-products'
 import { initPaginationController, Pagination } from '@/features/pagination'
-import { ProductList } from '@/widgets/product-list'
+import { PAGE_SIZE, ProductList } from '@/widgets/product-list'
 
 import { t } from '@/shared/i18n'
 
@@ -28,7 +28,7 @@ export const loadProductsAndRender = async (state: FiltersState) => {
       paginationContainer.innerHTML = Pagination({
         currentPage: state.page,
         totalCount,
-        pageLimit: 12,
+        pageLimit: PAGE_SIZE,
       })
       initPaginationController()
     }

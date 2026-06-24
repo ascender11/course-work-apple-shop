@@ -6,4 +6,4 @@ import ru from './locale/ru.json'
 registerDictionary('ru', ru)
 registerDictionary('en', en)
 
-export { ProductList } from './ui/ProductList'
+export { PAGE_SIZE, ProductList } from './ui/ProductList'

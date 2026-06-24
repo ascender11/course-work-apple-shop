@@ -4,6 +4,8 @@ import { ProductCard } from '@/entities/product'
 import { t } from '@/shared/i18n'
 import { cn, html } from '@/shared/lib'
 
+export const PAGE_SIZE = 12
+
 export interface ProductListProps {
   products: Product[]
   className?: string

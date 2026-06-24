@@ -16,39 +16,35 @@ const pluralize = (n: number) => {
   return t('cart.itemsCount5', { count: n })
 }
 
-export const CartPage = (): string => {
-  const observer = new MutationObserver((_, obs) => {
-    if (!document.getElementById('cart-root')) return
-    obs.disconnect()
-    initCartPage()
-  })
-  if (typeof window !== 'undefined') observer.observe(document.body, { childList: true, subtree: true })
-
+export const CartPage = () => {
   const items = cartStore.items
   const total = cartStore.total
   const count = cartStore.count
   const isEmpty = items.length === 0
 
-  return html`
-    ${Header()}
-    <div id="cart-root" class="min-h-[calc(100vh-56px)]">
-      <div class="px-4 py-6 md:px-6 lg:px-30">
-        <h1 class="text-2xl font-bold text-text-primary mb-6">
-          ${t('cart.title')}${!isEmpty ? html` <span class="ml-2 text-base font-normal text-text-quinary">${pluralize(count)}</span>` : ''}
-        </h1>
-        ${
-          isEmpty
-            ? CartEmpty()
-            : html`<div class="flex flex-col lg:flex-row lg:items-start gap-6">
-              ${CartItems(items)}
-              <div class="w-full lg:w-80 xl:w-96 shrink-0">
-                <div id="cart-summary">${OrderSummary(total, count)}</div>
-              </div>
-            </div>`
-        }
+  return {
+    html: html`
+      ${Header()}
+      <div id="cart-root" class="min-h-[calc(100vh-56px)]">
+        <div class="px-4 py-6 md:px-6 lg:px-30">
+          <h1 class="text-2xl font-bold text-text-primary mb-6">
+            ${t('cart.title')}${!isEmpty ? html` <span class="ml-2 text-base font-normal text-text-quinary">${pluralize(count)}</span>` : ''}
+          </h1>
+          ${
+            isEmpty
+              ? CartEmpty()
+              : html`<div class="flex flex-col lg:flex-row lg:items-start gap-6">
+                ${CartItems(items)}
+                <div class="w-full lg:w-80 xl:w-96 shrink-0">
+                  <div id="cart-summary">${OrderSummary(total, count)}</div>
+                </div>
+              </div>`
+          }
+        </div>
       </div>
-    </div>
-    <div id="cart-modal-container"></div>
-    ${Footer()}
-  `
+      <div id="cart-modal-container"></div>
+      ${Footer()}
+    `,
+    init: initCartPage,
+  }
 }

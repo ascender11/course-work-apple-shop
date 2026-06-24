@@ -3,6 +3,7 @@ import { Header } from '@/widgets/header'
 
 import { html } from '@/shared/lib'
 
+import { initHomePage } from '../model/init-home-page'
 import { Advantages } from './Advantages'
 import { Banner } from './Banner'
 import { CtaBanner } from './CtaBanner'
@@ -10,8 +11,9 @@ import { HomeSlider } from './HomeSlider'
 import { NewProducts } from './NewProducts'
 import { PopularProducts } from './PopularProducts'
 
-export const HomePage = (): string => {
-  return html`
+export const HomePage = () => {
+  return {
+    html: html`
     <div id="home-root">
       ${Header()}
       <main>
@@ -24,5 +26,7 @@ export const HomePage = (): string => {
         ${Footer()}
       </main>
     </div>
-  `
+  `,
+    init: initHomePage,
+  }
 }

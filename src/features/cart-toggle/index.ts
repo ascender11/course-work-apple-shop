@@ -8,4 +8,4 @@ registerDictionary('en', en)
 
 export { CartToggleButton } from '@/entities/product'
 
-export { initAddToCartButtons } from './model/init-cart-toggle-buttons'
+export { initCartButtons } from './model/init-cart-buttons'

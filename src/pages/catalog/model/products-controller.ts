@@ -1,5 +1,5 @@
 import { productService } from '@/entities/product'
-import { initAddToCartButtons } from '@/features/cart-toggle'
+import { initCartButtons } from '@/features/cart-toggle'
 import { initFavoriteButtons } from '@/features/favorite-toggle'
 import type { FiltersState } from '@/features/filter-products'
 import { initPaginationController, Pagination } from '@/features/pagination'
@@ -22,7 +22,7 @@ export const loadProductsAndRender = async (state: FiltersState) => {
     listEl.innerHTML = ProductList({ products })
 
     initFavoriteButtons()
-    initAddToCartButtons()
+    initCartButtons()
 
     if (paginationContainer) {
       paginationContainer.innerHTML = Pagination({

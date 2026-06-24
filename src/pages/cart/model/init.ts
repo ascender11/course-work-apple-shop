@@ -48,26 +48,24 @@ const renderEmptyState = () => {
 
 const wireCartItem = (itemEl: HTMLElement) => {
   const productId = itemEl.dataset.productId ?? ''
-  const color = itemEl.dataset.color || undefined
-  const storage = itemEl.dataset.storage || undefined
 
   itemEl.querySelector('.js-cart-inc')?.addEventListener('click', () => {
-    handleIncrement(productId, color, storage)
-    updateLineItem(itemEl, productId, color, storage)
+    handleIncrement(productId)
+    updateLineItem(itemEl, productId)
   })
 
   itemEl.querySelector('.js-cart-dec')?.addEventListener('click', async () => {
-    const removed = await handleDecrement(productId, color, storage)
+    const removed = await handleDecrement(productId)
     if (removed) {
       animateRemoval(itemEl, updateSummary)
       toast.success(t('toast.removedFromCart'))
     } else {
-      updateLineItem(itemEl, productId, color, storage)
+      updateLineItem(itemEl, productId)
     }
   })
 
   itemEl.querySelector('.js-cart-remove')?.addEventListener('click', () => {
-    handleRemove(productId, color, storage)
+    handleRemove(productId)
     animateRemoval(itemEl, updateSummary)
     toast.success(t('toast.removedFromCart'))
   })

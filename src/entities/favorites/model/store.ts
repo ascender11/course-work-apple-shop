@@ -6,9 +6,8 @@ import { productService } from '@/entities/product/@x/favorites'
 import { favoritesService } from '../api/service'
 import type { Favorite, FavoriteItem, FavoritesState } from './types'
 
-let state: FavoritesState = { items: [], loading: false, error: null }
+let state: FavoritesState = { items: [] }
 let listeners: (() => void)[] = []
-let userId = ''
 
 const notify = () => {
   for (const fn of listeners) fn()
@@ -40,7 +39,7 @@ const mergeWithProducts = async (favorites: Favorite[]): Promise<FavoriteItem[]>
   const result: FavoriteItem[] = []
   for (const f of favorites) {
     const product = productMap.get(f.productId)
-    if (product) result.push({ id: f.id, userId: f.userId, productId: f.productId, product })
+    if (product) result.push({ userId: f.userId, productId: f.productId, product })
   }
   return result
 }
@@ -56,95 +55,103 @@ export const favoritesStore = {
   get items() {
     return state.items
   },
+
   get count() {
     return state.items.length
   },
-  get loading() {
-    return state.loading
-  },
-  get error() {
-    return state.error
+
+  get(productId: string): FavoriteItem | undefined {
+    return state.items.find((f) => f.productId === productId)
   },
 
-  async init(id: string) {
-    userId = id
-    setState({ loading: true })
-
+  async init(userId: string) {
     const cached = loadCache(userId)
     setState({ items: cached })
 
     try {
       const favorites = await favoritesService.getByUser(userId)
       if (!favorites.length) {
-        setState({ items: [], loading: false })
+        setState({ items: [] })
         saveCache(userId)
         return
       }
       const items = await mergeWithProducts(favorites)
-      setState({ items, loading: false })
+      setState({ items })
       saveCache(userId)
     } catch (error) {
       if (error instanceof AxiosError) {
-        setState({ error: error.message, loading: false })
+        setState({ items: [] })
       }
     }
   },
 
-  has(productId: string): boolean {
-    return state.items.some((f) => f.productId === productId)
-  },
+  async add(userId: string, productId: string) {
+    const existing = this.get(productId)
+    if (existing) return
 
-  getId(productId: string): string {
-    return state.items.find((f) => f.productId === productId)?.id ?? ''
-  },
-
-  async add(addUserId: string, productId: string) {
-    const tempId = `temp_${Date.now()}`
-    const tempFavorite: FavoriteItem = { id: tempId, userId: addUserId, productId, product: null as unknown as Product }
+    const tempFavorite: FavoriteItem = { userId, productId, product: null as unknown as Product }
     setState({ items: [...state.items, tempFavorite] })
 
     try {
       const [created, product] = await Promise.all([
-        favoritesService.add(addUserId, productId),
+        favoritesService.add(userId, productId),
         productService.getById(productId),
       ])
       const favoriteItem: FavoriteItem = {
-        id: created.id,
         userId: created.userId,
         productId: created.productId,
         product,
       }
       setState({
-        items: state.items.map((f) => (f.id === tempId ? favoriteItem : f)),
+        items: state.items.map((f) => (f.productId === productId ? favoriteItem : f)),
       })
       saveCache(userId)
     } catch (error) {
       if (error instanceof AxiosError) {
         setState({
-          items: state.items.filter((f) => f.id !== tempId),
+          items: state.items.filter((f) => f.productId !== productId),
         })
       }
     }
   },
 
-  async remove(productId: string) {
+  async remove(userId: string, productId: string) {
     const item = state.items.find((f) => f.productId === productId)
+    if (!item) return
+
     setState({ items: state.items.filter((f) => f.productId !== productId) })
 
-    if (item && !item.id.startsWith('temp_')) {
-      try {
-        await favoritesService.remove(item.id)
-        saveCache(userId)
-      } catch (error) {
-        if (error instanceof AxiosError) {
-          setState({ items: [...state.items, item] })
-        }
+    try {
+      const favorites = await favoritesService.getByUser(userId)
+      const fav = favorites.find((f) => f.productId === productId)
+      if (fav) await favoritesService.remove(fav.id)
+      saveCache(userId)
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        setState({ items: [...state.items, item] })
       }
     }
   },
 
-  clear() {
+  async clear(userId: string) {
+    const old = state.items
     setState({ items: [] })
-    saveCache(userId)
+
+    try {
+      const favorites = await favoritesService.getByUser(userId)
+      for (const fav of favorites) {
+        await favoritesService.remove(fav.id)
+      }
+      saveCache(userId)
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        setState({ items: old })
+      }
+    }
+  },
+
+  clearCache(userId: string) {
+    setState({ items: [] })
+    localStorage.removeItem(CACHE_KEY(userId))
   },
 }

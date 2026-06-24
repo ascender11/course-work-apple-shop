@@ -1,4 +1,4 @@
-import { cartStore, findItem } from '@/entities/cart'
+import { cartStore } from '@/entities/cart'
 
 import { t } from '@/shared/i18n'
 
@@ -29,8 +29,8 @@ export const updateCartTitle = () => {
   if (span) span.textContent = pluralize(cartStore.count)
 }
 
-export const updateLineItem = (itemEl: HTMLElement, productId: string, color?: string, storage?: string) => {
-  const item = findItem(cartStore.items, productId, color, storage)
+export const updateLineItem = (itemEl: HTMLElement, productId: string) => {
+  const item = cartStore.get(productId)
   if (!item) return
 
   const qtyEl = itemEl.querySelector<HTMLElement>('.js-cart-qty')

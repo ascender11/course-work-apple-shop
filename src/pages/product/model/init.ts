@@ -1,6 +1,4 @@
 import { productService } from '@/entities/product'
-import { initAddToCartButtons } from '@/features/cart-toggle'
-import { initFavoriteButtons } from '@/features/favorite-toggle'
 import { loadReviews } from '@/features/submit-review'
 
 import { setupReviewSection } from '../lib/review-helpers'
@@ -18,8 +16,6 @@ export const initProductPage = (id: string) => {
       contentEl.innerHTML = ProductContent(product)
 
       initGallery()
-      initAddToCartButtons()
-      initFavoriteButtons()
       setupReviewSection(product.id)
       loadReviews(product.id)
     })

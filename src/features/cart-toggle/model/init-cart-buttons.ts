@@ -1,4 +1,4 @@
-import { favoritesStore } from '@/entities/favorites'
+import { cartStore } from '@/entities/cart'
 import { userStore } from '@/entities/user'
 
 import { t } from '@/shared/i18n'
@@ -6,22 +6,22 @@ import { toast } from '@/shared/toast'
 
 import { updateBtn } from '../lib/update-button'
 
-const syncButtons = (productId: string, isFavorite: boolean) => {
-  document.querySelectorAll<HTMLElement>(`.js-fav-btn[data-product-id="${productId}"]`).forEach((btn) => {
-    updateBtn(btn, isFavorite)
+const syncButtons = (productId: string, inCart: boolean) => {
+  document.querySelectorAll<HTMLButtonElement>(`.js-add-to-cart[data-product-id="${productId}"]`).forEach((btn) => {
+    updateBtn(btn, inCart)
   })
 }
 
-export const initFavoriteButtons = (): void => {
+export const initCartButtons = (): void => {
   const user = userStore.user
   if (!user) return
 
-  const buttons = document.querySelectorAll<HTMLElement>('.js-fav-btn')
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.js-add-to-cart')
   if (!buttons.length) return
 
   buttons.forEach((btn) => {
     const productId = btn.dataset.productId ?? ''
-    const item = favoritesStore.get(productId)
+    const item = cartStore.get(productId)
     updateBtn(btn, !!item)
 
     btn.addEventListener('click', async (e) => {
@@ -29,14 +29,13 @@ export const initFavoriteButtons = (): void => {
       e.stopPropagation()
 
       const productId = btn.dataset.productId ?? ''
-      const item = favoritesStore.get(productId)
+      const item = cartStore.get(productId)
 
       if (!item) {
         try {
-          console.log('add')
-          await favoritesStore.add(user.id, productId)
+          await cartStore.add(user.id, productId)
           syncButtons(productId, true)
-          toast.success(t('toast.addedToFavorites'))
+          toast.success(t('toast.addedToCart'))
         } catch {
           toast.error(t('toast.serverError'))
         }
@@ -44,10 +43,10 @@ export const initFavoriteButtons = (): void => {
         return
       }
 
-      await favoritesStore.remove(user.id, productId)
+      await cartStore.remove(user.id, productId)
 
       syncButtons(productId, false)
-      toast.success(t('toast.removedFromFavorites'))
+      toast.success(t('toast.removedFromCart'))
     })
   })
 }

@@ -7,19 +7,15 @@ import type { CartItem as CartItemType } from '../model/types'
 const TrashIcon = () =>
   `<svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>`
 
-export const CartItemCard = ({ product, quantity, selectedColor, selectedStorage }: CartItemType) => {
+export const CartItemCard = ({ product, quantity }: CartItemType) => {
   const isInStock = product.availability === ProductAvailability.IN_STOCK
   const price = isInStock ? product.price.current : 0
   const lineTotal = price * quantity
-
-  const meta = [selectedStorage, selectedColor].filter(Boolean).join(', ')
 
   return html`
     <div
       class="js-cart-item flex items-start gap-4 py-5 border-b border-gray-100 last:border-0 transition-opacity duration-300"
       data-product-id="${product.id}"
-      data-color="${selectedColor ?? ''}"
-      data-storage="${selectedStorage ?? ''}"
     >
       <a href="/product/${product.id}" data-navigo class="shrink-0 flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-background-secondary overflow-hidden">
         <img src="${product.images[0]}" alt="${product.title}" class="w-full h-full object-contain p-1" loading="lazy" />
@@ -29,7 +25,6 @@ export const CartItemCard = ({ product, quantity, selectedColor, selectedStorage
         <a href="/product/${product.id}" data-navigo class="text-sm font-medium text-text-primary leading-snug hover:text-primary transition-colors line-clamp-2">
           ${product.title}
         </a>
-        ${meta ? html`<span class="text-xs text-text-quinary">${meta}</span>` : ''}
 
         <span class="sm:hidden text-base font-semibold text-text-primary mt-1">
           ${lineTotal.toLocaleString('ru-RU')} ₽

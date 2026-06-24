@@ -7,7 +7,6 @@ export interface Favorite {
 }
 
 export interface FavoriteItem {
-  id: string
   userId: string
   productId: string
   product: Product
@@ -15,6 +14,4 @@ export interface FavoriteItem {
 
 export interface FavoritesState {
   items: FavoriteItem[]
-  loading: boolean
-  error: string | null
 }

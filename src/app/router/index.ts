@@ -51,15 +51,15 @@ const requireAdmin = (next: () => void) => {
 
 let router: Navigo
 
-export const createRouter = () => {
+export const createRouter = async () => {
   router = new Navigo('/')
 
   userStore.init()
 
   const user = userStore.user
   if (user) {
-    cartStore.init(user.id)
-    favoritesStore.init(user.id)
+    await cartStore.init(user.id)
+    await favoritesStore.init(user.id)
   }
 
   router.hooks({

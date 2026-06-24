@@ -1,6 +1,4 @@
 import { productService } from '@/entities/product'
-import { initAddToCartButtons } from '@/features/cart-toggle'
-import { initFavoriteButtons } from '@/features/favorite-toggle'
 import { ProductList } from '@/widgets/product-list'
 
 import { t } from '@/shared/i18n'
@@ -19,8 +17,6 @@ export const NewProducts = ({ className = '' }: NewProductsProps = {}) => {
     try {
       const products = await productService.getAll()
       listContainer.innerHTML = ProductList({ products })
-      initFavoriteButtons()
-      initAddToCartButtons()
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error'
       listContainer.innerHTML = html`

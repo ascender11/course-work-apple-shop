@@ -1,6 +1,6 @@
 import type { Product } from '@/entities/product'
 import { userStore } from '@/entities/user'
-import { initAddToCartButtons } from '@/features/cart-toggle'
+import { initCartButtons } from '@/features/cart-toggle'
 import { favoritesStore, initFavoriteButtons } from '@/features/favorite-toggle'
 import { PAGE_SIZE, ProductList } from '@/widgets/product-list'
 
@@ -97,7 +97,7 @@ export const initFavoritesPage = async () => {
   const render = () => {
     renderProducts(listEl, paginationEl)
     initFavoriteButtons()
-    initAddToCartButtons()
+    initCartButtons()
   }
 
   render()

@@ -1,10 +1,11 @@
 import { AxiosError } from 'axios'
 
+import { productService } from '@/entities/product'
+
 import { cartService } from '../api/service'
-import { addItem, calcCount, calcTotal, findItem, removeItem, replaceId, updateQuantity } from './service'
 import type { CartItem, CartState } from './types'
 
-let state: CartState = { items: [], loading: false, error: null }
+let state: CartState = { items: [] }
 let listeners: (() => void)[] = []
 
 const notify = () => {
@@ -41,105 +42,108 @@ export const cartStore = {
   get items() {
     return state.items
   },
+
   get total() {
-    return calcTotal(state.items)
+    return state.items.reduce((sum, i) => sum + i.product.price.current * i.quantity, 0)
   },
+
   get count() {
-    return calcCount(state.items)
+    return state.items.reduce((sum, i) => sum + i.quantity, 0)
   },
-  get loading() {
-    return state.loading
-  },
-  get error() {
-    return state.error
+
+  get(productId: string): CartItem | undefined {
+    return state.items.find((item) => item.product.id === productId)
   },
 
   async init(userId: string) {
-    setState({ loading: true })
-
     const cached = loadCache(userId)
     setState({ items: cached })
 
     try {
       const items = await cartService.get(userId)
-      setState({ items: items, loading: false })
+      setState({ items })
       saveCache(userId)
     } catch (error) {
       if (error instanceof AxiosError) {
-        setState({ error: error.message, loading: false })
+        setState({ items: [] })
       }
     }
   },
 
-  async add(userId: string, item: Omit<CartItem, 'id'>) {
-    const existing = findItem(state.items, item.product.id, item.selectedColor, item.selectedStorage)
+  async add(userId: string, productId: string) {
+    const existing = this.get(productId)
 
     if (existing) {
-      const newQty = existing.quantity + item.quantity
-      setState({ items: updateQuantity(state.items, existing.id, newQty) })
+      const newQuantity = existing.quantity + 1
+      setState({ items: state.items.map((i) => (i.product.id === productId ? { ...i, quantity: newQuantity } : i)) })
 
       try {
-        await cartService.update(existing.id, newQty)
+        await cartService.update(existing.id, newQuantity)
         saveCache(userId)
       } catch (error) {
         if (error instanceof AxiosError) {
-          setState({ items: updateQuantity(state.items, existing.id, existing.quantity), error: error.message })
+          setState({
+            items: state.items.map((i) => (i.product.id === productId ? { ...i, quantity: existing.quantity } : i)),
+          })
         }
       }
       return
     }
 
+    const product = await productService.getById(productId)
     const tempId = `temp_${Date.now()}`
-    const newItem = { ...item, id: tempId }
-    setState({ items: addItem(state.items, newItem) })
+    const newItem: CartItem = { id: tempId, product, quantity: 1 }
+    setState({ items: [...state.items, newItem] })
 
     try {
-      const cartItem = await cartService.add(userId, item)
-      setState({ items: replaceId(state.items, tempId, cartItem.id) })
+      const cartItem = await cartService.add(userId, { product, quantity: 1 })
+      setState({ items: state.items.map((i) => (i.id === tempId ? cartItem : i)) })
       saveCache(userId)
     } catch (error) {
       if (error instanceof AxiosError) {
-        setState({ items: removeItem(state.items, tempId), error: error.message })
+        setState({ items: state.items.filter((i) => i.id !== tempId) })
       }
     }
   },
 
-  async remove(userId: string, id: string) {
-    const item = state.items.find((i) => i.id === id)
+  async remove(userId: string, productId: string) {
+    const item = state.items.find((i) => i.product.id === productId)
     if (!item) return
 
-    setState({ items: removeItem(state.items, id) })
+    setState({ items: state.items.filter((i) => i.product.id !== productId) })
 
-    if (!id.startsWith('temp_')) {
+    if (!item.id.startsWith('temp_')) {
       try {
-        await cartService.remove(id)
+        await cartService.remove(item.id)
         saveCache(userId)
       } catch (error) {
         if (error instanceof AxiosError) {
-          setState({ items: addItem(state.items, item), error: error.message })
+          setState({ items: [...state.items, item] })
         }
       }
     }
   },
 
-  async decrement(userId: string, id: string): Promise<boolean> {
-    const item = state.items.find((i) => i.id === id)
+  async decrement(userId: string, productId: string): Promise<boolean> {
+    const item = state.items.find((i) => i.product.id === productId)
     if (!item) return false
 
     if (item.quantity <= 1) {
-      await this.remove(userId, id)
+      await this.remove(userId, productId)
       return true
     }
 
     const newQty = item.quantity - 1
-    setState({ items: updateQuantity(state.items, id, newQty) })
+    setState({ items: state.items.map((i) => (i.product.id === productId ? { ...i, quantity: newQty } : i)) })
 
     try {
-      await cartService.update(id, newQty)
+      await cartService.update(item.id, newQty)
       saveCache(userId)
     } catch (error) {
       if (error instanceof AxiosError) {
-        setState({ items: updateQuantity(state.items, id, item.quantity), error: error.message })
+        setState({
+          items: state.items.map((i) => (i.product.id === productId ? { ...i, quantity: item.quantity } : i)),
+        })
       }
     }
     return false
@@ -154,8 +158,13 @@ export const cartStore = {
       saveCache(userId)
     } catch (error) {
       if (error instanceof AxiosError) {
-        setState({ items: old, error: error.message })
+        setState({ items: old })
       }
     }
+  },
+
+  clearCache(userId: string) {
+    setState({ items: [] })
+    localStorage.removeItem(CACHE_KEY(userId))
   },
 }

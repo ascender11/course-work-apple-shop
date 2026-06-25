@@ -16,7 +16,7 @@ const SettingsRow = (label: string, sublabel: string, control: string, border = 
       <span class="text-sm font-medium text-text-primary">${label}</span>
       ${sublabel ? html`<p class="text-xs text-text-quinary mt-0.5">${sublabel}</p>` : ''}
     </div>
-    ${control}
+    <div class="w-fit">${control}</div>
   </div>
 `
 

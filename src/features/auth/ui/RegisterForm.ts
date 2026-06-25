@@ -106,7 +106,7 @@ export const RegisterForm = () => html`
       <label class="text-sm font-medium text-text-secondary">
         ${t('auth.register.nickname')}${REQUIRED_MARK}
       </label>
-      <div class="flex gap-2">
+      <div class="flex flex-col sm:flex-row gap-2">
         <input
           id="reg-nickname"
           name="nickname"
@@ -119,7 +119,7 @@ export const RegisterForm = () => html`
         <button
           id="generate-nickname"
           type="button"
-          class="px-4 py-3 text-sm font-medium text-primary border border-border rounded-lg hover:bg-background-secondary transition-colors shrink-0 whitespace-nowrap"
+          class="px-4 py-3 text-sm font-medium text-primary border border-border rounded-lg hover:bg-background-secondary transition-colors whitespace-nowrap"
         >
           ${t('auth.register.generate')}
         </button>
@@ -135,7 +135,7 @@ export const RegisterForm = () => html`
         ${t('auth.register.password')}${REQUIRED_MARK}
       </label>
 
-      <div class="flex gap-4 mb-2">
+      <div class="flex flex-wrap gap-4 mb-2">
         <label class="flex items-center gap-2 cursor-pointer">
           <input type="radio" name="password-mode" value="manual" checked class="radio" />
           <span class="text-sm text-text-secondary">${t('auth.register.passwordManual')}</span>
@@ -195,22 +195,20 @@ export const RegisterForm = () => html`
       </div>
 
       <div id="auto-password-fields" class="hidden">
-        <div class="relative">
-          <input
-            id="reg-auto-password"
-            name="autoPassword"
-            type="text"
-            readonly
-            class="${INPUT_BASE} bg-background-secondary"
-          />
-          <button
-            id="regenerate-password"
-            type="button"
-            class="absolute right-3 top-1/2 -translate-y-1/2 text-primary hover:text-secondary text-sm"
-          >
-            ${t('auth.register.generateNew')}
-          </button>
-        </div>
+        <input
+          id="reg-auto-password"
+          name="autoPassword"
+          type="text"
+          readonly
+          class="${INPUT_BASE} bg-background-secondary"
+        />
+        <button
+          id="regenerate-password"
+          type="button"
+          class="mt-2 text-sm font-medium text-primary hover:text-secondary"
+        >
+          ${t('auth.register.generateNew')}
+        </button>
         <span data-error="reg-auto-password" class="text-xs text-error min-h-3.5 block"></span>
       </div>
 

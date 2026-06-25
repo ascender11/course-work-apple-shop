@@ -44,7 +44,7 @@ export const ProductContent = (product: Product): string => {
 
           <div class="flex flex-col gap-8 lg:flex-row lg:gap-16 lg:items-start">
             ${ShortProperties({ specifications: product.specifications })}
-            <div class="w-full lg:w-80 shrink-0">${priceSection}</div>
+            <div class="w-full lg:w-64 shrink-0">${priceSection}</div>
           </div>
         </div>
       </div>

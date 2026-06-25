@@ -23,7 +23,7 @@ export const CatalogPage = () => {
     html: html`
       ${Header()}
 
-      <div class="flex md:hidden items-center justify-between gap-3 px-4 py-3">
+      <div class="flex flex-col sm:flex-row md:hidden items-center justify-between gap-3 px-4 py-3">
         <div class="flex items-center gap-3">
           <button
             id="mobile-filter-btn"

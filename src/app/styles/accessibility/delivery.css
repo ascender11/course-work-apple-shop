@@ -1,0 +1,132 @@
+html[data-font-size="large"] main > div,
+html[data-font-size="xlarge"] main > div {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+html[data-font-size="xlarge"] main .text-xs {
+  font-size: 0.875rem;
+}
+
+html[data-font-size="xlarge"] main .text-sm {
+  font-size: 1rem;
+}
+
+html[data-font-size="xlarge"] main .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-3 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+html[data-font-size="xlarge"] main .grid.grid-cols-1.sm\:grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+  html[data-font-size="large"] main .md\:flex-row,
+  html[data-font-size="xlarge"] main .md\:flex-row {
+    flex-direction: column;
+  }
+
+  html[data-font-size="large"] main .md\:items-center,
+  html[data-font-size="xlarge"] main .md\:items-center {
+    align-items: flex-start;
+  }
+
+  html[data-font-size="large"] main .md\:pl-72,
+  html[data-font-size="xlarge"] main .md\:pl-72 {
+    padding-left: 1rem;
+  }
+
+  html[data-font-size="large"] main .md\:p-10,
+  html[data-font-size="xlarge"] main .md\:p-10 {
+    padding: 1.5rem;
+  }
+
+  html[data-font-size="large"] main .md\:h-53,
+  html[data-font-size="xlarge"] main .md\:h-53 {
+    height: auto;
+    min-height: 10rem;
+  }
+}
+
+html[data-font-size="xlarge"] main .bg-background-secondary.rounded-2xl.px-4.py-4 {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+html[data-font-size="xlarge"] main .bg-background-secondary.rounded-2xl.px-4.py-4 > div {
+  flex-wrap: wrap;
+}
+
+html[data-font-size="xlarge"] main .flex.items-center.gap-1.text-sm {
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+html[data-font-size="xlarge"] main .text-base {
+  font-size: 0.875rem;
+}
+
+html[data-font-size="xlarge"] main h2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+html[data-font-size="xlarge"] main .bg-background-quaternary {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-radius: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+html[data-font-size="xlarge"] main .bg-background-quaternary .bg-background-secondary.rounded-2xl {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+html[data-font-size="xlarge"] main span.text-text-tertiary {
+  letter-spacing: normal;
+  font-size: 0.875rem;
+}
+
+html[data-font-size="xlarge"] main .min-h-64 {
+  min-height: auto;
+}
+
+html[data-font-size="xlarge"] main .min-h-56 {
+  min-height: auto;
+}
+
+html[data-font-size="xlarge"] main .bg-background-secondary.rounded-2xl.p-6 {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-radius: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+html[data-font-size="xlarge"] main section.bg-background-secondary.rounded-2xl {
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-radius: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+html[data-font-size="xlarge"] main .bg-background-secondary h2 {
+  font-size: 1.375rem;
+}
+
+html[data-font-size="xlarge"] main .bg-background-quaternary p.text-base {
+  font-size: 0.875rem;
+}
+
+html[data-font-size="xlarge"] main .bg-background-quaternary h2 {
+  font-size: 1.375rem;
+}
+
+html[data-font-size="xlarge"] main .bg-background-quaternary span.whitespace-nowrap {
+  white-space: normal;
+}

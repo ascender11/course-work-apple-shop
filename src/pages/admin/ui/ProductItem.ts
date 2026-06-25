@@ -10,33 +10,35 @@ export const ProductItem = (product: Product): string => {
   const isAvailable = product.availability === ProductAvailability.IN_STOCK
 
   return html`
-    <div class="flex items-center gap-4 p-4 rounded-xl border border-border-light hover:border-border transition-colors duration-150">
-      <div class="w-14 h-14 rounded-lg bg-background-secondary overflow-hidden shrink-0 flex items-center justify-center">
-        ${
-          product.images?.[0]
-            ? `<img src="${product.images[0]}" alt="" class="w-full h-full object-cover" />`
-            : `<span class="text-text-quinary text-xs">${t('admin.products.noPhoto')}</span>`
-        }
-      </div>
-      <div class="flex-1 min-w-0">
-        <p class="text-sm font-medium text-text-primary truncate">${product.title}</p>
-        <div class="flex items-center gap-2 mt-1">
+    <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 p-4 rounded-xl border border-border-light hover:border-border transition-colors duration-150">
+      <div class="flex items-center gap-3 sm:flex-1 min-w-0">
+        <div class="w-14 h-14 rounded-lg bg-background-secondary overflow-hidden shrink-0 flex items-center justify-center">
           ${
-            price !== null
-              ? `<span class="text-sm font-semibold text-text-primary">${price.toLocaleString('ru-RU')} ₽</span>`
-              : `<span class="text-sm text-text-quinary">${t('admin.products.noPrice')}</span>`
+            product.images?.[0]
+              ? `<img src="${product.images[0]}" alt="" class="w-full h-full object-cover" />`
+              : `<span class="text-text-quinary text-xs">${t('admin.products.noPhoto')}</span>`
           }
-          ${
-            oldPrice !== null
-              ? `<span class="text-xs text-text-quinary line-through">${oldPrice.toLocaleString('ru-RU')} ₽</span>`
-              : ''
-          }
-          <span class="text-xs px-2 py-0.5 rounded-full ${isAvailable ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-500'}">
-            ${isAvailable ? t('admin.products.inStock') : t('admin.products.outOfStock')}
-          </span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-medium text-text-primary truncate">${product.title}</p>
+          <div class="flex items-center gap-2 mt-1 flex-wrap">
+            ${
+              price !== null
+                ? `<span class="text-sm font-semibold text-text-primary">${price.toLocaleString('ru-RU')} ₽</span>`
+                : `<span class="text-sm text-text-quinary">${t('admin.products.noPrice')}</span>`
+            }
+            ${
+              oldPrice !== null
+                ? `<span class="text-xs text-text-quinary line-through">${oldPrice.toLocaleString('ru-RU')} ₽</span>`
+                : ''
+            }
+            <span class="text-xs px-2 py-0.5 rounded-full ${isAvailable ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-500'}">
+              ${isAvailable ? t('admin.products.inStock') : t('admin.products.outOfStock')}
+            </span>
+          </div>
         </div>
       </div>
-      <div class="flex items-center gap-2 shrink-0">
+      <div class="flex items-center gap-2 sm:ml-auto">
         <button
           data-edit-product="${product.id}"
           class="px-3 py-1.5 text-xs font-medium text-primary border border-border rounded-lg hover:bg-background-secondary transition-colors"

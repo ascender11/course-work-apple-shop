@@ -23,15 +23,15 @@ const renderStars = (rating: number): string => {
 export const ReviewItem = (review: Review, productName?: string): string => {
   return `
     <div class="p-4 rounded-xl border border-border-light hover:border-border transition-colors duration-150">
-      <div class="flex items-center justify-between mb-2">
-        <div class="flex items-center gap-2">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+        <div class="flex items-center gap-2 flex-wrap">
           <div class="flex items-center gap-0.5">${renderStars(review.rating)}</div>
           <span class="text-sm font-medium text-text-primary">${review.userName}</span>
           <span class="text-xs text-text-quinary">${formatDate(review.createdAt)}</span>
         </div>
         <button
           data-delete-review="${review.id}"
-          class="px-3 py-1.5 text-xs font-medium text-error border border-border rounded-lg hover:bg-red-50 transition-colors"
+          class="self-start sm:self-auto px-3 py-1.5 text-xs font-medium text-error border border-border rounded-lg hover:bg-red-50 transition-colors"
         >${t('admin.reviews.deleteBtn')}</button>
       </div>
       <p class="text-sm text-text-secondary leading-relaxed">${review.text}</p>

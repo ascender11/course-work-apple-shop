@@ -1,0 +1,39 @@
+html[data-font-size="large"] .md\:flex.items-center.justify-between,
+html[data-font-size="xlarge"] .md\:flex.items-center.justify-between {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  flex-wrap: wrap;
+}
+
+html[data-font-size="large"] #catalog-root > div:last-child,
+html[data-font-size="xlarge"] #catalog-root > div:last-child {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+html[data-font-size="xlarge"] #catalog-root .text-sm {
+  font-size: 1rem;
+}
+
+html[data-font-size="xlarge"] #catalog-root .text-xs {
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  html[data-font-size="large"] .md\:hidden,
+  html[data-font-size="xlarge"] .md\:hidden {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  html[data-font-size="large"] aside.md\:block,
+  html[data-font-size="xlarge"] aside.md\:block {
+    display: none !important;
+  }
+}
+
+html[data-font-size="xlarge"] .flex.items-center.justify-between.gap-4 {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

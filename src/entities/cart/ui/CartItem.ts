@@ -44,6 +44,12 @@ export const CartItemCard = ({ product, quantity }: CartItemType) => {
           >
             <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
+          <button
+            class="js-cart-remove-mobile hidden items-center justify-center w-8 h-8 rounded-full text-text-quinary hover:text-red-500 hover:bg-red-50 active:scale-95 transition-all duration-150 cursor-pointer ml-auto"
+            aria-label="Удалить товар"
+          >
+            ${TrashIcon()}
+          </button>
         </div>
       </div>
 

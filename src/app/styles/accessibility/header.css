@@ -1,0 +1,18 @@
+html[data-font-size="xlarge"] header {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+html[data-font-size="xlarge"] header nav ul {
+  gap: 1rem;
+}
+
+html[data-font-size="xlarge"] header > div:last-child {
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  html[data-font-size="xlarge"] header > div:last-child > div:first-child {
+    display: none;
+  }
+}

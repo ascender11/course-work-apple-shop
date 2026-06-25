@@ -1,0 +1,50 @@
+html[data-font-size="large"] #cart-root > div,
+html[data-font-size="xlarge"] #cart-root > div {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (max-width: 1240px) {
+  html[data-font-size="large"] #cart-root .flex.flex-col.lg\:flex-row,
+  html[data-font-size="xlarge"] #cart-root .flex.flex-col.lg\:flex-row {
+    flex-direction: column;
+  }
+
+  html[data-font-size="large"] #cart-root .w-full.lg\:w-80,
+  html[data-font-size="xlarge"] #cart-root .w-full.lg\:w-80 {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+html[data-font-size="xlarge"] .js-cart-item {
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+html[data-font-size="xlarge"] .js-cart-item > div:last-child {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  html[data-font-size="xlarge"] .js-cart-item > div:last-child {
+    display: none;
+  }
+
+  html[data-font-size="xlarge"] .js-cart-item .js-cart-remove-mobile {
+    display: flex;
+  }
+}
+
+html[data-font-size="xlarge"] #cart-summary .flex.justify-between {
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+html[data-font-size="xlarge"] #cart-summary .flex.justify-between > span {
+  white-space: normal;
+  word-break: break-word;
+}

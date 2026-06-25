@@ -40,7 +40,7 @@ export const ProductCard = ({ product, className = '' }: ProductCardProps) => {
       <div class="flex flex-col items-center gap-0.5 text-text-quinary text-base w-full min-w-0 @[16rem]:flex-row @[16rem]:items-center @[16rem]:justify-between @[16rem]:gap-2">
         <div class="flex items-center gap-1">
           <span class="${cn('w-4 h-4 rounded-full inline-block shrink-0', isInStock ? 'bg-success' : 'bg-primary')}"></span>
-          <span class="truncate">${isInStock ? t('product.inStock') : t('product.outOfStock')}</span>
+          <span class="text-sm @[16rem]:text-base">${isInStock ? t('product.inStock') : t('product.outOfStock')}</span>
         </div>
         ${isInStock && product.warrantyPeriod ? html`<span class="text-sm @[16rem]:text-base">${product.warrantyPeriod}</span>` : ''}
       </div>

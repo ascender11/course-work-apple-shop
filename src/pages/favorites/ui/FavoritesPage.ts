@@ -14,9 +14,9 @@ export const FavoritesPage = () => ({
 
     <div class="min-h-[calc(100vh-56px)]">
 
-      <div class="flex items-center justify-between px-4 py-4 md:px-6 lg:px-30">
-        <div class="flex items-center gap-3">
-          <h1 class="text-2xl font-bold text-text-primary">${t('fav.title')}</h1>
+      <div id="favorites-header" class="flex items-center justify-between gap-2 px-4 py-4 md:px-6 lg:px-30">
+        <div id="favorites-title-group" class="flex items-center gap-3">
+          <h1 class="text-xl sm:text-2xl font-bold text-text-primary">${t('fav.title')}</h1>
           <span id="favorites-count" class="flex items-center justify-center min-w-6 h-6 rounded-full bg-primary px-1.5 text-xs font-medium text-text-button">
             …
           </span>

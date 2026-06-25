@@ -1,49 +1,36 @@
 import { axiosInstance } from '@/shared/api'
 
-import type { CartItem } from '../model/types'
-
-type CartItemDto = CartItem & { userId: string }
-
-const stripUserId = ({ userId: _, id, ...rest }: CartItemDto): CartItem => ({
-  ...rest,
-  id: String(id),
-})
+import type { Cart, CartProduct } from '../model/types'
 
 export const cartService = {
-  async get(userId: string): Promise<CartItem[]> {
-    const response = await axiosInstance.get<CartItemDto[]>('/carts', {
+  async get(userId: string): Promise<Cart | null> {
+    const { data } = await axiosInstance.get<Cart[]>('/carts', {
       params: { userId },
     })
 
-    return response.data.map(stripUserId)
+    if (!data.length) return null
+    return { ...data[0], id: String(data[0].id) }
   },
 
-  async add(userId: string, item: Omit<CartItem, 'id'>): Promise<CartItem> {
-    const response = await axiosInstance.post<CartItemDto>('/carts', {
-      ...item,
+  async save(userId: string, cart: Cart): Promise<Cart> {
+    const { data } = await axiosInstance.put<Cart>(`/carts/${cart.id}`, {
+      ...cart,
       userId,
     })
 
-    return stripUserId(response.data)
+    return { ...data, id: String(data.id) }
   },
 
-  async update(id: string, quantity: number): Promise<CartItem> {
-    const response = await axiosInstance.patch<CartItemDto>(`/carts/${id}`, {
-      quantity,
+  async create(userId: string, products: CartProduct[]): Promise<Cart> {
+    const { data } = await axiosInstance.post<Cart>('/carts', {
+      products,
+      userId,
     })
 
-    return stripUserId(response.data)
+    return { ...data, id: String(data.id) }
   },
 
-  async remove(id: string): Promise<void> {
+  async delete(id: string): Promise<void> {
     await axiosInstance.delete(`/carts/${id}`)
-  },
-
-  async clear(userId: string): Promise<void> {
-    const { data } = await axiosInstance.get<CartItemDto[]>('/carts', {
-      params: { userId },
-    })
-
-    await Promise.all(data.map((item) => axiosInstance.delete(`/carts/${item.id}`)))
   },
 }

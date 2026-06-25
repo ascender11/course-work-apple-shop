@@ -17,10 +17,10 @@ const pluralize = (n: number) => {
 }
 
 export const CartPage = () => {
-  const items = cartStore.items
+  const products = cartStore.products
   const total = cartStore.total
   const count = cartStore.count
-  const isEmpty = items.length === 0
+  const isEmpty = products.length === 0
 
   return {
     html: html`
@@ -34,7 +34,7 @@ export const CartPage = () => {
             isEmpty
               ? CartEmpty()
               : html`<div class="flex flex-col lg:flex-row lg:items-start gap-6">
-                ${CartItems(items)}
+                ${CartItems(products)}
                 <div class="w-full lg:w-80 xl:w-96 shrink-0">
                   <div id="cart-summary">${OrderSummary(total, count)}</div>
                 </div>

@@ -30,14 +30,14 @@ export const updateCartTitle = () => {
 }
 
 export const updateLineItem = (itemEl: HTMLElement, productId: string) => {
-  const item = cartStore.get(productId)
-  if (!item) return
+  const product = cartStore.get(productId)
+  if (!product) return
 
   const qtyEl = itemEl.querySelector<HTMLElement>('.js-cart-qty')
   const lineTotals = itemEl.querySelectorAll<HTMLElement>('.js-cart-line-total')
-  const lineTotal = 'price' in item.product ? item.product.price.current * item.quantity : 0
+  const lineTotal = product.price * product.quantity
 
-  if (qtyEl) qtyEl.textContent = String(item.quantity)
+  if (qtyEl) qtyEl.textContent = String(product.quantity)
   lineTotals.forEach((el) => {
     el.textContent = formatPrice(lineTotal)
   })

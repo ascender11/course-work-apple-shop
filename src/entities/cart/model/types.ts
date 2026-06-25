@@ -1,11 +1,13 @@
-import type { Product } from '@/entities/product/@x/cart'
-
-export interface CartItem {
+export interface CartProduct {
   id: string
-  product: Product
+  title: string
+  image: string
+  price: number
   quantity: number
 }
 
-export interface CartState {
-  items: CartItem[]
+export interface Cart {
+  id: string
+  userId: string
+  products: CartProduct[]
 }

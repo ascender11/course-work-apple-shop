@@ -27,10 +27,13 @@ export interface UnavailableProduct {
   id: string
   title: string
   images: string[]
+  category: string
+  year?: string
   soldCount?: number
   rating: ProductRating
   price: ProductPrice
   availability: ProductAvailability.OUT_OF_STOCK
+  warrantyPeriod?: string
   specifications?: ProductSpecificationGroup[]
 }
 
@@ -38,6 +41,8 @@ export interface AvailableProduct {
   id: string
   title: string
   images: string[]
+  category: string
+  year?: string
   soldCount?: number
   rating: ProductRating
   price: ProductPrice

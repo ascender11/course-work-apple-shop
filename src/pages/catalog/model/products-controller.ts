@@ -35,5 +35,6 @@ export const loadProductsAndRender = async (state: FiltersState) => {
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : t('catalog.loadError', { error: 'Unknown' })
     listEl.innerHTML = ErrorState(msg)
+    throw err
   }
 }
